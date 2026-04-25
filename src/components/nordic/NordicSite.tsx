@@ -513,7 +513,7 @@ function Hero() {
       </div>
 
       {/* covers video watermark in bottom-right */}
-      <div style={{ position: "absolute", bottom: 0, right: 0, width: 320, height: 120, background: "linear-gradient(135deg, transparent 0%, rgba(4,5,10,0.85) 40%, #04050a 100%)", zIndex: 5, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: 0, right: 0, width: 480, height: 160, background: "linear-gradient(135deg, transparent 0%, rgba(4,5,10,0.9) 35%, #04050a 65%)", zIndex: 5, pointerEvents: "none" }} />
     </section>
   );
 }
