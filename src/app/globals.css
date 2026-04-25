@@ -675,6 +675,8 @@ img { max-width: 100%; }
   /* ── Nav — sits immediately under compact banner (~34px) ── */
   .ni-nav { top: 34px; }
   .ni-nav-inner { height: 54px; }
+  .ni-nav-actions { display: none; }
+  .ni-hamburger { margin-left: auto; }
   .ni-mobile-menu { top: 88px; left: 0; right: 0; bottom: 0; inset: unset; }
   .ni-hero { padding-top: 88px; }
 
