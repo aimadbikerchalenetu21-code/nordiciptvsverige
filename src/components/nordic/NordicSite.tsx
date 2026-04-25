@@ -292,8 +292,8 @@ function CardStack({ items, autoAdvance = false, intervalMs = 2800 }: CardStackP
   };
 
   return (
-    <div onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
-      <div style={{ position: "relative", height: cardH + 90, perspective: "1200px" }}>
+    <div style={{ width: "100%" }} onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
+      <div style={{ position: "relative", height: cardH + 90, perspective: "1200px", width: "100%" }}>
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
           {items.map((item, i) => {
             const off = signedOff(i, active);
