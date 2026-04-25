@@ -465,11 +465,19 @@ function Hero() {
             </div>
           </div>
           <div className="ni-fade-up ni-delay-2" style={{ position: "relative" }}>
-            <div style={{ position: "relative", height: 520, width: "100%" }}>
-              <div className="ni-live-indicator" style={{ position: "absolute", top: 0, right: 0 }}>
+            <div style={{ position: "relative", borderRadius: 16, overflow: "hidden", boxShadow: "0 0 60px rgba(0,212,255,0.15), 0 24px 80px rgba(0,0,0,0.6)" }}>
+              <div className="ni-live-indicator" style={{ position: "absolute", top: 12, right: 12, zIndex: 2 }}>
                 <span className="ni-live-dot" />● LIVE NU
               </div>
-              <StackedPanels />
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: "100%", display: "block", borderRadius: 16 }}
+              >
+                <source src="/hero-video.webm" type="video/webm" />
+              </video>
             </div>
           </div>
         </div>
