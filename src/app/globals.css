@@ -293,9 +293,13 @@ img { max-width: 100%; }
 }
 .ni-hero-kicker::before { content: ''; width: 28px; height: 2px; background: var(--ni-orange); flex-shrink: 0; }
 .ni-hero-title {
-  font-size: clamp(36px, 4.8vw, 72px); font-weight: 900;
-  line-height: 1.05; margin-bottom: 24px; max-width: 760px;
-  color: #fff;
+  font-family: "Outfit", "Outfit Fallback", sans-serif;
+  font-size: 60px; font-weight: 600; line-height: 60px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 24px; max-width: 760px;
+}
+@media(max-width: 768px) {
+  .ni-hero-title { font-size: 36px; line-height: 40px; }
 }
 .ni-hero-desc {
   font-size: clamp(15px, 1.5vw, 18px); color: rgba(210,220,235,0.88);
