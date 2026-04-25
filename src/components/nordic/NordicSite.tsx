@@ -1050,13 +1050,28 @@ function WhatsAppReviews() {
     key: (idx + i) % total,
   }));
 
-  const arrowStyle = (disabled = false): React.CSSProperties => ({
-    position: "absolute", top: "40%", transform: "translateY(-50%)",
-    zIndex: 10, width: 44, height: 44, borderRadius: "50%",
-    background: "rgba(14,17,28,0.95)", border: "1px solid rgba(255,255,255,0.12)",
-    color: "#f0f6ff", fontSize: 22, cursor: disabled ? "default" : "pointer",
-    opacity: disabled ? 0.25 : 1, display: "flex", alignItems: "center", justifyContent: "center",
-    transition: ".2s", flexShrink: 0,
+  const current = WA_SLIDES[idx];
+
+  const overlayArrow = (side: "left" | "right"): React.CSSProperties => ({
+    position: "absolute",
+    [side]: 14,
+    top: "50%",
+    transform: "translateY(-50%)",
+    zIndex: 20,
+    width: 48,
+    height: 48,
+    borderRadius: "50%",
+    background: "rgba(0,0,0,0.55)",
+    border: "1.5px solid rgba(255,255,255,0.22)",
+    color: "#fff",
+    fontSize: 26,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backdropFilter: "blur(6px)",
+    WebkitBackdropFilter: "blur(6px)",
+    transition: ".2s",
   });
 
   return (
@@ -1079,55 +1094,157 @@ function WhatsAppReviews() {
           Genomsnittlig svarstid: <strong style={{ color: "#f0f6ff" }}>under 4 minuter</strong>. Genomsnittlig aktivering efter betalning:{" "}
           <strong style={{ color: "#f0f6ff" }}>under 2 minuter</strong>.
         </p>
+      </div>
 
-        {/* Animated carousel */}
+      {/* ── MOBILE: full-bleed single card with overlaid arrows ── */}
+      {isMobile ? (
         <div
-          style={{ position: "relative", display: "flex", alignItems: "center", gap: 12 }}
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
         >
-          {/* Left arrow */}
-          <button onClick={() => go(idx - 1, -1)} aria-label="Föregående" style={arrowStyle()}>‹</button>
+          {/* Full-bleed image + overlaid arrows */}
+          <div style={{ position: "relative" }}>
+            <div
+              key={`${idx}-${dir}`}
+              style={{ animation: `${dir >= 0 ? "waSlideIn" : "waSlideInLeft"} 0.38s ease both` }}
+            >
+              <img
+                src={current.img}
+                alt={current.badge}
+                style={{ width: "100%", display: "block", aspectRatio: "9/16", objectFit: "cover" }}
+              />
+            </div>
 
-          {/* Cards — remount on idx change triggers CSS animation */}
-          <div
-            key={`${idx}-${dir}`}
-            style={{
-              flex: 1,
-              display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)",
-              gap: 16,
-              animation: `${dir >= 0 ? "waSlideIn" : "waSlideInLeft"} 0.42s ease both`,
-            }}
-          >
-            {slides.map(({ data, key }) => <WaCard key={key} slide={data} />)}
+            {/* Badge */}
+            <div style={{
+              position: "absolute", top: 14, left: 14, zIndex: 10,
+              background: "rgba(37,211,102,0.93)", backdropFilter: "blur(8px)",
+              borderRadius: 22, padding: "5px 14px",
+              fontSize: 12, fontWeight: 700, color: "#fff",
+            }}>{current.badge}</div>
+
+            {/* Left arrow */}
+            <button onClick={() => go(idx - 1, -1)} aria-label="Föregående" style={overlayArrow("left")}>‹</button>
+            {/* Right arrow */}
+            <button onClick={() => go(idx + 1, 1)} aria-label="Nästa" style={overlayArrow("right")}>›</button>
+
+            {/* Bottom gradient + WhatsApp label */}
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 80, background: "linear-gradient(to top, rgba(17,27,33,0.96), transparent)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: 12, left: 16, display: "flex", alignItems: "center", gap: 6 }}>
+              {WA_ICON(16)}
+              <span style={{ fontSize: 11, color: "#25D366", fontWeight: 700 }}>WhatsApp</span>
+            </div>
           </div>
 
-          {/* Right arrow */}
-          <button onClick={() => go(idx + 1, 1)} aria-label="Nästa" style={arrowStyle()}>›</button>
-        </div>
+          {/* Quote */}
+          <div style={{ padding: "16px 20px 4px", display: "flex", alignItems: "flex-start", gap: 10 }}>
+            {WA_ICON(18)}
+            <p style={{ margin: 0, fontSize: 14, color: "#c8d8e4", lineHeight: 1.55, fontStyle: "italic" }}>
+              {current.quote}
+            </p>
+          </div>
 
-        {/* Progress dots */}
-        <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 24 }}>
-          {WA_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => go(i, i > idx ? 1 : -1)}
-              aria-label={`Gå till slide ${i + 1}`}
+          {/* Dots */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 18, marginBottom: 8 }}>
+            {WA_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i, i > idx ? 1 : -1)}
+                style={{
+                  width: i === idx ? 24 : 8, height: 8, borderRadius: 4,
+                  background: i === idx ? "#25D366" : "rgba(255,255,255,0.18)",
+                  border: "none", cursor: "pointer", padding: 0, transition: "all .25s",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Floating WhatsApp CTA */}
+          <div style={{ display: "flex", justifyContent: "flex-end", padding: "12px 16px 0" }}>
+            <a
+              href="https://wa.me/message/yourlinkhere"
+              target="_blank"
+              rel="noreferrer"
               style={{
-                width: i === idx ? 24 : 8, height: 8, borderRadius: 4,
-                background: i === idx ? "#25D366" : "rgba(255,255,255,0.18)",
-                border: "none", cursor: "pointer", padding: 0, transition: "all .25s",
+                display: "flex", alignItems: "center", gap: 10,
+                background: "#25D366", color: "#fff",
+                borderRadius: 32, padding: "13px 20px",
+                fontWeight: 700, fontSize: 14,
+                boxShadow: "0 6px 24px rgba(37,211,102,0.4)",
+                textDecoration: "none",
               }}
-            />
-          ))}
+            >
+              {WA_ICON(20)}
+              <span>
+                <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".03em" }}>GET FREE TRIAL</div>
+                <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.9 }}>Chat on WhatsApp</div>
+              </span>
+            </a>
+          </div>
         </div>
+      ) : (
+        /* ── DESKTOP: 3-column animated grid ── */
+        <div className="ni-container" style={{ position: "relative" }}>
+          <div
+            style={{ position: "relative", display: "flex", alignItems: "center", gap: 12 }}
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+          >
+            <button
+              onClick={() => go(idx - 1, -1)}
+              aria-label="Föregående"
+              style={{
+                width: 44, height: 44, borderRadius: "50%", flexShrink: 0,
+                background: "rgba(14,17,28,0.95)", border: "1px solid rgba(255,255,255,0.12)",
+                color: "#f0f6ff", fontSize: 22, cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", transition: ".2s",
+              }}
+            >‹</button>
 
-        {/* Stats bar */}
+            <div
+              key={`${idx}-${dir}`}
+              style={{
+                flex: 1, display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16,
+                animation: `${dir >= 0 ? "waSlideIn" : "waSlideInLeft"} 0.42s ease both`,
+              }}
+            >
+              {slides.map(({ data, key }) => <WaCard key={key} slide={data} />)}
+            </div>
+
+            <button
+              onClick={() => go(idx + 1, 1)}
+              aria-label="Nästa"
+              style={{
+                width: 44, height: 44, borderRadius: "50%", flexShrink: 0,
+                background: "rgba(14,17,28,0.95)", border: "1px solid rgba(255,255,255,0.12)",
+                color: "#f0f6ff", fontSize: 22, cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", transition: ".2s",
+              }}
+            >›</button>
+          </div>
+
+          {/* Dots */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 24 }}>
+            {WA_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i, i > idx ? 1 : -1)}
+                style={{
+                  width: i === idx ? 24 : 8, height: 8, borderRadius: 4,
+                  background: i === idx ? "#25D366" : "rgba(255,255,255,0.18)",
+                  border: "none", cursor: "pointer", padding: 0, transition: "all .25s",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Stats bar — always shown */}
+      <div className="ni-container" style={{ position: "relative", marginTop: 44 }}>
         <div style={{
           display: "grid", gridTemplateColumns: "repeat(3,1fr)",
-          gap: 0, marginTop: 44,
-          border: "1px solid rgba(255,255,255,0.07)", position: "relative",
+          gap: 0, border: "1px solid rgba(255,255,255,0.07)", position: "relative",
         }}>
           <span style={{ position: "absolute", top: -1, left: -1, width: 10, height: 10, borderTop: "2px solid #25D366", borderLeft: "2px solid #25D366" }} />
           <span style={{ position: "absolute", top: -1, right: -1, width: 10, height: 10, borderTop: "2px solid #25D366", borderRight: "2px solid #25D366" }} />
@@ -1139,7 +1256,7 @@ function WhatsAppReviews() {
             { val: "< 2 min", label: "Aktiveringstid efter betalning", color: "#00e676" },
           ].map((s, i) => (
             <div key={i} style={{ padding: "28px 20px", textAlign: "center", borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
-              <div style={{ fontSize: "clamp(24px,4vw,42px)", fontWeight: 900, color: s.color, lineHeight: 1, marginBottom: 8 }}>{s.val}</div>
+              <div style={{ fontSize: "clamp(22px,4vw,42px)", fontWeight: 900, color: s.color, lineHeight: 1, marginBottom: 8 }}>{s.val}</div>
               <div style={{ fontSize: 13, color: "#7a90a8" }}>{s.label}</div>
             </div>
           ))}
