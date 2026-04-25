@@ -16,14 +16,13 @@ interface ContentItem { id: number; title: string; year: string; rating: string;
 
 const CONTENT_ITEMS: Record<string, ContentItem[]> = {
   "Populära Serier": [
-    { id: 1, title: "Breaking Bad", year: "Klassiker", rating: "9.5", img: "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=400&q=80", overlay: "rgba(30,20,5,0.55)" },
-    { id: 2, title: "Game of Thrones", year: "Fantasy", rating: "9.2", img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80", overlay: "rgba(40,10,10,0.5)" },
-    { id: 3, title: "The Wire", year: "Krim", rating: "9.3", img: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=400&q=80", overlay: "rgba(5,10,25,0.55)" },
-    { id: 4, title: "Chernobyl", year: "Historia", rating: "9.4", img: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80", overlay: "rgba(10,20,10,0.55)" },
-    { id: 5, title: "Band of Brothers", year: "Krig", rating: "9.5", img: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=80", overlay: "rgba(25,15,5,0.5)" },
-    { id: 6, title: "Peaky Blinders", year: "Drama", rating: "8.8", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&q=80", overlay: "rgba(8,10,20,0.55)" },
-    { id: 7, title: "True Detective", year: "Krim", rating: "9.0", img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80", overlay: "rgba(18,5,5,0.5)" },
-    { id: 8, title: "Mindhunter", year: "Thriller", rating: "8.6", img: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=80", overlay: "rgba(8,12,18,0.55)" },
+    { id: 1, title: "The Smashing Machine", year: "Sport / Drama", rating: "2025", img: "https://image.tmdb.org/t/p/w500/mPuBDGrVIBGOymBxR6rO3iIvBSe.jpg", overlay: "rgba(20,10,5,0.4)" },
+    { id: 2, title: "Marty Supreme", year: "Drama / Komedi", rating: "2025", img: "https://image.tmdb.org/t/p/w500/lYWEXbQgRTR4ZQleSXAgRbxAjvq.jpg", overlay: "rgba(10,10,20,0.4)" },
+    { id: 3, title: "Zootopia 2", year: "Animation / Familj", rating: "2025", img: "https://image.tmdb.org/t/p/w500/oJ7g2CifqpStmoYQyaLQgEU32qO.jpg", overlay: "rgba(0,15,25,0.4)" },
+    { id: 4, title: "One Battle After Another", year: "Drama / Thriller", rating: "2025", img: "https://image.tmdb.org/t/p/w500/lbBWwxBht4JFP5PsuJ5onpMqugW.jpg", overlay: "rgba(20,8,0,0.4)" },
+    { id: 5, title: "Weapons", year: "Skräck / Thriller", rating: "2025", img: "https://image.tmdb.org/t/p/w500/cpf7vsRZ0MYRQcnLWteD5jK9ymT.jpg", overlay: "rgba(5,10,20,0.4)" },
+    { id: 6, title: "If I Had Legs I'd Kick You", year: "Drama", rating: "A24", img: "https://image.tmdb.org/t/p/w500/va0TQ9WprMXRqQAzY56vyqY0Yd5.jpg", overlay: "rgba(5,15,10,0.4)" },
+    { id: 7, title: "Sinners", year: "Skräck / Drama", rating: "2025", img: "https://image.tmdb.org/t/p/w500/705nQHqe4JGdEisrQmVYmXyjs1U.jpg", overlay: "rgba(25,5,0,0.4)" },
   ],
   "Filmer i 4K": [
     { id: 9, title: "Interstellar", year: "Sci-Fi", rating: "8.6", img: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&q=80", overlay: "rgba(5,10,25,0.5)" },
@@ -428,8 +427,8 @@ function ContentShowcase() {
     tag: item.rating,
   }));
 
-  const cardW = isMobile ? 260 : 600;
-  const cardH = isMobile ? 185 : 400;
+  const cardW = isMobile ? 160 : 300;
+  const cardH = isMobile ? 240 : 450;
 
   return (
     <section className="ni-showcase" style={{ overflow: "hidden" }}>
@@ -438,22 +437,22 @@ function ContentShowcase() {
         <h2 className="ni-section-title">Oändligt underhållning</h2>
         <p className="ni-section-sub">Filmer, serier, sport och nyheter — allt på ett ställe</p>
       </div>
-      {/* card stack intentionally breaks out of container so cards bleed to edges */}
+      {/* card stack breaks out of container so cards bleed to edges like a cinema marquee */}
       <div style={{ width: "100%", overflow: "visible" }}>
         <CardStack
           items={stackItems}
           cardWidth={cardW}
           cardHeight={cardH}
-          spreadDeg={isMobile ? 30 : 44}
-          overlap={isMobile ? 0.52 : 0.56}
+          spreadDeg={isMobile ? 28 : 42}
+          overlap={isMobile ? 0.48 : 0.52}
           maxVisible={isMobile ? 5 : 7}
-          depthPx={isMobile ? 60 : 120}
+          depthPx={isMobile ? 50 : 100}
           tiltXDeg={10}
-          activeLiftPx={28}
-          activeScale={1.04}
-          inactiveScale={0.88}
+          activeLiftPx={30}
+          activeScale={1.05}
+          inactiveScale={0.87}
           autoAdvance={true}
-          intervalMs={2800}
+          intervalMs={3200}
           pauseOnHover={true}
           springStiffness={260}
           springDamping={26}
