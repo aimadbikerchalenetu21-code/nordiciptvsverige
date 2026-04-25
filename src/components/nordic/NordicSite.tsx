@@ -262,9 +262,21 @@ interface CardStackProps { items: ContentItem[]; autoAdvance?: boolean; interval
 function CardStack({ items, autoAdvance = false, intervalMs = 2800 }: CardStackProps) {
   const [active, setActive] = useState(0);
   const [hovering, setHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const len = items.length;
   const maxOffset = 3;
-  const cardW = 170, cardH = 250, spacing = 95, spreadDeg = 5;
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const cardW   = isMobile ? 130 : 170;
+  const cardH   = isMobile ? 195 : 250;
+  const spacing = isMobile ? 55  : 95;
+  const spreadDeg = 5;
 
   useEffect(() => {
     if (!autoAdvance || hovering) return;
