@@ -436,9 +436,11 @@ function Nav() {
 function Hero() {
   return (
     <section id="hero" className="ni-hero">
+      {/* shader fills full hero */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}><Phosphor30 /></div>
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "rgba(7,8,14,0.55)" }} />
-      <div className="ni-hero-bg" style={{ zIndex: 2 }} /><div className="ni-hero-grid" style={{ zIndex: 3 }} />
+      {/* subtle vignette so text stays readable */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,8,14,0.72) 0%, rgba(7,8,14,0.30) 60%, rgba(7,8,14,0.10) 100%)", pointerEvents: "none" }} />
+      <div className="ni-hero-grid" style={{ position: "absolute", inset: 0, zIndex: 2 }} />
       <div className="ni-container">
         <div className="ni-hero-content">
           <div>

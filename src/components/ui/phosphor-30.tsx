@@ -223,9 +223,10 @@ function ShaderCanvas({ fragSource, pixelRatio }: { fragSource: string; pixelRat
   }, [fragSource, pixelRatio]);
 
   return (
-    <div style={{ position: "absolute", inset: 0 }}>
-      <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />
-    </div>
+    <canvas
+      ref={canvasRef}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block" }}
+    />
   );
 }
 
