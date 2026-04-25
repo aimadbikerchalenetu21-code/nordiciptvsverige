@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nordic IPTV Sverige – Sveriges Bästa IPTV-Tjänst 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07080e;
+  --bg2:#0c0e17;
+  --bg3:#11141f;
+  --card:#0e1118;
+  --cyan:#ff6b35;
+  --cyan2:#e55a25;
+  --blue:#ff8c5a;
+  --green:#00e676;
+  --yellow:#ffd740;
+  --red:#ff3d57;
+  --text:#b8cad8;
+  --text2:#7a90a8;
+  --white:#f0f6ff;
+  --border:rgba(0,212,255,0.12);
+  --border2:rgba(0,212,255,0.25);
+  --glow:0 0 30px rgba(0,212,255,0.25);
+  --glow2:0 0 60px rgba(0,212,255,0.15);
+  --r:12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:16px;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif;color:var(--white);line-height:1.1;letter-spacing:-0.01em}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;font-family:inherit}
+img{max-width:100%}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:30px;margin-bottom:16px}
+.tag-cyan{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.2)}
+.tag-green{background:rgba(0,230,118,.1);color:var(--green);border:1px solid rgba(0,230,118,.2)}
+.section-title{font-size:clamp(32px,4vw,52px);font-weight:800;text-align:center;margin-bottom:12px}
+.section-sub{text-align:center;color:var(--text2);font-size:17px;max-width:600px;margin:0 auto 48px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:all .2s}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#000;box-shadow:0 4px 20px rgba(0,212,255,.3)}
+.btn-cyan:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,212,255,.5)}
+.btn-outline{background:transparent;color:var(--cyan);border:1.5px solid var(--cyan)}
+.btn-outline:hover{background:rgba(0,212,255,.08)}
+.btn-glass{background:rgba(255,255,255,.08);color:var(--white);border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.btn-glass:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);transform:translateY(-2px)}
+.btn-green{background:linear-gradient(135deg,var(--green),#00b05a);color:#000;box-shadow:0 4px 20px rgba(0,230,118,.25)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,230,118,.4)}
+.badge{display:inline-block;font-size:11px;font-weight:700;font-family:'Outfit',sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.badge-green{background:rgba(0,230,118,.15);color:var(--green);border:1px solid rgba(0,230,118,.3)}
+.badge-cyan{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2)}
+.badge-yellow{background:rgba(255,215,64,.1);color:var(--yellow);border:1px solid rgba(255,215,64,.2)}
+.badge-red{background:rgba(255,61,87,.1);color:var(--red);border:1px solid rgba(255,61,87,.2)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r)}
+.glow-line{width:80px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:2px;margin:0 auto 32px}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(0,212,255,.3);border-radius:3px}
+
+/* TOP BANNER */
+.top-banner{background:linear-gradient(90deg,#0090c8,var(--cyan),#0090c8);padding:10px 48px;text-align:center;position:relative;z-index:1001}
+.top-banner-text{font-size:13px;font-weight:600;color:#000;line-height:1.5}
+.top-banner-text strong{font-weight:800}
+.top-banner-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.15);border:none;color:#000;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.top-banner-close:hover{background:rgba(0,0,0,.3)}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .3s}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.nav.scrolled{background:rgba(7,8,14,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Outfit',sans-serif;font-size:22px;font-weight:900;letter-spacing:-.02em;white-space:nowrap}
+.nav-logo span{color:var(--cyan)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{padding:8px 14px;border-radius:6px;font-size:14px;font-weight:500;color:var(--text);transition:all .2s;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:var(--white);background:rgba(255,255,255,.05)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-trial{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#000;padding:9px 20px;border-radius:6px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;white-space:nowrap}
+.nav-trial:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,255,.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
+.hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:.3s}
+.mobile-menu{display:none;position:fixed;inset:68px 0 0;background:rgba(7,8,14,.98);backdrop-filter:blur(20px);padding:24px;z-index:999;flex-direction:column;gap:8px;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-link{padding:14px 20px;border-radius:8px;font-size:18px;font-weight:600;color:var(--text);transition:.2s;border:1px solid transparent}
+.mobile-link:hover{color:var(--white);border-color:var(--border2)}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+
+/* HERO */
+.hero{padding:120px 0 80px;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,98,255,.12) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 50%,rgba(0,212,255,.06) 0%,transparent 50%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:20px}
+.hero-kicker::before{content:'';width:24px;height:2px;background:var(--cyan)}
+.hero-title{font-size:clamp(42px,5.5vw,76px);font-weight:900;margin-bottom:20px;line-height:1.0}
+.hero-title .accent{color:var(--cyan);display:block}
+.hero-desc{font-size:18px;color:var(--text);line-height:1.7;margin-bottom:32px;max-width:500px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+.hero-stat .num{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--white)}
+.hero-stat .lbl{font-size:13px;color:var(--text2)}
+.hero-visual{position:relative}
+.poster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.poster{border-radius:8px;overflow:hidden;aspect-ratio:.67;position:relative;cursor:pointer;transition:.3s}
+.poster:hover{transform:scale(1.03);z-index:2}
+.poster:nth-child(2){transform:scale(1.06);z-index:1}
+.poster:nth-child(2):hover{transform:scale(1.10)}
+.poster-img{width:100%;height:100%;display:flex;align-items:flex-end;padding:10px;font-size:11px;font-weight:600;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.poster-badge{position:absolute;top:8px;right:8px}
+.live-indicator{display:flex;align-items:center;gap:6px;position:absolute;top:-16px;right:0;font-size:12px;font-weight:700;color:var(--red);font-family:'Outfit',sans-serif;letter-spacing:.08em}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.4s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.glow-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+@media(max-width:900px){.hero-content{grid-template-columns:1fr}.hero-visual{display:none}}
+
+/* TICKER */
+.ticker-wrap{background:rgba(0,212,255,.06);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;overflow:hidden}
+.ticker-inner{display:flex;gap:0;width:max-content;animation:ticker 30s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{display:flex;align-items:center;gap:8px;padding:0 28px;font-size:13px;font-weight:600;color:var(--text2);white-space:nowrap;font-family:'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.ticker-sep{color:var(--cyan);font-size:16px}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* CONTENT SHOWCASE */
+.showcase{padding:80px 0}
+.showcase-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+.showcase-tab{padding:9px 22px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.2s;background:transparent;border:1.5px solid var(--border);color:var(--text2)}
+.showcase-tab.active,.showcase-tab:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.08)}
+.content-row{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px;scrollbar-width:thin;scrollbar-color:rgba(0,212,255,.2) transparent}
+.content-card{flex:0 0 160px;border-radius:8px;overflow:hidden;cursor:pointer;transition:.3s;position:relative;group}
+.content-card:hover{transform:translateY(-4px)}
+.content-card-img{aspect-ratio:.67;background:var(--bg3);display:flex;align-items:flex-end;padding:10px;font-size:11px;font-weight:600;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.9);position:relative;overflow:hidden}
+.content-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%);pointer-events:none}
+.content-card-title{position:relative;z-index:1}
+.content-card-meta{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--card);border-bottom-left-radius:8px;border-bottom-right-radius:8px}
+.content-stars{color:var(--yellow);font-size:10px}
+.content-year{font-size:11px;color:var(--text2)}
+.content-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:44px;height:44px;border-radius:50%;background:rgba(0,212,255,.9);display:flex;align-items:center;justify-content:center;transition:.2s;z-index:2}
+.content-card:hover .content-play{transform:translate(-50%,-50%) scale(1)}
+
+/* STATS */
+.stats-section{padding:64px 0;background:linear-gradient(180deg,transparent,rgba(0,98,255,.05),transparent)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-card{padding:32px 20px;border-radius:var(--r);background:linear-gradient(135deg,rgba(0,212,255,.05),rgba(0,98,255,.05));border:1px solid var(--border);position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.stat-num{font-family:'Outfit',sans-serif;font-size:52px;font-weight:900;color:var(--cyan);line-height:1;margin-bottom:6px}
+.stat-label{font-size:15px;color:var(--text2);font-weight:500}
+.stat-icon{font-size:28px;margin-bottom:12px}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* PRICING */
+.pricing-section{padding:90px 0;background:var(--bg2)}
+.pricing-urgency{text-align:center;margin-bottom:12px}
+.urgency-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.35);color:var(--cyan);font-family:'Outfit',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:30px}
+.pricing-subtitle{text-align:center;color:var(--text2);font-size:15px;max-width:520px;margin:0 auto 8px;line-height:1.7}
+.pricing-warning{display:inline-flex;align-items:flex-start;gap:8px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2);border-radius:10px;padding:12px 18px;margin:16px auto 0;max-width:440px;font-size:13px;color:var(--text2);line-height:1.6;text-align:left}
+.countdown-wrap{margin:28px 0 40px}
+.cd-container{max-width:600px;margin:0 auto;background:linear-gradient(135deg,rgba(255,107,53,.08),rgba(255,60,20,.03));border:1px solid rgba(255,107,53,.25);border-radius:18px;padding:28px 32px;position:relative;overflow:hidden}
+.cd-container::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,107,53,.1),transparent 70%);pointer-events:none}
+.cd-header{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:20px}
+.cd-pulse{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 1.2s ease infinite;flex-shrink:0}
+.cd-header-text{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--white)}
+.cd-blocks{display:flex;align-items:flex-start;justify-content:center;gap:8px}
+.cd-block{text-align:center;flex:1;max-width:110px}
+.cd-digit-pair{background:linear-gradient(180deg,#1e0e06 0%,#0d0603 100%);border:1px solid rgba(255,107,53,.3);border-radius:12px;padding:14px 8px;font-size:44px;font-weight:900;color:var(--white);line-height:1;text-align:center;box-shadow:0 4px 24px rgba(255,107,53,.12),inset 0 1px 0 rgba(255,255,255,.06);position:relative;margin-bottom:8px}
+.cd-digit-pair::after{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.5);pointer-events:none}
+.cd-digit-pair .highlight{color:var(--cyan)}
+.cd-sep-block{font-size:38px;font-weight:900;color:rgba(255,107,53,.45);padding-top:10px;line-height:1}
+.cd-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text2)}
+.cd-footer{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,107,53,.12);gap:12px;flex-wrap:wrap}
+.cd-spots{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:6px}
+.cd-spots strong{color:var(--cyan);font-size:15px}
+.cd-progress-bar{flex:1;min-width:80px;height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.cd-progress-fill{height:100%;width:22%;background:linear-gradient(90deg,var(--cyan),#ff8c5a);border-radius:2px;box-shadow:0 0 8px rgba(255,107,53,.5)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.price-card{padding:28px 24px;border-radius:16px;background:var(--card);border:1px solid var(--border);position:relative;transition:.3s;display:flex;flex-direction:column}
+.price-card:hover{transform:translateY(-4px)}
+.price-card.featured{background:linear-gradient(145deg,#150a04,#2a1008);border-color:var(--cyan);box-shadow:0 0 40px rgba(255,107,53,.2),inset 0 0 60px rgba(255,107,53,.04)}
+.price-card.featured2{background:linear-gradient(145deg,#060e1a,#0a1828);border-color:rgba(255,107,53,.4)}
+.price-period-label{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--text2);text-transform:uppercase;margin-bottom:10px}
+.price-old{font-size:14px;color:var(--text2);margin-bottom:2px}
+.price-old s{color:var(--text2)}
+.price-save{display:inline-block;font-size:11px;font-weight:700;font-family:'Outfit',sans-serif;letter-spacing:.08em;padding:2px 8px;border-radius:20px;margin-left:8px;background:rgba(0,230,118,.12);color:var(--green)}
+.price-main{display:flex;align-items:baseline;gap:6px;margin-bottom:8px}
+.price-kr{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:var(--text2)}
+.price-big{font-family:'Outfit',sans-serif;font-size:64px;font-weight:900;color:var(--white);line-height:1}
+.price-card.featured .price-big{color:var(--cyan)}
+.price-btn{width:100%;padding:14px;border-radius:8px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:.2s;text-align:center;margin:16px 0 20px;cursor:pointer}
+.price-btn-solid{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#000;border:none}
+.price-btn-solid:hover{box-shadow:0 6px 24px rgba(255,107,53,.5);transform:translateY(-2px)}
+.price-btn-outline{background:transparent;border:1.5px solid var(--cyan);color:var(--cyan)}
+.price-btn-outline:hover{background:rgba(255,107,53,.08)}
+.price-what{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:14px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
+.price-features li{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--text)}
+.price-features li .ck{color:var(--green);font-size:14px;flex-shrink:0}
+/* Multi device */
+.multi-section{padding:60px 0 80px;background:var(--bg2)}
+.multi-intro{text-align:center;max-width:560px;margin:0 auto 40px}
+.multi-intro h3{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--white);margin-bottom:8px}
+.multi-intro p{font-size:14px;color:var(--text2);line-height:1.7}
+.multi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.multi-card{padding:28px 24px;border-radius:14px;background:var(--card);border:1px solid var(--border);transition:.3s}
+.multi-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.multi-label{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:6px}
+.multi-price{font-family:'Outfit',sans-serif;font-size:52px;font-weight:900;color:var(--white);margin-bottom:4px;line-height:1}
+.multi-price-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
+.multi-price-sub s{color:var(--text2)}
+.multi-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.multi-features li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
+.multi-btn{width:100%;padding:12px;border-radius:8px;background:transparent;border:1.5px solid var(--cyan);color:var(--cyan);font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.multi-btn:hover{background:rgba(255,107,53,.1)}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.multi-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.cd-digit{width:38px;height:44px;font-size:24px}}
+
+/* COMPARISON */
+.compare-section{padding:80px 0}
+.compare-table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:var(--r)}
+.compare-table th,.compare-table td{padding:16px 20px;text-align:center;font-size:14px;border-bottom:1px solid var(--border)}
+.compare-table thead th{background:var(--bg3);font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--white);letter-spacing:.04em}
+.compare-table thead th:first-child{text-align:left}
+.compare-table tbody td:first-child{text-align:left;color:var(--text);font-weight:500}
+.compare-table tbody tr:hover td{background:rgba(0,212,255,.03)}
+.compare-table .highlight-col{background:rgba(0,212,255,.05);border-left:1px solid var(--border2);border-right:1px solid var(--border2)}
+.check-icon{color:var(--green);font-size:18px}
+.cross-icon{color:rgba(255,255,255,.2);font-size:18px}
+.table-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--border)}
+
+/* DEVICES */
+.devices-section{padding:80px 0;background:var(--bg2)}
+.devices-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.device-card{padding:28px 20px;border-radius:var(--r);background:var(--card);border:1px solid var(--border);text-align:center;transition:.3s;cursor:pointer}
+.device-card:hover{border-color:var(--cyan);background:rgba(0,212,255,.04);transform:translateY(-3px)}
+.device-icon{font-size:40px;margin-bottom:14px}
+.device-name{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:4px}
+.device-sub{font-size:13px;color:var(--text2)}
+@media(max-width:800px){.devices-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ECOSYSTEM */
+.ecosystem-section{padding:90px 0;background:var(--bg);overflow:hidden;position:relative}
+.ecosystem-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(255,107,53,.05),transparent 70%);pointer-events:none}
+.eco-canvas{position:relative;width:100%;max-width:900px;margin:0 auto;height:480px}
+.eco-svg{position:absolute;inset:0;width:100%;height:100%}
+.eco-node{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.eco-hub{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,rgba(255,107,53,.25),rgba(255,60,20,.1));border:2px solid rgba(255,107,53,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(255,107,53,.3),0 0 80px rgba(255,107,53,.1);animation:hubPulse 3s ease-in-out infinite;cursor:default;text-align:center;padding:8px}
+@keyframes hubPulse{0%,100%{box-shadow:0 0 40px rgba(255,107,53,.3),0 0 80px rgba(255,107,53,.1)}50%{box-shadow:0 0 60px rgba(255,107,53,.5),0 0 120px rgba(255,107,53,.2)}}
+.eco-hub-ring{position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(255,107,53,.2);animation:ringExpand 3s ease-in-out infinite}
+.eco-hub-ring2{position:absolute;inset:-28px;border-radius:50%;border:1px solid rgba(255,107,53,.1);animation:ringExpand 3s ease-in-out infinite .5s}
+@keyframes ringExpand{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.05);opacity:1}}
+.eco-hub-label{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--white);line-height:1.2}
+.eco-hub-sub{font-size:9px;color:rgba(255,107,53,.8);font-weight:600;letter-spacing:.04em;margin-top:2px}
+.eco-pill{padding:9px 16px;border-radius:8px;font-size:12px;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:7px;backdrop-filter:blur(10px);transition:.3s;cursor:default}
+.eco-pill:hover{transform:scale(1.06)}
+.eco-pill-device{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);color:var(--white)}
+.eco-pill-content{background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.25);color:var(--white)}
+.eco-pill-feature{background:rgba(0,230,118,.07);border:1px solid rgba(0,230,118,.2);color:var(--white)}
+.eco-pill-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-cyan{background:var(--cyan);box-shadow:0 0 6px var(--cyan)}
+.dot-orange{background:var(--cyan);box-shadow:0 0 6px var(--cyan)}
+.dot-green{background:var(--green);box-shadow:0 0 6px var(--green)}
+.eco-text{max-width:520px;margin-bottom:52px}
+.eco-text h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;margin-bottom:12px}
+.eco-text p{font-size:16px;color:var(--text2);line-height:1.7}
+@media(max-width:700px){.eco-canvas{height:360px}.eco-pill{font-size:10px;padding:7px 11px}.eco-hub{width:80px;height:80px}.eco-hub-label{font-size:9px}}
+.channels-section{padding:80px 0}
+.channel-cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.channel-cat{padding:8px 20px;border-radius:30px;font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.2s;border:1.5px solid var(--border);color:var(--text2)}
+.channel-cat.active,.channel-cat:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.06)}
+.channels-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.ch-card{padding:16px;border-radius:8px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:.3s;cursor:pointer;min-height:60px}
+.ch-card:hover{border-color:var(--border2);transform:scale(1.04)}
+.ch-name{font-size:13px;font-weight:700;text-align:center;color:var(--text)}
+@media(max-width:900px){.channels-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:500px){.channels-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* WHY SECTION */
+.why-section{padding:90px 0;background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{padding:36px 28px;border-radius:16px;background:linear-gradient(135deg,rgba(0,212,255,.05),rgba(0,98,255,.04));border:1px solid var(--border);position:relative;overflow:hidden;transition:.3s}
+.why-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.why-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:.3s}
+.why-card:hover::after{opacity:1}
+.why-icon{width:52px;height:52px;border-radius:12px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.why-title{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;margin-bottom:10px}
+.why-text{font-size:14px;color:var(--text2);line-height:1.7}
+@media(max-width:800px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.why-grid{grid-template-columns:1fr}}
+
+/* TESTIMONIALS */
+.testimonials-section{padding:80px 0;background:var(--bg2)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testimonial-card{padding:28px;border-radius:var(--r);background:var(--card);border:1px solid var(--border)}
+.t-stars{color:var(--yellow);font-size:16px;margin-bottom:14px;letter-spacing:2px}
+.t-text{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:18px;font-style:italic}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue));display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:#000}
+.t-name{font-weight:600;font-size:14px;color:var(--white)}
+.t-loc{font-size:12px;color:var(--text2)}
+@media(max-width:800px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-section{padding:80px 0}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{border-radius:10px;background:var(--card);border:1px solid var(--border);overflow:hidden;transition:.2s}
+.faq-item.open{border-color:var(--border2)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-size:16px;font-weight:600;color:var(--white);gap:16px}
+.faq-q:hover{color:var(--cyan)}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:16px;flex-shrink:0;transition:.3s}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(0,212,255,.2)}
+.faq-a{padding:0 24px 20px;font-size:14px;color:var(--text2);line-height:1.8;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* CTA BANNER */
+.cta-banner{padding:80px 0;background:radial-gradient(ellipse 100% 100% at 50% 0%,rgba(0,98,255,.15),transparent 60%)}
+.cta-inner{text-align:center;max-width:700px;margin:0 auto}
+.cta-title{font-size:clamp(36px,5vw,64px);font-weight:900;margin-bottom:16px}
+.cta-sub{font-size:18px;color:var(--text2);margin-bottom:36px}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-note{margin-top:20px;font-size:13px;color:var(--text2)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand{font-family:'Outfit',sans-serif;font-size:22px;font-weight:900;margin-bottom:14px}
+.footer-brand span{color:var(--cyan)}
+.footer-tagline{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.footer-col h4{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:16px;letter-spacing:.06em;text-transform:uppercase}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-links a{font-size:14px;color:var(--text2);transition:.2s}
+.footer-links a:hover{color:var(--cyan)}
+.footer-payments{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.pay-badge{background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:11px;font-weight:700;font-family:'Outfit',sans-serif;letter-spacing:.06em;color:var(--text2)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:13px;color:var(--text2)}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-size:13px;color:var(--text2);transition:.2s}
+.footer-legal a:hover{color:var(--cyan)}
+@media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
+
+/* SCROLL INDICATOR */
+.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#000;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;z-index:900;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 4px 20px rgba(0,212,255,.4)}
+.scroll-top.visible{opacity:1;pointer-events:all}
+.scroll-top:hover{transform:translateY(-3px)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}.delay-4{animation-delay:.4s}
+</style>
+</head>
+<body>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+const CONTENT_TABS = ["Populära Serier","Filmer i 4K","Sport Live","Svenska Kanaler","Barnkanaler"];
+
+const CONTENT_ITEMS = {
+  "Populära Serier": [
+    {id:1,title:"Breaking Bad",year:"Klassiker",rating:"9.5",img:"https://images.unsplash.com/photo-1635805737707-575885ab0820?w=400&q=80",overlay:"rgba(30,20,5,0.55)"},
+    {id:2,title:"Game of Thrones",year:"Fantasy",rating:"9.2",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",overlay:"rgba(40,10,10,0.5)"},
+    {id:3,title:"The Wire",year:"Krim",rating:"9.3",img:"https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=400&q=80",overlay:"rgba(5,10,25,0.55)"},
+    {id:4,title:"Chernobyl",year:"Historia",rating:"9.4",img:"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80",overlay:"rgba(10,20,10,0.55)"},
+    {id:5,title:"Band of Brothers",year:"Krig",rating:"9.5",img:"https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=80",overlay:"rgba(25,15,5,0.5)"},
+    {id:6,title:"Peaky Blinders",year:"Drama",rating:"8.8",img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&q=80",overlay:"rgba(8,10,20,0.55)"},
+    {id:7,title:"True Detective",year:"Krim",rating:"9.0",img:"https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80",overlay:"rgba(18,5,5,0.5)"},
+    {id:8,title:"Mindhunter",year:"Thriller",rating:"8.6",img:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=80",overlay:"rgba(8,12,18,0.55)"},
+  ],
+  "Filmer i 4K": [
+    {id:9,title:"Interstellar",year:"Sci-Fi",rating:"8.6",img:"https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&q=80",overlay:"rgba(5,10,25,0.5)"},
+    {id:10,title:"The Dark Knight",year:"Action",rating:"9.0",img:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80",overlay:"rgba(5,5,8,0.55)"},
+    {id:11,title:"Inception",year:"Sci-Fi",rating:"8.8",img:"https://images.unsplash.com/photo-1510784722466-f2aa240c3c4a?w=400&q=80",overlay:"rgba(10,10,25,0.5)"},
+    {id:12,title:"Dune: Del 2",year:"Sci-Fi",rating:"8.5",img:"https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=80",overlay:"rgba(25,18,5,0.5)"},
+    {id:13,title:"Oppenheimer",year:"Drama",rating:"8.3",img:"https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&q=80",overlay:"rgba(10,5,8,0.55)"},
+    {id:14,title:"Avatar 2",year:"Sci-Fi",rating:"7.6",img:"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80",overlay:"rgba(0,20,10,0.5)"},
+    {id:15,title:"Top Gun 2",year:"Action",rating:"8.3",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",overlay:"rgba(5,10,20,0.55)"},
+    {id:16,title:"Gladiator II",year:"Action",rating:"7.9",img:"https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&q=80",overlay:"rgba(25,10,5,0.5)"},
+  ],
+  "Sport Live": [
+    {id:17,title:"Premier League",year:"Fotboll",rating:"Live",img:"https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&q=80",overlay:"rgba(10,20,40,0.5)"},
+    {id:18,title:"Champions League",year:"Fotboll",rating:"Live",img:"https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=400&q=80",overlay:"rgba(0,8,20,0.55)"},
+    {id:19,title:"Allsvenskan",year:"Fotboll",rating:"Live",img:"https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&q=80",overlay:"rgba(0,15,10,0.5)"},
+    {id:20,title:"NHL Hockey",year:"Hockey",rating:"Live",img:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80",overlay:"rgba(10,10,25,0.5)"},
+    {id:21,title:"Formel 1",year:"Motorsport",rating:"Live",img:"https://images.unsplash.com/photo-1617593888757-6f2e82b1d16e?w=400&q=80",overlay:"rgba(20,5,5,0.55)"},
+    {id:22,title:"UFC",year:"Kampsport",rating:"Live",img:"https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&q=80",overlay:"rgba(20,5,5,0.5)"},
+    {id:23,title:"NBA",year:"Basket",rating:"Live",img:"https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&q=80",overlay:"rgba(20,10,5,0.5)"},
+    {id:24,title:"Tennis",year:"Grand Slam",rating:"Live",img:"https://images.unsplash.com/photo-1501696461415-6bd6660c6742?w=400&q=80",overlay:"rgba(5,20,5,0.5)"},
+  ],
+  "Svenska Kanaler": [
+    {id:25,title:"SVT1",year:"Public Service",rating:"HD",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",overlay:"rgba(0,10,40,0.55)"},
+    {id:26,title:"TV4",year:"Underhållning",rating:"HD",img:"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80",overlay:"rgba(0,15,10,0.5)"},
+    {id:27,title:"Kanal 5",year:"Underhållning",rating:"HD",img:"https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=80",overlay:"rgba(20,5,5,0.5)"},
+    {id:28,title:"Viaplay",year:"Sport/Film",rating:"4K",img:"https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&q=80",overlay:"rgba(5,10,20,0.55)"},
+    {id:29,title:"C More",year:"Film/Sport",rating:"4K",img:"https://images.unsplash.com/photo-1510784722466-f2aa240c3c4a?w=400&q=80",overlay:"rgba(5,8,20,0.5)"},
+    {id:30,title:"Discovery+",year:"Dokumentär",rating:"4K",img:"https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&q=80",overlay:"rgba(10,15,5,0.5)"},
+    {id:31,title:"TV3",year:"Underhållning",rating:"HD",img:"https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&q=80",overlay:"rgba(10,8,20,0.5)"},
+    {id:32,title:"SVT2",year:"Public Service",rating:"HD",img:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80",overlay:"rgba(0,10,40,0.5)"},
+  ],
+  "Barnkanaler": [
+    {id:33,title:"Disney Channel",year:"Barn/Familj",rating:"HD",img:"https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=400&q=80",overlay:"rgba(0,8,25,0.5)"},
+    {id:34,title:"Cartoon Network",year:"Animation",rating:"HD",img:"https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&q=80",overlay:"rgba(20,10,5,0.5)"},
+    {id:35,title:"Nick Jr",year:"Småbarn",rating:"HD",img:"https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&q=80",overlay:"rgba(20,5,5,0.5)"},
+    {id:36,title:"Barnkanalen",year:"Barn",rating:"HD",img:"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80",overlay:"rgba(0,15,15,0.5)"},
+    {id:37,title:"Disney Junior",year:"Familj",rating:"HD",img:"https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&q=80",overlay:"rgba(0,8,20,0.5)"},
+    {id:38,title:"Nickelodeon",year:"Animation",rating:"HD",img:"https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=80",overlay:"rgba(20,15,5,0.5)"},
+    {id:39,title:"CBBC",year:"Ungdom",rating:"HD",img:"https://images.unsplash.com/photo-1474464240892-b8f8ca98fa7a?w=400&q=80",overlay:"rgba(5,15,5,0.5)"},
+    {id:40,title:"Boomerang",year:"Klassisk",rating:"HD",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&q=80",overlay:"rgba(10,5,20,0.5)"},
+  ],
+};
+
+const DEVICES = [
+  {icon:"📺",name:"Smart TV",sub:"Samsung, LG, Sony, Philips"},
+  {icon:"📱",name:"iOS & iPhone",sub:"iPhone, iPad, Apple TV"},
+  {icon:"🤖",name:"Android",sub:"Mobil, Surfplatta, TV"},
+  {icon:"🔥",name:"Fire TV Stick",sub:"Alla Amazon Fire TV"},
+  {icon:"💻",name:"PC & Mac",sub:"Windows, macOS, Linux"},
+  {icon:"🎮",name:"Spelkonsoler",sub:"PlayStation, Xbox"},
+  {icon:"⚡",name:"Kodi & IPTV Smarters",sub:"Alla IPTV-spelare"},
+  {icon:"📡",name:"MAG Box",sub:"MAG 254, 256, 322, 349"},
+];
+
+const CHANNEL_CATS = ["Alla","Sport","Film","Svenska","Nyheter","Barn","Underhållning","Internationellt"];
+
+const CHANNELS_BY_CAT = {
+  "Alla":["SVT1","SVT2","TV4","Kanal 5","TV3","Discovery","Eurosport","CNN","BBC","HBO","ESPN","Fox Sports","Sky Sports","TNT Sports","MTV","National Geographic","History","Animal Planet","Comedy Central","Syfy","FX","AMC","Cartoon Network","Disney+","Nick Jr","Al Jazeera","France 24","DW","Rai 1","ARD","ZDF","NRK","DR1","Yle Fem","RT","CGTN"],
+  "Sport":["Eurosport 1","Eurosport 2","ESPN","Fox Sports","Sky Sports","TNT Sports","BT Sport","beIN Sports","Canal+ Sport","Viasat Sport","C More Sport","SVT Sport","TV4 Sport","NFL Network","NBA TV","UFC Fight Pass"],
+  "Film":["HBO","HBO2","Max","Cinemax","TCM","Sundance","IFC","AMC","FX","TNT","TBS","MGM+","Shout! TV","Comet TV","Pluto TV","Scream","EPIX"],
+  "Svenska":["SVT1","SVT2","SVT24","SVT Barn","TV4","TV4+","Kanal 5","Kanal 9","TV3","TV6","TV8","TV10","C More","Viaplay","Discovery+","SF Anytime","STV","Aftonbladet TV","Expressen TV","TV4 Fakta"],
+  "Nyheter":["SVT Nyheter","TV4 Nyheterna","CNN","BBC News","Sky News","Al Jazeera","France 24","Euronews","DW","CNBC","Bloomberg","Fox News","MSNBC","NBC News","ABC News"],
+  "Barn":["Barnkanalen","Disney Channel","Disney Junior","Disney XD","Cartoon Network","Nickelodeon","Nick Jr","Boomerang","CBBC","CBeebies","Pop","Tiny Pop","POP Max","Jim Jam"],
+  "Underhållning":["HBO","AMC","FX","TNT","Bravo","E!","MTV","VH1","BET","Comedy Central","TruTV","Syfy","USA","Lifetime","Hallmark","OWN"],
+  "Internationellt":["Al Jazeera","France 24","DW","RT","NHK World","CCTV","Rai 1","ARD","ZDF","NRK","DR1","Yle Fem","RTP","TVE","Antena 3"],
+};
+
+const FAQS = [
+  {q:"Hur snabbt aktiveras min IPTV-prenumeration?",a:"Din prenumeration aktiveras omedelbart efter betalning. Du får inloggningsuppgifter direkt till din e-post inom några minuter. Ingen väntetid – börja streama på nolltid!"},
+  {q:"Vilka enheter kan jag använda Nordic IPTV på?",a:"Du kan använda Nordic IPTV på alla moderna enheter: Smart TV (Samsung, LG, Sony), iOS-enheter (iPhone, iPad, Apple TV), Android-enheter, Amazon Fire TV Stick, PC/Mac, Kodi, IPTV Smarters Pro, MAG-boxar och spelkonsoler."},
+  {q:"Finns det någon bindningstid?",a:"Nej, vi har inga bindningstider. Du kan avsluta när som helst. Vi erbjuder månadsabonnemang, halvårsabonnemang och årsabonnemang – allt utan kontrakt."},
+  {q:"Vad händer om tjänsten inte fungerar?",a:"Vi har 99.9% drifttid och ett dedikerat supportteam tillgängligt 24/7 via live-chatt, e-post och Telegram. Vid driftstörningar kompenseras du automatiskt med förlängd prenumerationstid."},
+  {q:"Kan jag titta på sport live?",a:"Absolut! Vi har över 500 sportkanaler inklusive Eurosport, ESPN, Sky Sports, TNT Sports och alla stora fotbollsligor – Premier League, Champions League, Allsvenskan, Bundesliga, La Liga och mycket mer."},
+  {q:"Erbjuder ni gratis testperiod?",a:"Ja! Vi erbjuder en 24-timmars gratis testperiod utan kreditkort. Du kan prova alla kanaler och funktioner helt utan risk. Klicka på 'Prova Gratis' för att komma igång."},
+  {q:"Hur ser bildkvaliteten ut?",a:"Vi erbjuder kanaler i HD, Full HD och 4K Ultra HD beroende på din prenumerationsnivå. Premium- och Familj-planerna inkluderar 4K UHD-strömning med Dolby Atmos-ljud."},
+  {q:"Hur många kan titta samtidigt?",a:"Det beror på din plan: 3 månader (1 enhet), 6 månader (2 enheter), 12 månader (4 enheter). Varje enhet kan streama helt oberoende av varandra."},
+];
+
+const TESTIMONIALS = [
+  {stars:5,text:"Bästa IPTV-tjänsten jag testat! Bildkvaliteten är fantastisk och sportpaketet är komplett. Alla fotbollskanaler jag behöver på ett ställe.",name:"Magnus L.",loc:"Stockholm",initial:"M"},
+  {stars:5,text:"Väldigt nöjd med Nordic IPTV. Installationen tog 5 minuter och bildkvaliteten i 4K är imponerande. Supporten svarade inom minuter.",name:"Anna K.",loc:"Göteborg",initial:"A"},
+  {stars:5,text:"Äntligen en svensk IPTV-tjänst som levererar! Inga buffringsproblem, massor av kanaler och priset är verkligen rimligt jämfört med alternativen.",name:"Erik S.",loc:"Malmö",initial:"E"},
+];
+
+const PANEL_COUNT = 18;
+const SIGMA = 2.8;
+const Z_SPREAD = 42;
+
+function StackedPanels() {
+  const containerRef = useRef(null);
+  const rafRef = useRef(null);
+  const stateRef = useRef({
+    rotY:-38, rotX:15, targetRotY:-38, targetRotX:15,
+    waves: Array(18).fill(0), waveTargets: Array(18).fill(0),
+    scales: Array(18).fill(1), scaleTargets: Array(18).fill(1),
+    velRotY:0, velRotX:0,
+    waveVels: Array(18).fill(0), scaleVels: Array(18).fill(0),
+  });
+  const [renderState, setRenderState] = useState({
+    rotY:-38, rotX:15, waves:Array(18).fill(0), scales:Array(18).fill(1)
+  });
+
+      const IMAGES = [
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80",
+    "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=400&q=80",
+    "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80",
+    "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=80",
+    "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&q=80",
+    "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=80",
+    "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&q=80",
+    "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&q=80",
+    "https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&q=80",
+    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&q=80",
+    "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80",
+    "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=400&q=80",
+    "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&q=80",
+    "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80",
+    "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&q=80",
+    "https://images.unsplash.com/photo-1617593888757-6f2e82b1d16e?w=400&q=80",
+    "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=400&q=80",
+    "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=80",
+  ];
+  const OVERLAYS = [
+    "linear-gradient(135deg,rgba(255,107,53,0.55),rgba(255,60,20,0.35))",
+    "linear-gradient(135deg,rgba(0,212,255,0.5),rgba(0,98,255,0.4))",
+    "linear-gradient(135deg,rgba(99,55,255,0.5),rgba(236,72,153,0.4))",
+    "linear-gradient(135deg,rgba(0,230,118,0.4),rgba(0,212,255,0.5))",
+    "linear-gradient(135deg,rgba(255,107,53,0.45),rgba(255,215,64,0.35))",
+    "linear-gradient(135deg,rgba(0,98,255,0.5),rgba(99,55,255,0.4))",
+    "linear-gradient(135deg,rgba(255,61,87,0.4),rgba(255,107,53,0.5))",
+    "linear-gradient(135deg,rgba(0,212,255,0.4),rgba(0,230,118,0.5))",
+    "linear-gradient(135deg,rgba(99,55,255,0.4),rgba(0,212,255,0.5))",
+    "linear-gradient(135deg,rgba(255,215,64,0.4),rgba(0,230,118,0.5))",
+    "linear-gradient(135deg,rgba(255,61,87,0.5),rgba(255,215,64,0.4))",
+    "linear-gradient(135deg,rgba(99,55,255,0.5),rgba(0,98,255,0.4))",
+    "linear-gradient(135deg,rgba(0,230,118,0.5),rgba(99,55,255,0.4))",
+    "linear-gradient(135deg,rgba(236,72,153,0.4),rgba(0,98,255,0.5))",
+    "linear-gradient(135deg,rgba(0,212,255,0.5),rgba(255,215,64,0.4))",
+    "linear-gradient(135deg,rgba(0,98,255,0.4),rgba(0,230,118,0.5))",
+    "linear-gradient(135deg,rgba(255,215,64,0.5),rgba(99,55,255,0.4))",
+    "linear-gradient(135deg,rgba(255,61,87,0.4),rgba(0,212,255,0.5))",
+  ];
+  const LABELS = ["Stranger Things","The Last of Us","House of Dragon","Succession","Wednesday","The Crown","Breaking Bad","Game of Thrones","Chernobyl","Peaky Blinders","True Detective","Interstellar","Dune: Del 2","Oppenheimer","Premier League","Champions League","SVT1","TV4"];
+
+  useEffect(() => {
+    const spring = (cur, vel, target, stiff, damp, mass, dt) => {
+      const f = (target - cur) * stiff / mass;
+      const newVel = vel + f * dt - vel * damp * dt / mass;
+      const newCur = cur + newVel * dt;
+      return [newCur, newVel];
+    };
+    const tick = () => {
+      const s = stateRef.current;
+      const dt = 0.016;
+      let changed = false;
+      const [ry, rvy] = spring(s.rotY, s.velRotY, s.targetRotY, 80, 22, 1, dt);
+      const [rx, rvx] = spring(s.rotX, s.velRotX, s.targetRotX, 80, 22, 1, dt);
+      if(Math.abs(ry-s.rotY)>0.01||Math.abs(rx-s.rotX)>0.01) changed=true;
+      s.rotY=ry; s.velRotY=rvy; s.rotX=rx; s.velRotX=rvx;
+      const newWaves=[...s.waves], newScales=[...s.scales];
+      for(let i=0;i<PANEL_COUNT;i++){
+        const [w,wv]=spring(s.waves[i],s.waveVels[i],s.waveTargets[i],160,22,0.6,dt);
+        const [sc,sv]=spring(s.scales[i],s.scaleVels[i],s.scaleTargets[i],160,22,0.6,dt);
+        if(Math.abs(w-s.waves[i])>0.1) changed=true;
+        newWaves[i]=w; s.waveVels[i]=wv;
+        newScales[i]=sc; s.scaleVels[i]=sv;
+      }
+      s.waves=newWaves; s.scales=newScales;
+      if(changed) setRenderState({rotY:s.rotY,rotX:s.rotX,waves:[...s.waves],scales:[...s.scales]});
+      rafRef.current=requestAnimationFrame(tick);
+    };
+    rafRef.current=requestAnimationFrame(tick);
+    return ()=>cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  const onMouseMove = useCallback((e) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if(!rect) return;
+    const cx=(e.clientX-rect.left)/rect.width;
+    const cy=(e.clientY-rect.top)/rect.height;
+    const s=stateRef.current;
+    s.targetRotY=-38+(cx-0.5)*16;
+    s.targetRotX=15+(cy-0.5)*-12;
+    const pos=cx*(PANEL_COUNT-1);
+    for(let i=0;i<PANEL_COUNT;i++){
+      const dist=Math.abs(i-pos);
+      const inf=Math.exp(-(dist*dist)/(2*SIGMA*SIGMA));
+      s.waveTargets[i]=-inf*65;
+      s.scaleTargets[i]=0.35+inf*0.65;
+    }
+  },[]);
+
+  const onMouseLeave = useCallback(()=>{
+    const s=stateRef.current;
+    s.targetRotY=-38; s.targetRotX=15;
+    for(let i=0;i<PANEL_COUNT;i++){s.waveTargets[i]=0;s.scaleTargets[i]=1;}
+  },[]);
+
+  const Z_SPREAD=42;
+  return (
+    <div ref={containerRef} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}
+      style={{position:'relative',width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',userSelect:'none',perspective:'900px',cursor:'crosshair'}}>
+      <div style={{
+        transform:"rotateY("+renderState.rotY+"deg) rotateX("+renderState.rotX+"deg)",
+        transformStyle:'preserve-3d',position:'relative',width:0,height:0,
+      }}>
+        {Array.from({length:PANEL_COUNT}).map((_,i)=>{
+          const t=i/(PANEL_COUNT-1);
+          const baseZ=(i-(PANEL_COUNT-1))*Z_SPREAD;
+          const w=150+t*70, h=220+t*100;
+          const opacity=0.25+t*0.75;
+          const wave=renderState.waves[i]||0;
+          const scale=renderState.scales[i]||1;
+          return (
+            <div key={i} style={{
+              position:'absolute',borderRadius:10,overflow:'hidden',pointerEvents:'none',
+              width:w,height:h,marginLeft:-w/2,marginTop:-h/2,
+              transform:"translateZ("+baseZ+"px) translateY("+wave+"px) scaleY("+scale+")",
+              transformOrigin:'bottom center',opacity,
+            }}>
+              <div style={{position:'absolute',inset:0,backgroundImage:"url("+IMAGES[i%IMAGES.length]+")",backgroundSize:'cover',backgroundPosition:'center'}}/>
+              <div style={{position:'absolute',inset:0,background:OVERLAYS[i%OVERLAYS.length],mixBlendMode:'multiply'}}/>
+              <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.5))'}}/>
+              <div style={{position:'absolute',inset:0,borderRadius:'inherit',border:"1px solid rgba(255,255,255,"+(0.06+t*0.18)+")",boxSizing:'border-box'}}/>
+              {t>0.7&&<div style={{position:'absolute',bottom:10,left:10,right:10,fontSize:10,fontWeight:700,color:'rgba(255,255,255,0.9)',textShadow:'0 1px 4px rgba(0,0,0,.8)'}}>{LABELS[i%LABELS.length]}</div>}
+              {t>0.6&&<div style={{position:'absolute',top:8,right:8,background:'rgba(0,0,0,0.6)',backdropFilter:'blur(4px)',borderRadius:4,padding:'2px 6px',fontSize:9,fontWeight:700,color:'#ffd740'}}>{(8.5+t*0.8).toFixed(1)}</div>}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+
+function TopBanner() {
+  const [visible, setVisible] = useState(true);
+  if (!visible) return null;
+  return (
+    <div className="top-banner">
+      <div className="top-banner-text">
+        🟡 <strong>Sommarkampanj för en strålande säsong!</strong> Upp till 30% RABATT på alla abonnemang! 🌞<br/>
+        <span style={{fontSize:12}}>Begränsad tid – njut av svalkande underhållning i sommarhetten! ❄️</span>
+      </div>
+      <button className="top-banner-close" onClick={()=>setVisible(false)}>✕</button>
+    </div>
+  );
+}
+
+function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const h = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', h);
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+  return (
+    <>
+      <nav className={`nav ${scrolled?'scrolled':''}`}>
+        <div className="container">
+          <div className="nav-inner">
+            <a href="#" className="nav-logo">Nordic IPTV <span>Sverige</span></a>
+            <div className="nav-links">
+              {[["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]].map(([href,label])=>(
+                <a key={href} href={href} className="nav-link">{label}</a>
+              ))}
+            </div>
+            <div className="nav-actions">
+              <a href="#pricing" className="btn btn-outline" style={{padding:'8px 18px',fontSize:13}}>Se Priser</a>
+              <a href="#trial" className="nav-trial">Prova Gratis 24h</a>
+            </div>
+            <div className="hamburger" onClick={()=>setMenuOpen(!menuOpen)}>
+              <span/><span/><span/>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div className={`mobile-menu ${menuOpen?'open':''}`}>
+        {[["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]].map(([href,label])=>(
+          <a key={href} href={href} className="mobile-link" onClick={()=>setMenuOpen(false)}>{label}</a>
+        ))}
+        <a href="#trial" className="btn btn-cyan" style={{marginTop:12}}>Prova Gratis 24h</a>
+      </div>
+    </>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="hero" className="hero">
+      <div className="hero-bg"/><div className="hero-grid"/>
+      <div className="container">
+        <div className="hero-content">
+          <div>
+            <div className="hero-kicker">Sveriges Ledande IPTV-Tjänst 2026</div>
+            <h1 className="hero-title fade-up">
+              Upplev TV<br/>
+              <span className="accent">utan gränser.</span>
+            </h1>
+            <p className="hero-desc fade-up delay-1">
+              Över <strong style={{color:'var(--white)'}}>35,000 kanaler</strong>, filmer och serier
+              i kristallklar <strong style={{color:'var(--cyan)'}}>4K UHD</strong> — på alla dina enheter.
+              Inga bindningstider. Omedelbar aktivering.
+            </p>
+            <div className="hero-actions fade-up delay-2">
+              <a href="#trial" className="btn btn-cyan" style={{fontSize:17,padding:'16px 36px'}}>
+                Starta gratis IPTV-test
+              </a>
+              <a href="#pricing" className="btn btn-glass" style={{fontSize:17,padding:'16px 28px'}}>
+                Se IPTV-priser &nbsp;→
+              </a>
+            </div>
+            <div style={{fontSize:13,color:'var(--text2)',marginBottom:32}} className="fade-up delay-2">
+              Inget kort krävs · Uppgifter via WhatsApp på under 3 minuter · 7 dagars pengarna-tillbaka-garanti
+            </div>
+            <div className="hero-stats fade-up delay-3">
+              {[["35,000+","Kanaler"],["4K UHD","Bildkvalitet"],["99.9%","Drifttid"],["24/7","Support"]].map(([num,lbl])=>(
+                <div key={lbl} className="hero-stat">
+                  <div className="num">{num}</div>
+                  <div className="lbl">{lbl}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="hero-visual fade-up delay-2">
+            <div style={{position:'relative',height:520,width:'100%'}}>
+              <div className="live-indicator" style={{top:0,right:0}}>● LIVE NU</div>
+              <StackedPanels/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Ticker() {
+  const items = ["SVT","TV4","Premier League","Champions League","HBO","4K UHD","35,000+ Kanaler","Disney+","Allsvenskan","Eurosport","Gratis Testperiod","Omedelbar Aktivering","Inga Bindningstider"];
+  const doubled = [...items,...items];
+  return (
+    <div className="ticker-wrap">
+      <div className="ticker-inner">
+        {doubled.map((t,i)=>(
+          <div key={i} className="ticker-item">
+            <span className="ticker-sep">✦</span>
+            {t}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CardStack({ items, autoAdvance=false, intervalMs=2800 }) {
+  const [active, setActive] = useState(0);
+  const [hovering, setHovering] = useState(false);
+  const len = items.length;
+  const maxOffset = 3;
+  const cardW = 170, cardH = 250;
+  const spacing = 95;
+  const spreadDeg = 5;
+
+  useEffect(() => {
+    if (!autoAdvance || hovering) return;
+    const iv = setInterval(() => setActive(a => (a+1)%len), intervalMs);
+    return () => clearInterval(iv);
+  }, [autoAdvance, intervalMs, hovering, len]);
+
+  const wrap = n => ((n%len)+len)%len;
+  const signedOff = (i, act) => {
+    const raw = i - act;
+    if (len <= 1) return raw;
+    const alt = raw > 0 ? raw - len : raw + len;
+    return Math.abs(alt) < Math.abs(raw) ? alt : raw;
+  };
+
+  return (
+    <div onMouseEnter={()=>setHovering(true)} onMouseLeave={()=>setHovering(false)}>
+      <div style={{position:'relative',height:cardH+90,perspective:'1200px'}}>
+        <div style={{position:'absolute',inset:0,display:'flex',alignItems:'flex-end',justifyContent:'center'}}>
+          {items.map((item,i) => {
+            const off = signedOff(i, active);
+            const abs = Math.abs(off);
+            if (abs > maxOffset) return null;
+            const isActive = off === 0;
+            const x = off * spacing;
+            const y = abs * 10 + (isActive ? -22 : 0);
+            const rotZ = off * spreadDeg;
+            const rotX = isActive ? 0 : 10;
+            const scale = isActive ? 1.04 : Math.max(0.82, 1 - abs*0.06);
+            const zIndex = 100 - abs;
+            const opacity = abs > 2 ? 0.6 : 1;
+            return (
+              <div key={item.id} onClick={()=>setActive(i)}
+                style={{
+                  position:'absolute', bottom:0,
+                  width:cardW, height:cardH,
+                  marginLeft:-cardW/2,
+                  transform:`translateX(${x}px) translateY(${y}px) rotateZ(${rotZ}deg) rotateX(${rotX}deg) scale(${scale})`,
+                  transition:'transform 0.55s cubic-bezier(0.34,1.15,0.64,1), box-shadow 0.3s',
+                  transformStyle:'preserve-3d',
+                  zIndex, opacity,
+                  borderRadius:12,
+                  overflow:'hidden',
+                  cursor: isActive ? 'default' : 'pointer',
+                  boxShadow: isActive ? '0 24px 60px rgba(0,0,0,0.7), 0 0 0 2px rgba(255,107,53,0.4)' : '0 10px 30px rgba(0,0,0,0.5)',
+                  border: isActive ? '2px solid rgba(255,107,53,0.5)' : '2px solid rgba(255,255,255,0.06)',
+                }}>
+                <div style={{position:'absolute',inset:0,backgroundImage:`url(${item.img})`,backgroundSize:'cover',backgroundPosition:'center'}}/>
+                <div style={{position:'absolute',inset:0,background:`linear-gradient(to bottom,${item.overlay} 0%,rgba(0,0,0,0.7) 100%)`}}/>
+                <div style={{position:'absolute',inset:0,background:'linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 50%)'}}/>
+                {isActive && <div style={{position:'absolute',top:10,right:10,background:'rgba(255,107,53,0.9)',borderRadius:6,padding:'3px 8px',fontSize:10,fontWeight:800,color:'#fff',fontFamily:"'Outfit',sans-serif",letterSpacing:'.06em'}}>HD</div>}
+                <div style={{position:'absolute',top:8,left:8,background:'rgba(0,0,0,0.65)',backdropFilter:'blur(4px)',borderRadius:6,padding:'2px 7px',fontSize:10,fontWeight:700,color:'#ffd740'}}>{item.rating}</div>
+                <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'12px 10px'}}>
+                  <div style={{fontSize:12,fontWeight:700,color:'#fff',textShadow:'0 1px 4px rgba(0,0,0,.9)',marginBottom:2,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{item.title}</div>
+                  <div style={{fontSize:10,color:'rgba(255,255,255,0.6)'}}>{item.year}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div style={{display:'flex',justifyContent:'center',gap:8,marginTop:20}}>
+        {items.map((_,i)=>(
+          <button key={i} onClick={()=>setActive(i)} style={{
+            width: i===active?20:8, height:8, borderRadius:4, border:'none', cursor:'pointer',
+            background: i===active ? 'var(--cyan)' : 'rgba(255,255,255,0.2)',
+            transition:'all 0.3s', padding:0,
+          }}/>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ContentShowcase() {
+  const [activeTab, setActiveTab] = useState(CONTENT_TABS[0]);
+  const items = CONTENT_ITEMS[activeTab] || [];
+  return (
+    <section className="showcase">
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:8}}><span className="tag tag-cyan">▶ Innehållsbibliotek</span></div>
+        <h2 className="section-title">Oändligt underhållning</h2>
+        <p className="section-sub">Filmer, serier, sport och nyheter — allt på ett ställe</p>
+        <div className="showcase-tabs">
+          {CONTENT_TABS.map(t=>(
+            <button key={t} className={`showcase-tab ${activeTab===t?'active':''}`} onClick={()=>setActiveTab(t)}>{t}</button>
+          ))}
+        </div>
+        <CardStack items={items} autoAdvance={true} intervalMs={2800}/>
+      </div>
+    </section>
+  );
+}
+
+function Stats() {
+  return (
+    <section className="stats-section">
+      <div className="container">
+        <div className="stats-grid">
+          {[
+            {icon:"📡",num:"35,000+",label:"Livekanaler & VOD"},
+            {icon:"🌍",num:"150+",label:"Länder & Regioner"},
+            {icon:"🎬",num:"50,000+",label:"Filmer & Serier"},
+            {icon:"⭐",num:"250,000+",label:"Nöjda Kunder"},
+          ].map((s,i)=>(
+            <div key={i} className="stat-card">
+              <div className="stat-icon">{s.icon}</div>
+              <div className="stat-num">{s.num}</div>
+              <div className="stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const FEATURES_LIST = [
+  "Omedelbar aktivering","Anonym Betalning","Premiumkanaler","Stöd alla enheter",
+  "90 400+ filmer och serier","22 500+ kanaler","Sportkanaler",
+  "4K / Ultra HD-kvalitet","Ingen buffring eller frysning","Frostskyddsteknik","EPG för alla kanaler"
+];
+
+const MULTI_PLANS = [
+  {label:"Årsplan – 2 enheter",price:"1399",old:"2636",save:"47%",devices:2},
+  {label:"Årsplan – 3 enheter",price:"1999",old:"3807",save:"41%",devices:3},
+  {label:"Årsplan – 4 enheter",price:"2699",old:"5078",save:"45%",devices:4},
+];
+
+function Countdown() {
+  const [time, setTime] = useState({d:0,h:2,m:47,s:50});
+  useEffect(()=>{
+    const iv = setInterval(()=>{
+      setTime(t=>{
+        let {d,h,m,s} = t;
+        s--; if(s<0){s=59;m--;} if(m<0){m=59;h--;} if(h<0){h=23;d--;} if(d<0){d=0;h=0;m=0;s=0;}
+        return {d,h,m,s};
+      });
+    },1000);
+    return ()=>clearInterval(iv);
+  },[]);
+  const pad = n=>String(n).padStart(2,'0');
+  const blocks = [{val:time.d,label:'Dagar'},{val:time.h,label:'Timmar'},{val:time.m,label:'Minuter'},{val:time.s,label:'Sekunder'}];
+  return (
+    <div className="countdown-wrap">
+      <div className="cd-container">
+        <div className="cd-header">
+          <div className="cd-pulse"/>
+          <span className="cd-header-text">Erbjudandet upphör om — säkra ditt pris nu</span>
+          <div className="cd-pulse"/>
+        </div>
+        <div className="cd-blocks">
+          {blocks.map((b,i)=>(
+            <React.Fragment key={i}>
+              {i>0 && <div className="cd-sep-block">:</div>}
+              <div className="cd-block">
+                <div className="cd-digit-pair">{pad(b.val)}</div>
+                <div className="cd-label">{b.label}</div>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+        <div className="cd-footer">
+          <div className="cd-spots">🔥 Endast <strong>23</strong> platser kvar till detta pris</div>
+          <div className="cd-progress-bar"><div className="cd-progress-fill"/></div>
+          <div style={{fontSize:12,color:'var(--text2)',whiteSpace:'nowrap'}}>77% redan tagna</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Pricing() {
+  const plans = [
+    {period:"12 månader",price:"599",old:"999",save:"spara 40%",featured:true,btnStyle:"solid",desc:"Vad ingår i nordic iptv 12 månaders prenumeration?"},
+    {period:"3 månader",price:"399",old:"649",save:"spara 23%",featured:false,btnStyle:"solid",desc:"Vad ingår i nordic iptv 3 månaders prenumeration?"},
+    {period:"6 månader",price:"599",old:"829",save:"spara 16%",featured:true,btnStyle:"solid",desc:"Vad ingår i nordic iptv 6 månaders prenumeration?"},
+  ];
+  return (
+    <>
+    <section id="pricing" className="pricing-section">
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:16}}>
+          <span className="tag tag-cyan" style={{fontSize:11,letterSpacing:'.14em'}}>IPTV Nordic Prissättning Planer</span>
+        </div>
+        <h2 className="section-title" style={{marginBottom:14}}>
+          Nordic IPTV erbjuder flexibla iptv-<br/>prenumerationer som passar alla behov
+        </h2>
+        <div className="pricing-urgency">
+          <span className="urgency-badge">🔥 BEGRÄNSAT ERBJUDANDE – PASSA PÅ IDAG! 🔥</span>
+        </div>
+        <div style={{textAlign:'center',margin:'16px 0 8px'}}>
+          <p className="pricing-subtitle">Vi har sänkt priserna för att ge dig marknadens mest prisvärda TV-upplevelse!</p>
+          <div style={{display:'flex',justifyContent:'center'}}>
+            <div className="pricing-warning">
+              <span style={{color:'var(--cyan)',flexShrink:0}}>⚡</span>
+              <span><strong style={{color:'var(--white)'}}>Säkra ditt pris!</strong> Detta exklusiva erbjudande är tidsbegränsat och kan dras tillbaka när som helst.</span>
+            </div>
+          </div>
+          <p style={{marginTop:16,fontSize:14,fontWeight:600,color:'var(--text2)'}}>Säkra din premiumunderhållning nu!</p>
+        </div>
+        <Countdown/>
+        <div className="pricing-grid">
+          {plans.map((plan,i)=>(
+            <div key={i} className={`price-card ${plan.featured?(i===0?'featured':'featured2'):''}`}>
+              <div className="price-period-label">{plan.period}</div>
+              <div className="price-old"><s>KR {plan.old}</s><span className="price-save">{plan.save}</span></div>
+              <div className="price-main">
+                <span className="price-kr">KR</span>
+                <span className="price-big">{plan.price}</span>
+              </div>
+              <button className={`price-btn ${plan.featured?(i===0?'price-btn-solid':'price-btn-solid'):'price-btn-solid'}`}>Börja idag!</button>
+              <div className="price-what">{plan.desc}</div>
+              <ul className="price-features">
+                {FEATURES_LIST.map((f,j)=>(
+                  <li key={j}><span className="ck">✓</span>{f}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p style={{textAlign:'center',marginTop:24,fontSize:13,color:'var(--text2)'}}>
+          Alla planer inkluderar 24-timmars gratis testperiod • Ingen kreditkortsinformation krävs
+        </p>
+      </div>
+    </section>
+    <section className="multi-section">
+      <div className="container">
+        <div className="multi-intro">
+          <h3>Titta på fler skärmar samtidigt?</h3>
+          <p>Slipp avbrott från någon annan till titta. Välj ett paket med 2, 3 eller 4 anslutningar och få maximal frihet till en bråkdel av kostnaden</p>
+        </div>
+        <div className="multi-grid">
+          {MULTI_PLANS.map((p,i)=>(
+            <div key={i} className="multi-card">
+              <div className="multi-label">{p.label}</div>
+              <div className="multi-price">kr{p.price}</div>
+              <div className="multi-price-sub"><s>{p.old}</s>, spara {p.save}</div>
+              <ul className="multi-features">
+                {[`${p.devices} enheter`,"Omedelbar aktivering","Anonym Betalning","68 400+ filmer och serier","17 200+ VOD","22 500+ kanaler","4K / Ultra HD-kvalitet"].map((f,j)=>(
+                  <li key={j}><span style={{color:'var(--green)',fontSize:13}}>✓</span>{f}</li>
+                ))}
+              </ul>
+              <button className="multi-btn">Välj plan →</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    </>
+  );
+}
+
+function Comparison() {
+  const cableItems = [
+    {name:"Netflix",price:"179 kr/mån"},
+    {name:"Disney+",price:"139 kr/mån"},
+    {name:"HBO Max",price:"149 kr/mån"},
+    {name:"Sportpaket",price:"399 kr/mån"},
+    {name:"PPV-evenemang (årsvis)",price:"2 000 kr+"},
+  ];
+  const iptvItems = [
+    {name:"Allt streaminginnehåll",val:"Ingår",green:true},
+    {name:"All live-sport",val:"Ingår",green:true},
+    {name:"Alla PPV-evenemang",val:"0 kr Extra",green:true},
+    {name:"35 000+ kanaler",val:"Ingår",green:true},
+    {name:"4K-kvalitet",val:"Ingår",green:true},
+  ];
+  return (
+    <section className="compare-section" style={{
+      background:'#05070a',
+      backgroundImage:'radial-gradient(rgba(0,212,255,0.07) 1px, transparent 1px)',
+      backgroundSize:'28px 28px',
+      position:'relative',
+      overflow:'hidden'
+    }}>
+      <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 70% 60% at 50% 50%,rgba(0,10,20,0) 0%,rgba(5,7,10,0.85) 70%)',pointerEvents:'none',zIndex:0}}/>
+      <div style={{position:'absolute',top:0,left:0,right:0,height:'1px',background:'linear-gradient(90deg,transparent,rgba(0,212,255,0.2),transparent)',zIndex:1}}/>
+      <div style={{position:'absolute',bottom:0,left:0,right:0,height:'1px',background:'linear-gradient(90deg,transparent,rgba(0,212,255,0.1),transparent)',zIndex:1}}/>
+      <div className="container" style={{position:'relative',zIndex:2}}>
+        <div style={{textAlign:'center',marginBottom:16}}>
+          <span className="tag tag-green">⚡ Spara Tusentals Kronor Varje År</span>
+        </div>
+        <h2 className="section-title" style={{marginBottom:14}}>
+          Sluta Överbetala för Kabel-TV.<br/>
+          <span style={{color:'var(--cyan)'}}>Byt till Premium IPTV.</span>
+        </h2>
+        <p className="section-sub">Varför slösa pengar? Få omedelbar tillgång till 35 000+ livekanaler och 50 000+ filmer och serier i fantastisk 4K. Inga kontrakt, inga dolda avgifter — bara ren underhållning.</p>
+
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24,marginBottom:20}}>
+          {/* Cable card */}
+          <div style={{background:'var(--card)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:16,padding:28}}>
+            <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:24}}>
+              <div style={{width:10,height:10,borderRadius:'50%',background:'#ff3d57',boxShadow:'0 0 8px #ff3d57'}}/>
+              <span style={{fontSize:13,fontWeight:700,color:'var(--text2)',letterSpacing:'.06em',textTransform:'uppercase'}}>Traditionell Kabel-TV</span>
+            </div>
+            <div style={{display:'flex',flexDirection:'column',gap:0}}>
+              {cableItems.map((item,i)=>(
+                <div key={i} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'14px 0',borderBottom:'1px solid rgba(255,255,255,0.05)'}}>
+                  <span style={{fontSize:15,color:'var(--text)'}}>{item.name}</span>
+                  <span style={{fontSize:15,fontWeight:600,color:'var(--white)'}}>{item.price}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{marginTop:24,padding:20,background:'rgba(255,61,87,0.06)',border:'1px solid rgba(255,61,87,0.15)',borderRadius:10,textAlign:'center'}}>
+              <div style={{fontSize:12,color:'var(--text2)',marginBottom:6,letterSpacing:'.06em',textTransform:'uppercase'}}>Årskostnad</div>
+              <div style={{fontFamily:"'Outfit',sans-serif",fontSize:44,fontWeight:900,color:'#ff3d57'}}>14 400 kr+</div>
+            </div>
+          </div>
+
+          {/* Nordic IPTV card */}
+          <div style={{background:'linear-gradient(145deg,#0d1a14,#0a1f18)',border:'1px solid rgba(0,230,118,0.25)',borderRadius:16,padding:28,position:'relative',overflow:'hidden'}}>
+            <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,230,118,0.07),transparent 60%)',pointerEvents:'none'}}/>
+            <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:24,position:'relative'}}>
+              <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)',boxShadow:'0 0 8px var(--green)'}}/>
+              <span style={{fontSize:13,fontWeight:700,color:'var(--text2)',letterSpacing:'.06em',textTransform:'uppercase'}}>Nordic IPTV</span>
+            </div>
+            <div style={{display:'flex',flexDirection:'column',gap:0,position:'relative'}}>
+              {iptvItems.map((item,i)=>(
+                <div key={i} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'14px 0',borderBottom:'1px solid rgba(0,230,118,0.08)'}}>
+                  <span style={{fontSize:15,color:'var(--text)'}}>{item.name}</span>
+                  <span style={{fontSize:14,fontWeight:700,color:'var(--green)'}}>{item.val}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{marginTop:24,padding:20,background:'rgba(0,230,118,0.07)',border:'1px solid rgba(0,230,118,0.2)',borderRadius:10,textAlign:'center',position:'relative'}}>
+              <div style={{fontSize:12,color:'var(--text2)',marginBottom:6,letterSpacing:'.06em',textTransform:'uppercase'}}>Nordic IPTV Årskostnad</div>
+              <div style={{fontFamily:"'Outfit',sans-serif",fontSize:44,fontWeight:900,color:'var(--green)'}}>599 kr</div>
+              <div style={{fontSize:13,color:'var(--text2)',marginTop:4}}>Bara ~50 kr/månad</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Savings banner */}
+        <div style={{background:'linear-gradient(135deg,rgba(0,212,255,0.06),rgba(0,230,118,0.06))',border:'1px dashed rgba(0,212,255,0.25)',borderRadius:14,padding:'28px 32px',textAlign:'center'}}>
+          <div style={{fontSize:13,color:'var(--text2)',marginBottom:8,letterSpacing:'.08em',textTransform:'uppercase',fontWeight:700}}>Dina Årliga Besparingar</div>
+          <div style={{fontFamily:"'Outfit',sans-serif",fontSize:56,fontWeight:900,background:'linear-gradient(90deg,var(--cyan),var(--green))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',lineHeight:1}}>13 800 kr+</div>
+          <div style={{fontSize:14,color:'var(--text2)',marginTop:10}}>Byt idag och håll mer pengar i fickan</div>
+          <a href="#trial" className="btn btn-cyan" style={{marginTop:20,fontSize:15,padding:'13px 32px',display:'inline-flex'}}>Börja Spara Nu →</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Devices() {
+  return (
+    <section id="devices" className="devices-section">
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:8}}><span className="tag tag-cyan">📱 Kompatibilitet</span></div>
+        <h2 className="section-title">Fungerar på alla enheter</h2>
+        <p className="section-sub">Installera på Smart TV, mobil, surfplatta, dator eller streaming-enhet</p>
+        <div className="devices-grid">
+          {DEVICES.map((d,i)=>(
+            <div key={i} className="device-card">
+              <div className="device-icon">{d.icon}</div>
+              <div className="device-name">{d.name}</div>
+              <div className="device-sub">{d.sub}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Platform logo strip */}
+        <div style={{display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap',marginTop:48}}>
+          {[
+            {label:'macOS', svg:<svg viewBox="0 0 60 20" width="52" height="18"><text x="0" y="15" fill="white" fontFamily="'Outfit',sans-serif" fontSize="14" fontWeight="600">macOS</text></svg>},
+            {label:'Android', svg:<svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.523 15.341a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-10.046 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M17.8 10.5l1.4-2.4a.3.3 0 0 0-.52-.3l-1.42 2.46A8.5 8.5 0 0 0 12 9.25a8.5 8.5 0 0 0-5.26 1.01L5.32 7.8a.3.3 0 0 0-.52.3L6.2 10.5A8.27 8.27 0 0 0 3.5 16.5h17a8.27 8.27 0 0 0-2.7-6z"/></svg>},
+            {label:'Roku', svg:<svg viewBox="0 0 60 20" width="46" height="18"><text x="0" y="15" fill="white" fontFamily="'Outfit',sans-serif" fontSize="15" fontWeight="800">Roku</text></svg>},
+            {label:'Samsung', svg:<svg viewBox="0 0 80 20" width="66" height="18"><text x="0" y="15" fill="white" fontFamily="'Outfit',sans-serif" fontSize="13" fontWeight="600" letterSpacing="1">SAMSUNG</text></svg>},
+            {label:'LG', svg:<svg viewBox="0 0 40 20" width="32" height="18"><text x="0" y="15" fill="white" fontFamily="'Outfit',sans-serif" fontSize="15" fontWeight="700" letterSpacing="1"> LG</text></svg>},
+            {label:'fire tv', svg:<svg viewBox="0 0 70 20" width="58" height="18"><text x="0" y="15" fill="white" fontFamily="'Outfit',sans-serif" fontSize="13" fontWeight="500">fire <tspan fontWeight="700">tv</tspan></text></svg>},
+            {label:'Smart TV', svg:<svg viewBox="0 0 24 24" width="26" height="26" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round"><rect x="2" y="3" width="20" height="14" rx="2" fill="none"/><path d="M8 21h8M12 17v4"/></svg>},
+            {label:'Apple TV', svg:<svg viewBox="0 0 80 20" width="60" height="18"><text x="0" y="15" fill="white" fontFamily="'Outfit',sans-serif" fontSize="14" fontWeight="500"> tv</text><text x="0" y="15" fill="white" fontFamily="'Outfit',sans-serif" fontSize="14" fontWeight="300"></text></svg>},
+          ].map((p,i)=>(
+            <div key={i} style={{
+              width:88,height:72,borderRadius:14,
+              background:'rgba(255,255,255,0.05)',
+              border:'1px solid rgba(255,255,255,0.1)',
+              display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',
+              gap:6,cursor:'default',transition:'.2s',
+            }}
+            onMouseEnter={e=>{e.currentTarget.style.background='rgba(255,255,255,0.09)';e.currentTarget.style.borderColor='rgba(255,255,255,0.2)'}}
+            onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.05)';e.currentTarget.style.borderColor='rgba(255,255,255,0.1)'}}>
+              {p.svg}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Ecosystem() {
+  const W = 900, H = 480;
+  const cx = W/2, cy = H/2;
+  const nodes = [
+    {id:'tv',   x:80,  y:130, label:'Smart TV',        icon:'📺', type:'device'},
+    {id:'mob',  x:60,  y:230, label:'Mobil & iPad',    icon:'📱', type:'device'},
+    {id:'pc',   x:85,  y:330, label:'PC & Mac',        icon:'💻', type:'device'},
+    {id:'fire', x:70,  y:420, label:'Fire TV',         icon:'🔥', type:'device'},
+    {id:'ch',   x:820, y:120, label:'35,000+ Kanaler', icon:'📡', type:'content'},
+    {id:'sport',x:840, y:220, label:'Sport Live',      icon:'⚽', type:'content'},
+    {id:'film', x:835, y:320, label:'Film 4K UHD',     icon:'🎬', type:'content'},
+    {id:'sv',   x:820, y:410, label:'Svenska Kanaler', icon:'🇸🇪', type:'content'},
+    {id:'epg',  x:340, y:55,  label:'EPG Guide',       icon:'📅', type:'feature'},
+    {id:'cu',   x:560, y:55,  label:'Catch-up TV',     icon:'⏪', type:'feature'},
+    {id:'sup',  x:340, y:435, label:'24/7 Support',    icon:'💬', type:'feature'},
+    {id:'sec',  x:560, y:435, label:'Säker Streaming', icon:'🔒', type:'feature'},
+  ];
+  const paths = nodes.map((n,i) => ({from:{x:n.x,y:n.y}, to:{x:cx,y:cy}, id:n.id, delay:i*0.15}));
+  useEffect(() => {
+    const lines = paths.map((p,i) => {
+      const len = Math.hypot(p.to.x-p.from.x, p.to.y-p.from.y);
+      return '@keyframes fl'+i+'{from{stroke-dashoffset:'+len+'}to{stroke-dashoffset:'+(-len)+'}}';
+    });
+    const el = document.createElement('style');
+    el.id = 'eco-kf';
+    el.textContent = lines.join(' ');
+    document.head.appendChild(el);
+    return () => { const e = document.getElementById('eco-kf'); if(e) e.remove(); };
+  }, []);
+  const tClass = {device:'eco-pill-device',content:'eco-pill-content',feature:'eco-pill-feature'};
+  const dClass = {device:'dot-cyan',content:'dot-orange',feature:'dot-green'};
+  return (
+    <section className="ecosystem-section">
+      <div className="container">
+        <div className="eco-text">
+          <span className="tag tag-cyan" style={{marginBottom:16}}>⚡ Ekosystem</span>
+          <h2><strong>Allt kopplat.</strong> <span style={{color:'var(--text2)',fontWeight:400,fontSize:'0.85em'}}>Streama till alla enheter via en enda tjänst.</span></h2>
+          <p>Nordic IPTV kopplar ihop dina enheter med tusentals kanaler, live-sport, filmer och mer — med noll buffring och maximalt skydd.</p>
+        </div>
+        <div className="eco-canvas">
+          <svg className="eco-svg" viewBox={"0 0 "+W+" "+H} preserveAspectRatio="xMidYMid meet">
+            {paths.map((p,i) => (
+              <line key={"s"+i} x1={p.from.x} y1={p.from.y} x2={p.to.x} y2={p.to.y}
+                stroke={p.id.match(/tv|mob|pc|fire/) ? "rgba(0,212,255,0.12)" : p.id.match(/epg|cu|sup|sec/) ? "rgba(0,230,118,0.1)" : "rgba(255,107,53,0.12)"}
+                strokeWidth="1" strokeDasharray="4 6"/>
+            ))}
+            {paths.map((p,i) => {
+              const len = Math.hypot(p.to.x-p.from.x, p.to.y-p.from.y);
+              const color = p.id.match(/tv|mob|pc|fire/) ? "#00d4ff" : p.id.match(/epg|cu|sup|sec/) ? "#00e676" : "#ff6b35";
+              return (
+                <line key={"a"+i} x1={p.from.x} y1={p.from.y} x2={p.to.x} y2={p.to.y}
+                  stroke={color} strokeWidth="1.5" strokeOpacity="0.7"
+                  strokeDasharray={String(len*0.18)+" "+String(len*0.82)}
+                  style={{strokeDashoffset:len,animation:"fl"+i+" "+(2.8+i*0.1)+"s linear infinite"}}/>
+              );
+            })}
+            {paths.map((p,i) => {
+              const color = p.id.match(/tv|mob|pc|fire/) ? "#00d4ff" : p.id.match(/epg|cu|sup|sec/) ? "#00e676" : "#ff6b35";
+              return (
+                <React.Fragment key={"f"+i}>
+                  <path id={"pp"+i} d={"M"+p.from.x+" "+p.from.y+" L"+p.to.x+" "+p.to.y} fill="none" stroke="none"/>
+                  <circle r="3.5" fill={color}>
+                    <animateMotion dur={(2.5+i*0.12)+"s"} repeatCount="indefinite" begin={p.delay+"s"}>
+                      <mpath href={"#pp"+i}/>
+                    </animateMotion>
+                  </circle>
+                </React.Fragment>
+              );
+            })}
+          </svg>
+          <div className="eco-node" style={{left:'50%',top:'50%'}}>
+            <div className="eco-hub">
+              <div className="eco-hub-ring"/>
+              <div className="eco-hub-ring2"/>
+              <div style={{fontSize:22,marginBottom:4}}>📡</div>
+              <div className="eco-hub-label">Nordic<br/>IPTV</div>
+              <div className="eco-hub-sub">Live 24/7</div>
+            </div>
+          </div>
+          {nodes.map((n,i) => (
+            <div key={i} className="eco-node" style={{left:(n.x/W*100)+"%",top:(n.y/H*100)+"%"}}>
+              <div className={"eco-pill "+tClass[n.type]}>
+                <span className={"eco-pill-dot "+dClass[n.type]}/>
+                <span>{n.icon}</span>
+                <span>{n.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+function Channels() {
+  const [cat, setCat] = useState("Alla");
+  const channels = CHANNELS_BY_CAT[cat] || [];
+  return (
+    <section id="channels" className="channels-section">
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:8}}><span className="tag tag-cyan">📡 Kanalutbud</span></div>
+        <h2 className="section-title">35,000+ kanaler ingår</h2>
+        <p className="section-sub">Sport, film, nyheter, barnprogram och internationellt — allt tillgängligt</p>
+        <div className="channel-cats">
+          {CHANNEL_CATS.map(c=>(
+            <button key={c} className={`channel-cat ${cat===c?'active':''}`} onClick={()=>setCat(c)}>{c}</button>
+          ))}
+        </div>
+        <div className="channels-grid">
+          {channels.slice(0,24).map((ch,i)=>(
+            <div key={i} className="ch-card">
+              <div className="ch-name">{ch}</div>
+            </div>
+          ))}
+        </div>
+        {channels.length > 24 && (
+          <p style={{textAlign:'center',marginTop:24,color:'var(--text2)',fontSize:14}}>
+            + {channels.length - 24} fler kanaler i denna kategori
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Why() {
+  const items = [
+    {icon:"⚡",title:"Blixtsnabb aktivering",text:"Din prenumeration aktiveras direkt efter betalning. Inga väntetider, ingen installation som tar timmar — streama inom minuter."},
+    {icon:"🛡️",title:"99.9% Drifttid",text:"Våra servrar är geografiskt distribuerade med redundanta anslutningar. Vi garanterar minimal buffring och maximalt TV-nöje."},
+    {icon:"🎯",title:"Inga bindningstider",text:"Hos oss bestämmer du. Inga kontrakt, inga avgifter för tidig avslutning. Avbryt eller pausa din prenumeration när som helst."},
+    {icon:"🔒",title:"Säker & anonym",text:"Alla transaktioner är SSL-krypterade. Vi accepterar kort, Swish, PayPal och kryptovaluta för maximal integritet."},
+    {icon:"🌐",title:"Fungerar var som helst",text:"Titta på dina favoritkanaler hemma, på jobbet eller på semestern. Nordic IPTV fungerar i hela världen med VPN-stöd."},
+    {icon:"💬",title:"24/7 Svensk support",text:"Vårt supportteam pratar svenska och finns tillgängliga dygnet runt via live-chatt, e-post och Telegram."},
+  ];
+  return (
+    <section className="why-section">
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:8}}><span className="tag tag-green">✨ Fördelar</span></div>
+        <h2 className="section-title">Varför Nordic IPTV?</h2>
+        <div className="glow-line" style={{marginBottom:48}}/>
+        <div className="why-grid">
+          {items.map((item,i)=>(
+            <div key={i} className="why-card">
+              <div className="why-icon">{item.icon}</div>
+              <div className="why-title">{item.title}</div>
+              <div className="why-text">{item.text}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  return (
+    <section className="testimonials-section">
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:8}}><span className="tag tag-yellow">⭐ Kundrecensioner</span></div>
+        <h2 className="section-title">Vad säger våra kunder?</h2>
+        <p className="section-sub">Över 250,000 nöjda kunder i Sverige och Norden</p>
+        <div className="testimonials-grid">
+          {TESTIMONIALS.map((t,i)=>(
+            <div key={i} className="testimonial-card">
+              <div className="t-stars">{'★'.repeat(t.stars)}</div>
+              <div className="t-text">"{t.text}"</div>
+              <div className="t-author">
+                <div className="t-avatar">{t.initial}</div>
+                <div>
+                  <div className="t-name">{t.name}</div>
+                  <div className="t-loc">{t.loc}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const [open, setOpen] = useState(null);
+  return (
+    <section id="faq" className="faq-section">
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:8}}><span className="tag tag-cyan">❓ FAQ</span></div>
+        <h2 className="section-title">Vanliga frågor</h2>
+        <p className="section-sub">Hittar du inte svaret? Kontakta vår support 24/7</p>
+        <div className="faq-list">
+          {FAQS.map((faq,i)=>(
+            <div key={i} className={`faq-item ${open===i?'open':''}`} onClick={()=>setOpen(open===i?null:i)}>
+              <div className="faq-q">
+                <span>{faq.q}</span>
+                <div className="faq-icon">{open===i?'−':'+'}</div>
+              </div>
+              <div className="faq-a">{faq.a}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTABanner() {
+  return (
+    <section id="trial" className="cta-banner">
+      <div className="container">
+        <div className="cta-inner">
+          <span className="tag tag-green" style={{marginBottom:20}}>🎁 Gratis Provperiod</span>
+          <h2 className="cta-title">Prova gratis i <span style={{color:'var(--cyan)'}}>24 timmar</span></h2>
+          <p className="cta-sub">Inget kreditkort behövs. Full tillgång till alla kanaler och funktioner. Aktiveras omedelbart.</p>
+          <div className="cta-actions">
+            <a href="#" className="btn btn-cyan" style={{fontSize:18,padding:'17px 40px'}}>▶ Starta Gratis Test</a>
+            <a href="#pricing" className="btn btn-outline" style={{fontSize:18,padding:'17px 32px'}}>Se Alla Priser</a>
+          </div>
+          <div className="cta-note">✓ Inga bindningstider &nbsp;·&nbsp; ✓ Avsluta när som helst &nbsp;·&nbsp; ✓ Säker betalning</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <div className="footer-brand">Nordic IPTV <span>Sverige</span></div>
+            <div className="footer-tagline">Sveriges ledande IPTV-tjänst med 35,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
+            <div style={{display:'flex',gap:12,marginBottom:12}}>
+              {["📘 Facebook","🐦 Twitter","📸 Instagram","💬 Telegram"].map(s=>(
+                <a key={s} href="#" style={{fontSize:13,color:'var(--text2)',transition:'.2s'}}
+                   onMouseEnter={e=>e.target.style.color='var(--cyan)'}
+                   onMouseLeave={e=>e.target.style.color='var(--text2)'}>{s}</a>
+              ))}
+            </div>
+            <div className="footer-payments">
+              {["Visa","Mastercard","Swish","PayPal","Crypto"].map(p=>(
+                <span key={p} className="pay-badge">{p}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4>Tjänster</h4>
+            <ul className="footer-links">
+              {["Alla Kanaler","Sportpaket","Filmpaket","4K UHD","VOD-bibliotek","Catch-up TV","Barn & Familj","Internationella kanaler"].map(l=>(
+                <li key={l}><a href="#">{l}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4>Information</h4>
+            <ul className="footer-links">
+              {["Om Oss","Priser","Enheter","Installationsguide","Systemkrav","Affiliate-program","Press","Karriär"].map(l=>(
+                <li key={l}><a href="#">{l}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <ul className="footer-links">
+              {["Hjälpcenter","Live Chat","E-post Support","Telegram Support","Vanliga Frågor","Status-sida","Statusuppdateringar","Kontakta Oss"].map(l=>(
+                <li key={l}><a href="#">{l}</a></li>
+              ))}
+            </ul>
+            <div style={{marginTop:16,padding:'12px 16px',borderRadius:8,background:'rgba(0,230,118,.08)',border:'1px solid rgba(0,230,118,.15)'}}>
+              <div style={{fontSize:12,fontWeight:700,color:'var(--green)',fontFamily:'Outfit',letterSpacing:'.08em',marginBottom:4}}>SUPPORT ONLINE NU</div>
+              <div style={{fontSize:13,color:'var(--text2)'}}>Svarstid: &lt;2 min</div>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <div className="footer-copy">© 2026 Nordic IPTV Sverige. Alla rättigheter förbehållna.</div>
+          <div className="footer-legal">
+            <a href="#">Integritetspolicy</a>
+            <a href="#">Användarvillkor</a>
+            <a href="#">Cookiepolicy</a>
+            <a href="#">DMCA</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function ScrollTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const h = () => setVisible(window.scrollY > 400);
+    window.addEventListener('scroll', h);
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+  return (
+    <div className={`scroll-top ${visible?'visible':''}`} onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}>↑</div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <TopBanner/>
+      <Nav/>
+      <Hero/>
+      <ContentShowcase/>
+      <Pricing/>
+      <Comparison/>
+      <Devices/>
+
+      <Ecosystem/>
+      <Testimonials/>
+      <CTABanner/>
+      <FAQ/>
+      <Footer/>
+      <ScrollTop/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+<div id="root"></div>
+</body>
+</html>
