@@ -6,6 +6,7 @@ import * as PricingCard from "@/components/ui/pricing-card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import Phosphor30 from "@/components/ui/phosphor-30";
+import { CardStack, type CardStackItem } from "@/components/ui/card-stack";
 
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
@@ -255,81 +256,6 @@ function StackedPanels() {
   );
 }
 
-// ── CARD STACK ────────────────────────────────────────────────────────────────
-
-interface CardStackProps { items: ContentItem[]; autoAdvance?: boolean; intervalMs?: number; }
-
-function CardStack({ items, autoAdvance = false, intervalMs = 2800 }: CardStackProps) {
-  const [active, setActive] = useState(0);
-  const [hovering, setHovering] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const len = items.length;
-  const maxOffset = 3;
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 640);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  const cardW   = isMobile ? 130 : 170;
-  const cardH   = isMobile ? 195 : 250;
-  const spacing = isMobile ? 55  : 95;
-  const spreadDeg = 5;
-
-  useEffect(() => {
-    if (!autoAdvance || hovering) return;
-    const iv = setInterval(() => setActive(a => (a + 1) % len), intervalMs);
-    return () => clearInterval(iv);
-  }, [autoAdvance, intervalMs, hovering, len]);
-
-  const signedOff = (i: number, act: number) => {
-    const raw = i - act;
-    if (len <= 1) return raw;
-    const alt = raw > 0 ? raw - len : raw + len;
-    return Math.abs(alt) < Math.abs(raw) ? alt : raw;
-  };
-
-  return (
-    <div style={{ width: "100%" }} onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
-      <div style={{ position: "relative", height: cardH + 90, perspective: "1200px", width: "100%" }}>
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-          {items.map((item, i) => {
-            const off = signedOff(i, active);
-            const abs = Math.abs(off);
-            if (abs > maxOffset) return null;
-            const isActive = off === 0;
-            const x = off * spacing;
-            const y = abs * 10 + (isActive ? -22 : 0);
-            const rotZ = off * spreadDeg;
-            const rotX = isActive ? 0 : 10;
-            const scale = isActive ? 1.04 : Math.max(0.82, 1 - abs * 0.06);
-            return (
-              <div key={item.id} onClick={() => setActive(i)} style={{ position: "absolute", bottom: 0, width: cardW, height: cardH, marginLeft: -cardW / 2, transform: `translateX(${x}px) translateY(${y}px) rotateZ(${rotZ}deg) rotateX(${rotX}deg) scale(${scale})`, transition: "transform 0.55s cubic-bezier(0.34,1.15,0.64,1), box-shadow 0.3s", transformStyle: "preserve-3d", zIndex: 100 - abs, opacity: abs > 2 ? 0.6 : 1, borderRadius: 12, overflow: "hidden", cursor: isActive ? "default" : "pointer", boxShadow: isActive ? "0 24px 60px rgba(0,0,0,0.7), 0 0 0 2px rgba(255,107,53,0.4)" : "0 10px 30px rgba(0,0,0,0.5)", border: isActive ? "2px solid rgba(255,107,53,0.5)" : "2px solid rgba(255,255,255,0.06)" }}>
-                <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${item.img})`, backgroundSize: "cover", backgroundPosition: "center" }} />
-                <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom,${item.overlay} 0%,rgba(0,0,0,0.7) 100%)` }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 50%)" }} />
-                {isActive && <div style={{ position: "absolute", top: 10, right: 10, background: "rgba(255,107,53,0.9)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontWeight: 800, color: "#fff", letterSpacing: ".06em" }}>HD</div>}
-                <div style={{ position: "absolute", top: 8, left: 8, background: "rgba(0,0,0,0.65)", backdropFilter: "blur(4px)", borderRadius: 6, padding: "2px 7px", fontSize: 10, fontWeight: 700, color: "#ffd740" }}>{item.rating}</div>
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px 10px" }}>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "#fff", textShadow: "0 1px 4px rgba(0,0,0,.9)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{item.title}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)" }}>{item.year}</div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 20 }}>
-        {items.map((_, i) => (
-          <button key={i} onClick={() => setActive(i)} style={{ width: i === active ? 20 : 8, height: 8, borderRadius: 4, border: "none", cursor: "pointer", background: i === active ? "#ff6b35" : "rgba(255,255,255,0.2)", transition: "all 0.3s", padding: 0 }} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 // ── SECTIONS ──────────────────────────────────────────────────────────────────
 
 function TopBanner() {
@@ -485,7 +411,26 @@ function Hero() {
 }
 
 function ContentShowcase() {
-  const items = CONTENT_ITEMS[CONTENT_TABS[0]] || [];
+  const raw = CONTENT_ITEMS[CONTENT_TABS[0]] || [];
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const stackItems: CardStackItem[] = raw.map(item => ({
+    id: item.id,
+    title: item.title,
+    description: item.year,
+    imageSrc: item.img,
+    tag: item.rating,
+  }));
+
+  const cardW = isMobile ? 130 : 180;
+  const cardH = isMobile ? 195 : 260;
+
   return (
     <section className="ni-showcase">
       <div className="ni-container">
@@ -493,7 +438,18 @@ function ContentShowcase() {
         <h2 className="ni-section-title">Oändligt underhållning</h2>
         <p className="ni-section-sub">Filmer, serier, sport och nyheter — allt på ett ställe</p>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <CardStack items={items} autoAdvance={true} intervalMs={2800} />
+          <CardStack
+            items={stackItems}
+            cardWidth={cardW}
+            cardHeight={cardH}
+            spreadDeg={isMobile ? 28 : 36}
+            overlap={0.38}
+            maxVisible={isMobile ? 5 : 7}
+            depthPx={80}
+            autoAdvance={true}
+            intervalMs={2800}
+            pauseOnHover={true}
+          />
         </div>
       </div>
     </section>
