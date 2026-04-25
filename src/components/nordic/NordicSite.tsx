@@ -346,52 +346,66 @@ function Nav() {
       <nav className={cn("ni-nav", scrolled && "scrolled")}>
         <div className="ni-container">
           <div className="ni-nav-inner">
-            <a href="#" className="ni-nav-logo" style={{ display: "flex", alignItems: "center", padding: 0 }}>
-              <svg width="168" height="44" viewBox="0 0 168 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nordic IPTV">
+            <a href="#" className="ni-nav-logo">
+              {/* Icon: bolt + arcs */}
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ flexShrink: 0 }}>
                 <defs>
                   <linearGradient id="nl-bolt" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#ff6b35"/>
-                    <stop offset="100%" stopColor="#ff8a3d"/>
+                    <stop offset="0%" stopColor="#ff6b35"/><stop offset="100%" stopColor="#ff8a3d"/>
                   </linearGradient>
                   <linearGradient id="nl-arc" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#ff6b35" stopOpacity="0.9"/>
-                    <stop offset="100%" stopColor="#088fc3" stopOpacity="0.7"/>
-                  </linearGradient>
-                  <linearGradient id="nl-nordic" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#088fc3"/>
-                    <stop offset="100%" stopColor="#00d4ff" stopOpacity="0.6"/>
-                  </linearGradient>
-                  <linearGradient id="nl-iptv" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#ff6b35"/>
-                    <stop offset="100%" stopColor="#ff3d00"/>
+                    <stop offset="0%" stopColor="#ff6b35" stopOpacity="0.95"/><stop offset="100%" stopColor="#088fc3" stopOpacity="0.8"/>
                   </linearGradient>
                   <filter id="nl-glow" x="-40%" y="-40%" width="180%" height="180%">
-                    <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                    <feGaussianBlur stdDeviation="1.2" result="blur"/>
                     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                   </filter>
                 </defs>
-                {/* Lightning bolt */}
                 <g filter="url(#nl-glow)">
-                  <path d="M18 3 L9 21 L16 21 L12 41 L27 20 L20 20 L26 3 Z" fill="url(#nl-bolt)"/>
+                  <path d="M16 2 L7 20 L14 20 L10 40 L25 19 L18 19 L24 2 Z" fill="url(#nl-bolt)"/>
                 </g>
-                <path d="M19.5 8 L13 22 L17.5 22 L14.5 33 L23 21 L19 21 L22.5 8 Z" fill="white" fillOpacity="0.18"/>
-                {/* Broadcast arcs */}
+                <path d="M17.5 7 L11.5 21 L16 21 L13 32 L21 20 L17 20 L21 7 Z" fill="white" fillOpacity="0.2"/>
                 <g strokeLinecap="round" fill="none">
-                  <path d="M29 10 C 34 14, 37 20, 37 27 C 37 34, 34 40, 29 44" stroke="url(#nl-arc)" strokeWidth="2.2" opacity="1"/>
-                  <path d="M32 14 C 36 18, 38 22, 38 27 C 38 32, 36 36, 32 40" stroke="url(#nl-arc)" strokeWidth="1.8" opacity="0.7"/>
-                  <path d="M35 18 C 38 21, 39.5 24, 39.5 27 C 39.5 30, 38 33, 35 36" stroke="url(#nl-arc)" strokeWidth="1.4" opacity="0.45"/>
+                  <path d="M26 8 C 31 12, 34 18, 34 25 C 34 32, 31 38, 26 42" stroke="url(#nl-arc)" strokeWidth="2" opacity="1"/>
+                  <path d="M29 13 C 33 17, 35 21, 35 25 C 35 29, 33 33, 29 37" stroke="url(#nl-arc)" strokeWidth="1.6" opacity="0.7"/>
+                  <path d="M32 17 C 35 20, 36.5 22.5, 36.5 25 C 36.5 27.5, 35 30, 32 33" stroke="url(#nl-arc)" strokeWidth="1.2" opacity="0.4"/>
                 </g>
-                {/* Dot */}
-                <circle cx="29" cy="27" r="1.8" fill="url(#nl-arc)" opacity="0.85"/>
-                {/* Divider */}
-                <line x1="46" y1="8" x2="46" y2="38" stroke="rgba(255,255,255,0.1)" strokeWidth="1"/>
-                {/* "PREMIUM IPTV STREAMING" */}
-                <text x="52" y="16" fontFamily="inherit" fontSize="7" fontWeight="700" letterSpacing="2.5" fill="#088fc3" textAnchor="start">PREMIUM IPTV STREAMING</text>
-                {/* "NORDIC" outline */}
-                <text x="51" y="37" fontFamily="inherit" fontSize="22" fontWeight="900" letterSpacing="1" fill="none" stroke="url(#nl-nordic)" strokeWidth="1" textAnchor="start">NORDIC</text>
-                {/* "IPTV" solid */}
-                <text x="116" y="37" fontFamily="inherit" fontSize="22" fontWeight="900" letterSpacing="0.5" fill="url(#nl-iptv)" textAnchor="start">IPTV</text>
+                <circle cx="26" cy="25" r="1.6" fill="url(#nl-arc)"/>
               </svg>
+
+              {/* Divider */}
+              <span style={{ width: 1, height: 30, background: "rgba(255,255,255,0.1)", margin: "0 12px", flexShrink: 0 }} />
+
+              {/* Text block */}
+              <span style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                <span style={{
+                  fontSize: 8, fontWeight: 700, letterSpacing: "0.22em",
+                  color: "#088fc3", textTransform: "uppercase", lineHeight: 1,
+                  whiteSpace: "nowrap",
+                }}>
+                  Premium IPTV Streaming
+                </span>
+                <span style={{ display: "flex", alignItems: "baseline", gap: 0, lineHeight: 1 }}>
+                  <span style={{
+                    fontSize: 22, fontWeight: 900, letterSpacing: "0.03em",
+                    WebkitTextStroke: "1px #088fc3",
+                    color: "transparent",
+                    whiteSpace: "nowrap",
+                  }}>
+                    NORDIC
+                  </span>
+                  <span style={{
+                    fontSize: 22, fontWeight: 900, letterSpacing: "0.03em",
+                    background: "linear-gradient(135deg,#ff6b35,#ff3d00)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    whiteSpace: "nowrap",
+                  }}>
+                    IPTV
+                  </span>
+                </span>
+              </span>
             </a>
             <div className="ni-nav-links">
               {([["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]] as [string,string][]).map(([href, label]) => (
