@@ -1199,8 +1199,8 @@ function WhatsAppReviews() {
             >
               {WA_ICON(20)}
               <span>
-                <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".03em" }}>GET FREE TRIAL</div>
-                <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.9 }}>Chat on WhatsApp</div>
+                <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".03em" }}>Prova Gratis</div>
+                <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.9 }}>Chatta på WhatsApp</div>
               </span>
             </a>
           </div>
@@ -1565,8 +1565,8 @@ function FloatingWhatsApp() {
     >
       {WA_ICON(22)}
       <span style={{ lineHeight: 1.2 }}>
-        <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".04em", whiteSpace: "nowrap" }}>GET FREE TRIAL</div>
-        <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.9, whiteSpace: "nowrap" }}>Chat on WhatsApp</div>
+        <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".04em", whiteSpace: "nowrap" }}>Prova Gratis</div>
+        <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.9, whiteSpace: "nowrap" }}>Chatta på WhatsApp</div>
       </span>
     </a>
   );
