@@ -436,10 +436,15 @@ function Nav() {
 function Hero() {
   return (
     <section id="hero" className="ni-hero">
-      {/* shader fills full hero */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}><Phosphor30 /></div>
-      {/* subtle vignette so text stays readable */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,8,14,0.72) 0%, rgba(7,8,14,0.30) 60%, rgba(7,8,14,0.10) 100%)", pointerEvents: "none" }} />
+      {/* video background */}
+      <video
+        autoPlay muted loop playsInline
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+      >
+        <source src="/hero-video.webm" type="video/webm" />
+      </video>
+      {/* dark overlay so text is readable */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,8,14,0.80) 0%, rgba(7,8,14,0.55) 60%, rgba(7,8,14,0.30) 100%)", pointerEvents: "none" }} />
       <div className="ni-hero-grid" style={{ position: "absolute", inset: 0, zIndex: 2 }} />
       <div className="ni-container">
         <div className="ni-hero-content">
@@ -467,22 +472,6 @@ function Hero() {
                   <div className="lbl">{lbl}</div>
                 </div>
               ))}
-            </div>
-          </div>
-          <div className="ni-fade-up ni-delay-2" style={{ position: "relative" }}>
-            <div style={{ position: "relative", borderRadius: 16, overflow: "hidden", boxShadow: "0 0 60px rgba(0,212,255,0.15), 0 24px 80px rgba(0,0,0,0.6)" }}>
-              <div className="ni-live-indicator" style={{ position: "absolute", top: 12, right: 12, zIndex: 2 }}>
-                <span className="ni-live-dot" />● LIVE NU
-              </div>
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                style={{ width: "100%", display: "block", borderRadius: 16 }}
-              >
-                <source src="/hero-video.webm" type="video/webm" />
-              </video>
             </div>
           </div>
         </div>
