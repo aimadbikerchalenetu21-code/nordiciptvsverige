@@ -513,7 +513,7 @@ function Hero() {
       </div>
 
       {/* covers video watermark — radial fade from bottom-right corner */}
-      <div style={{ position: "absolute", bottom: 0, right: 0, width: 800, height: 320, background: "radial-gradient(ellipse 100% 100% at 100% 100%, #04050a 0%, rgba(4,5,10,0.85) 30%, rgba(4,5,10,0.5) 55%, rgba(4,5,10,0.15) 75%, transparent 100%)", zIndex: 5, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: 0, right: 0, width: 1100, height: 500, background: "radial-gradient(ellipse 100% 100% at 100% 100%, #04050a 0%, rgba(4,5,10,0.9) 25%, rgba(4,5,10,0.6) 50%, rgba(4,5,10,0.2) 72%, transparent 100%)", zIndex: 5, pointerEvents: "none" }} />
     </section>
   );
 }
