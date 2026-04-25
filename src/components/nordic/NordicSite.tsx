@@ -519,20 +519,16 @@ function Hero() {
 }
 
 function ContentShowcase() {
-  const [activeTab, setActiveTab] = useState(CONTENT_TABS[0]);
-  const items = CONTENT_ITEMS[activeTab] || [];
+  const items = CONTENT_ITEMS[CONTENT_TABS[0]] || [];
   return (
     <section className="ni-showcase">
       <div className="ni-container">
         <div style={{ textAlign: "center", marginBottom: 8 }}><span className="ni-tag ni-tag-cyan">▶ Innehållsbibliotek</span></div>
         <h2 className="ni-section-title">Oändligt underhållning</h2>
         <p className="ni-section-sub">Filmer, serier, sport och nyheter — allt på ett ställe</p>
-        <div className="ni-showcase-tabs">
-          {CONTENT_TABS.map(t => (
-            <button key={t} className={cn("ni-showcase-tab", activeTab === t && "active")} onClick={() => setActiveTab(t)}>{t}</button>
-          ))}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <CardStack items={items} autoAdvance={true} intervalMs={2800} />
         </div>
-        <CardStack items={items} autoAdvance={true} intervalMs={2800} />
       </div>
     </section>
   );
