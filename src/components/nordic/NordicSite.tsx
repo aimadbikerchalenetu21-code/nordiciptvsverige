@@ -354,92 +354,55 @@ function Nav() {
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
+
+  const links: [string, string][] = [["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]];
+
   return (
     <>
       <nav className={cn("ni-nav", scrolled && "scrolled")}>
         <div className="ni-container">
           <div className="ni-nav-inner">
+
+            {/* Logo */}
             <a href="#" className="ni-nav-logo">
-              {/* Icon: bolt + arcs */}
-              <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ flexShrink: 0 }}>
-                <defs>
-                  <linearGradient id="nl-bolt" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#ff6b35"/><stop offset="100%" stopColor="#ff8a3d"/>
-                  </linearGradient>
-                  <linearGradient id="nl-arc" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#ff6b35" stopOpacity="0.95"/><stop offset="100%" stopColor="#088fc3" stopOpacity="0.8"/>
-                  </linearGradient>
-                  <filter id="nl-glow" x="-40%" y="-40%" width="180%" height="180%">
-                    <feGaussianBlur stdDeviation="1.2" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                </defs>
-                <g filter="url(#nl-glow)">
-                  <path d="M16 2 L7 20 L14 20 L10 40 L25 19 L18 19 L24 2 Z" fill="url(#nl-bolt)"/>
-                </g>
-                <path d="M17.5 7 L11.5 21 L16 21 L13 32 L21 20 L17 20 L21 7 Z" fill="white" fillOpacity="0.2"/>
-                <g strokeLinecap="round" fill="none">
-                  <path d="M26 8 C 31 12, 34 18, 34 25 C 34 32, 31 38, 26 42" stroke="url(#nl-arc)" strokeWidth="2" opacity="1"/>
-                  <path d="M29 13 C 33 17, 35 21, 35 25 C 35 29, 33 33, 29 37" stroke="url(#nl-arc)" strokeWidth="1.6" opacity="0.7"/>
-                  <path d="M32 17 C 35 20, 36.5 22.5, 36.5 25 C 36.5 27.5, 35 30, 32 33" stroke="url(#nl-arc)" strokeWidth="1.2" opacity="0.4"/>
-                </g>
-                <circle cx="26" cy="25" r="1.6" fill="url(#nl-arc)"/>
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+                <path d="M14 2 L26 14 L14 26 L2 14 Z" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1"/>
+                <path d="M14 2 L20 14 L14 14 Z" fill="#00d4ff"/>
+                <path d="M14 14 L20 14 L14 26 Z" fill="#ff6b35"/>
+                <path d="M14 2 L8 14 L14 14 Z" fill="#ff6b35" opacity="0.7"/>
+                <path d="M14 14 L8 14 L14 26 Z" fill="#00d4ff" opacity="0.7"/>
               </svg>
-
-              {/* Divider */}
-              <span style={{ width: 1, height: 30, background: "rgba(255,255,255,0.1)", margin: "0 12px", flexShrink: 0 }} />
-
-              {/* Text block */}
-              <span style={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                <span style={{
-                  fontSize: 8, fontWeight: 700, letterSpacing: "0.22em",
-                  color: "#088fc3", textTransform: "uppercase", lineHeight: 1,
-                  whiteSpace: "nowrap",
-                }}>
-                  Premium IPTV Streaming
-                </span>
-                <span style={{ display: "flex", alignItems: "baseline", gap: 0, lineHeight: 1 }}>
-                  <span style={{
-                    fontSize: 22, fontWeight: 900, letterSpacing: "0.03em",
-                    WebkitTextStroke: "1px #088fc3",
-                    color: "transparent",
-                    whiteSpace: "nowrap",
-                  }}>
-                    NORDIC
-                  </span>
-                  <span style={{
-                    fontSize: 22, fontWeight: 900, letterSpacing: "0.03em",
-                    background: "linear-gradient(135deg,#ff6b35,#ff3d00)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    whiteSpace: "nowrap",
-                  }}>
-                    IPTV
-                  </span>
-                </span>
+              <span style={{ fontSize: 17, fontWeight: 600, color: "#fff", letterSpacing: "0.01em", whiteSpace: "nowrap", marginLeft: 10 }}>
+                nordic <span style={{ color: "#00d4ff" }}>iptv</span>
               </span>
             </a>
+
+            {/* Desktop links */}
             <div className="ni-nav-links">
-              {([["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]] as [string,string][]).map(([href, label]) => (
+              {links.map(([href, label]) => (
                 <a key={href} href={href} className="ni-nav-link">{label}</a>
               ))}
             </div>
+
+            {/* CTA */}
             <div className="ni-nav-actions">
-              <a href="#pricing" className="ni-btn ni-btn-outline" style={{ padding: "8px 18px", fontSize: 13 }}>Se Priser</a>
-              <a href="#trial" className="ni-nav-trial">Prova Gratis 24h</a>
+              <a href="#trial" className="ni-nav-cta">Komma igång</a>
             </div>
+
+            {/* Hamburger */}
             <div className="ni-hamburger" onClick={() => setMenuOpen(!menuOpen)}>
               <span /><span /><span />
             </div>
           </div>
         </div>
       </nav>
+
+      {/* Mobile menu */}
       <div className={cn("ni-mobile-menu", menuOpen && "open")}>
-        {([["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]] as [string,string][]).map(([href, label]) => (
+        {links.map(([href, label]) => (
           <a key={href} href={href} className="ni-mobile-link" onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
-        <a href="#trial" className="ni-btn ni-btn-cyan" style={{ marginTop: 12 }}>Prova Gratis 24h</a>
+        <a href="#trial" className="ni-nav-cta" style={{ marginTop: 12, textAlign: "center" }} onClick={() => setMenuOpen(false)}>Komma igång</a>
       </div>
     </>
   );
