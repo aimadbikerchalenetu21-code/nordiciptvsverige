@@ -511,6 +511,11 @@ function Hero() {
           <rect x="12" y="8" width="4" height="8" rx="2" fill="rgba(255,255,255,0.6)"/>
         </svg>
       </div>
+
+      {/* video source credit — bottom right */}
+      <div className="ni-hero-source">
+        <span>Källa: TUDN &amp; Univision · Liga MX</span>
+      </div>
     </section>
   );
 }
