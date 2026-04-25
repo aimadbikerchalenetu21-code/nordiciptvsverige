@@ -365,16 +365,7 @@ function Nav() {
 
             {/* Logo */}
             <a href="#" className="ni-nav-logo">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-                <path d="M14 2 L26 14 L14 26 L2 14 Z" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1"/>
-                <path d="M14 2 L20 14 L14 14 Z" fill="#00d4ff"/>
-                <path d="M14 14 L20 14 L14 26 Z" fill="#ff6b35"/>
-                <path d="M14 2 L8 14 L14 14 Z" fill="#ff6b35" opacity="0.7"/>
-                <path d="M14 14 L8 14 L14 26 Z" fill="#00d4ff" opacity="0.7"/>
-              </svg>
-              <span style={{ fontSize: 17, fontWeight: 600, color: "#fff", letterSpacing: "0.01em", whiteSpace: "nowrap", marginLeft: 10 }}>
-                nordic <span style={{ color: "#00d4ff" }}>iptv</span>
-              </span>
+              <img src="/logo.webp" alt="Nordic IPTV Sverige" style={{ height: 44, width: "auto", display: "block" }} />
             </a>
 
             {/* Desktop links */}
@@ -1366,7 +1357,7 @@ function Footer() {
       <div className="ni-container">
         <div className="ni-footer-grid">
           <div>
-            <div className="ni-footer-brand">Nordic IPTV <span>Sverige</span></div>
+            <div className="ni-footer-brand"><img src="/logo.webp" alt="Nordic IPTV Sverige" style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} /></div>
             <div className="ni-footer-tagline">Sveriges ledande IPTV-tjänst med 35,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
             <div style={{ display: "flex", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
               {["📘 Facebook", "🐦 Twitter", "📸 Instagram", "💬 Telegram"].map(s => (
