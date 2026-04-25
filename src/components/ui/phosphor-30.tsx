@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const SHADER_SRC = `#version 300 es
 precision highp float;
@@ -170,7 +170,7 @@ function ShaderCanvas({ fragSource, pixelRatio }: { fragSource: string; pixelRat
     frameRef.current = 0;
 
     function tick(now: number) {
-      if (disposed) return;
+      if (disposed || !gl) return;
       if (gl.isContextLost()) { rafRef.current = requestAnimationFrame(tick); return; }
 
       const t = (now - startRef.current) / 1000;
