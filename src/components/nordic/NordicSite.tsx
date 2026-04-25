@@ -436,45 +436,80 @@ function Nav() {
 function Hero() {
   return (
     <section id="hero" className="ni-hero">
-      {/* video background */}
-      <video
-        autoPlay muted loop playsInline
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
-      >
+      {/* full-screen video */}
+      <video autoPlay muted loop playsInline className="ni-hero-video">
         <source src="/hero-video.webm" type="video/webm" />
       </video>
-      {/* dark overlay so text is readable */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,8,14,0.80) 0%, rgba(7,8,14,0.55) 60%, rgba(7,8,14,0.30) 100%)", pointerEvents: "none" }} />
-      <div className="ni-hero-grid" style={{ position: "absolute", inset: 0, zIndex: 2 }} />
-      <div className="ni-container">
-        <div className="ni-hero-content">
-          <div>
-            <div className="ni-hero-kicker">Sveriges Ledande IPTV-Tjänst 2026</div>
-            <h1 className="ni-hero-title ni-fade-up">
-              Upplev TV<br />
-              <span className="accent">utan gränser.</span>
-            </h1>
-            <p className="ni-hero-desc ni-fade-up ni-delay-1">
-              Över <strong style={{ color: "#f0f6ff" }}>35,000 kanaler</strong>, filmer och serier i kristallklar{" "}
-              <strong style={{ color: "#ff6b35" }}>4K UHD</strong> — på alla dina enheter. Inga bindningstider. Omedelbar aktivering.
-            </p>
-            <div className="ni-hero-actions ni-fade-up ni-delay-2">
-              <a href="#trial" className="ni-btn ni-btn-cyan" style={{ fontSize: 17, padding: "16px 36px" }}>Starta gratis IPTV-test</a>
-              <a href="#pricing" className="ni-btn ni-btn-glass" style={{ fontSize: 17, padding: "16px 28px" }}>Se IPTV-priser →</a>
-            </div>
-            <div style={{ fontSize: 13, color: "#7a90a8", marginBottom: 32 }} className="ni-fade-up ni-delay-2">
-              Inget kort krävs · Uppgifter via WhatsApp på under 3 minuter · 7 dagars pengarna-tillbaka-garanti
-            </div>
-            <div className="ni-hero-stats ni-fade-up ni-delay-3">
-              {([["35,000+","Kanaler"],["4K UHD","Bildkvalitet"],["99.9%","Drifttid"],["24/7","Support"]] as [string,string][]).map(([num, lbl]) => (
-                <div key={lbl} className="ni-hero-stat">
-                  <div className="num">{num}</div>
-                  <div className="lbl">{lbl}</div>
-                </div>
-              ))}
-            </div>
+      {/* dark overlay — left heavy, fades right so video shows through */}
+      <div className="ni-hero-overlay" />
+
+      {/* content pinned to bottom of viewport */}
+      <div className="ni-hero-inner">
+        <div className="ni-container">
+
+          {/* kicker */}
+          <div className="ni-hero-kicker ni-fade-up">
+            Sveriges Ledande IPTV-Tjänst &nbsp;·&nbsp; Betyg 4.9 / 5
           </div>
+
+          {/* headline */}
+          <h1 className="ni-hero-title ni-fade-up">
+            Bästa IPTV-prenumeration<br />
+            — 35,000+ 4K Live-kanaler,<br />
+            <span style={{ color: "#ff6b35" }}>24-timmars gratis provperiod</span>
+          </h1>
+
+          {/* description */}
+          <p className="ni-hero-desc ni-fade-up ni-delay-1">
+            NordicIPTV är den <strong>bästa IPTV-tjänsten</strong> för svenska tittare — en{" "}
+            <strong>premium IPTV-prenumeration</strong> med 35,000+ live-kanaler i{" "}
+            <strong>4K</strong> och 120,000+ on-demand-titlar. Från{" "}
+            <strong>79 kr / månad</strong> med gratis IPTV-test — inget kort, ingen auto-förnyelse, avsluta när du vill.
+          </p>
+
+          {/* CTAs */}
+          <div className="ni-hero-actions ni-fade-up ni-delay-2">
+            <a href="#trial" className="ni-btn ni-btn-cyan" style={{ fontSize: 16, padding: "15px 32px" }}>
+              Starta gratis IPTV-test
+            </a>
+            <a href="#pricing" className="ni-btn ni-btn-outline-white" style={{ fontSize: 16, padding: "15px 28px" }}>
+              Se IPTV-priser &rarr;
+            </a>
+          </div>
+
+          {/* trust line */}
+          <p className="ni-hero-trust ni-fade-up ni-delay-2">
+            Inget kort krävs · Uppgifter via WhatsApp på under 3 minuter · 7 dagars pengarna-tillbaka-garanti
+          </p>
+
+          {/* divider */}
+          <div className="ni-hero-divider ni-fade-up ni-delay-3" />
+
+          {/* stats */}
+          <div className="ni-hero-stats ni-fade-up ni-delay-3">
+            {([
+              ["BETYG",       "4.9", "/ 5"],
+              ["PRENUMERANTER","50,000+", ""],
+              ["DRIFTTID",    "99.9%", ""],
+            ] as [string,string,string][]).map(([lbl, num, sub]) => (
+              <div key={lbl} className="ni-hero-stat">
+                <div className="ni-hero-stat-lbl">{lbl}</div>
+                <div className="ni-hero-stat-num">
+                  {num}<span className="ni-hero-stat-sub">{sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
+      </div>
+
+      {/* scroll indicator */}
+      <div className="ni-hero-scroll">
+        <svg width="28" height="44" viewBox="0 0 28 44" fill="none">
+          <rect x="1" y="1" width="26" height="42" rx="13" stroke="rgba(255,255,255,0.4)" strokeWidth="2"/>
+          <rect x="12" y="8" width="4" height="8" rx="2" fill="rgba(255,255,255,0.6)"/>
+        </svg>
       </div>
     </section>
   );
