@@ -1186,7 +1186,7 @@ function WhatsAppReviews() {
           {/* WhatsApp CTA */}
           <div style={{ display: "flex", justifyContent: "flex-end", paddingBottom: 8 }}>
             <a
-              href="https://wa.me/message/yourlinkhere"
+              href="https://wa.me/212651356639"
               target="_blank"
               rel="noreferrer"
               style={{
@@ -1534,6 +1534,44 @@ function ScrollTop() {
 
 // ── APP ───────────────────────────────────────────────────────────────────────
 
+const WA_URL = "https://wa.me/212651356639";
+
+function FloatingWhatsApp() {
+  return (
+    <a
+      href={WA_URL}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chat on WhatsApp"
+      style={{
+        position: "fixed",
+        bottom: 24,
+        right: 24,
+        zIndex: 2000,
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        background: "#25D366",
+        color: "#fff",
+        borderRadius: 50,
+        padding: "12px 18px 12px 14px",
+        textDecoration: "none",
+        fontFamily: "inherit",
+        boxShadow: "0 6px 28px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.3)",
+        transition: "transform .2s, box-shadow .2s",
+      }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 36px rgba(37,211,102,0.55), 0 4px 12px rgba(0,0,0,0.35)"; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = ""; (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 28px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.3)"; }}
+    >
+      {WA_ICON(22)}
+      <span style={{ lineHeight: 1.2 }}>
+        <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".04em", whiteSpace: "nowrap" }}>GET FREE TRIAL</div>
+        <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.9, whiteSpace: "nowrap" }}>Chat on WhatsApp</div>
+      </span>
+    </a>
+  );
+}
+
 export default function NordicSite() {
   return (
     <>
@@ -1550,6 +1588,7 @@ export default function NordicSite() {
       <FAQ />
       <Footer />
       <ScrollTop />
+      <FloatingWhatsApp />
     </>
   );
 }
