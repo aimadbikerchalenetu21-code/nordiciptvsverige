@@ -640,3 +640,119 @@ img { max-width: 100%; }
 .ni-delay-2 { animation-delay: .2s; }
 .ni-delay-3 { animation-delay: .3s; }
 .ni-delay-4 { animation-delay: .4s; }
+
+/* ═══════════════════════════════════════════════════════ */
+/* MOBILE RESPONSIVE — comprehensive overrides            */
+/* ═══════════════════════════════════════════════════════ */
+@media(max-width: 640px) {
+
+  /* ── Container ── */
+  .ni-container { padding: 0 16px; }
+
+  /* ── Top banner ── */
+  .ni-top-banner { padding: 10px 40px 10px 16px; }
+  .ni-top-banner-text { font-size: 12px; }
+
+  /* ── Nav ── */
+  .ni-nav-inner { height: 56px; }
+  .ni-mobile-menu { inset: 56px 0 0; }
+
+  /* ── Hero ── */
+  .ni-hero-overlay {
+    background: linear-gradient(to bottom,
+      rgba(4,5,10,0.45) 0%,
+      rgba(4,5,10,0.70) 50%,
+      rgba(4,5,10,0.90) 100%);
+  }
+  .ni-hero-inner { padding: 0 0 56px; }
+  .ni-hero-kicker { font-size: 10px; margin-bottom: 14px; }
+  .ni-hero-kicker::before { width: 18px; }
+  .ni-hero-title { font-size: 30px; line-height: 34px; margin-bottom: 16px; max-width: 100%; }
+  .ni-hero-desc { font-size: 14px; margin-bottom: 24px; max-width: 100%; }
+  .ni-hero-actions { flex-direction: column; gap: 10px; margin-bottom: 12px; }
+  .ni-hero-actions .ni-btn,
+  .ni-hero-actions .ni-btn-outline-white { width: 100%; justify-content: center; padding: 14px 20px; font-size: 14px; }
+  .ni-hero-trust { font-size: 11px; margin-bottom: 24px; }
+  .ni-hero-divider { margin-bottom: 20px; }
+  .ni-hero-stats { gap: 20px; }
+  .ni-hero-stat-num { font-size: 20px; }
+  .ni-hero-stat-lbl { font-size: 10px; }
+  .ni-hero-scroll { display: none; }
+
+  /* ── Section titles ── */
+  .ni-section-title { font-size: 26px; }
+  .ni-section-sub { font-size: 14px; margin-bottom: 28px; }
+
+  /* ── Showcase tabs — horizontal scroll ── */
+  .ni-showcase { padding: 48px 0; }
+  .ni-showcase-tabs {
+    flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+    padding-bottom: 8px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; gap: 6px;
+    padding-left: 16px; padding-right: 16px;
+    margin-left: -16px; margin-right: -16px;
+  }
+  .ni-showcase-tabs::-webkit-scrollbar { display: none; }
+  .ni-showcase-tab { flex-shrink: 0; padding: 7px 14px; font-size: 11px; }
+
+  /* ── Pricing section ── */
+  .ni-pricing-section { padding: 48px 0; }
+  .ni-pricing-grid { grid-template-columns: 1fr; gap: 16px; }
+  .ni-cd-container { padding: 20px 16px; }
+  .ni-cd-digit-pair { font-size: 32px; padding: 10px 6px; }
+  .ni-cd-sep-block { font-size: 28px; }
+  .ni-cd-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  /* ── Comparison — stack on mobile ── */
+  .ni-compare-section { padding: 48px 0; }
+  .ni-compare-grid-2col {
+    grid-template-columns: 1fr !important;
+    border: none !important;
+    gap: 16px !important;
+  }
+  .ni-compare-cable { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07) !important; }
+
+  /* ── Multi-device ── */
+  .ni-multi-section { padding: 40px 0 56px; }
+  .ni-multi-grid { grid-template-columns: 1fr; gap: 14px; }
+  .ni-multi-price { font-size: 40px; }
+
+  /* ── Devices ── */
+  .ni-devices-section { padding: 48px 0; }
+  .ni-devices-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .ni-device-card { padding: 20px 12px; }
+  .ni-device-icon { font-size: 32px; margin-bottom: 10px; }
+  .ni-device-name { font-size: 15px; }
+
+  /* ── Ecosystem ── */
+  .ni-ecosystem-section { padding: 48px 0; }
+  .ni-eco-canvas { height: 280px; }
+  .ni-eco-hub { width: 64px; height: 64px; }
+  .ni-eco-hub-label { font-size: 8px; }
+  .ni-eco-pill { font-size: 9px; padding: 5px 9px; }
+
+  /* ── Testimonials ── */
+  .ni-testimonials-section { padding: 48px 0; }
+  .ni-testimonials-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  /* ── FAQ ── */
+  .ni-faq-section { padding: 48px 0; }
+  .ni-faq-q { font-size: 14px; padding: 16px 18px; }
+  .ni-faq-a { font-size: 13px; padding: 0 18px 16px; }
+
+  /* ── CTA banner ── */
+  .ni-cta-banner { padding: 48px 0; }
+  .ni-cta-title { font-size: 28px; }
+  .ni-cta-sub { font-size: 15px; margin-bottom: 24px; }
+  .ni-cta-actions { flex-direction: column; align-items: center; }
+  .ni-cta-actions .ni-btn { width: 100%; justify-content: center; }
+
+  /* ── Footer ── */
+  .ni-footer { padding: 40px 0 24px; }
+  .ni-footer-grid { grid-template-columns: 1fr; gap: 28px; margin-bottom: 32px; }
+  .ni-footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .ni-footer-legal { flex-wrap: wrap; gap: 12px; }
+
+  /* ── Scroll-to-top ── */
+  .ni-scroll-top { bottom: 16px; right: 16px; width: 38px; height: 38px; font-size: 16px; }
+}

@@ -887,10 +887,10 @@ function Comparison() {
         </p>
 
         {/* 2-col card grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, marginBottom: 0, border: "1px solid rgba(255,255,255,0.07)" }}>
+        <div className="ni-compare-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, marginBottom: 0, border: "1px solid rgba(255,255,255,0.07)" }}>
 
           {/* Cable TV card */}
-          <CompareCard accentColor="#ff3d57" style={{ borderRight: "1px solid rgba(255,255,255,0.07)" } as React.CSSProperties}>
+          <CompareCard accentColor="#ff3d57" className="ni-compare-cable" style={{ borderRight: "1px solid rgba(255,255,255,0.07)" } as React.CSSProperties}>
             {/* Subtle red radial at top */}
             <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 40% at 50% 0%,rgba(255,61,87,0.06),transparent 60%)", pointerEvents: "none" }} />
             <div style={{ padding: "28px 28px 0", position: "relative" }}>
