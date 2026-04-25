@@ -345,6 +345,8 @@ img { max-width: 100%; }
   z-index: 10; opacity: 0.6; animation: niScrollBounce 2s ease infinite;
 }
 @keyframes niScrollBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+@keyframes waSlideIn { from { opacity:0; transform:translateX(28px); } to { opacity:1; transform:translateX(0); } }
+@keyframes waSlideInLeft { from { opacity:0; transform:translateX(-28px); } to { opacity:1; transform:translateX(0); } }
 .ni-hero-source {
   position: absolute; bottom: 16px; right: 20px; z-index: 10;
   background: rgba(0,0,0,0.72); backdrop-filter: blur(6px);
@@ -664,13 +666,17 @@ img { max-width: 100%; }
   /* ── Container ── */
   .ni-container { padding: 0 16px; }
 
-  /* ── Top banner ── */
-  .ni-top-banner { padding: 10px 40px 10px 16px; }
-  .ni-top-banner-text { font-size: 12px; }
+  /* ── Top banner — compact single line ── */
+  .ni-top-banner { padding: 7px 36px 7px 12px; }
+  .ni-top-banner-text { font-size: 11px; line-height: 1.35; }
+  .ni-top-banner-sub { display: none; }
+  .ni-top-banner-text br { display: none; }
 
-  /* ── Nav ── */
-  .ni-nav-inner { height: 56px; }
-  .ni-mobile-menu { inset: 56px 0 0; }
+  /* ── Nav — sits immediately under compact banner (~34px) ── */
+  .ni-nav { top: 34px; }
+  .ni-nav-inner { height: 54px; }
+  .ni-mobile-menu { top: 88px; left: 0; right: 0; bottom: 0; inset: unset; }
+  .ni-hero { padding-top: 88px; }
 
   /* ── Hero ── */
   .ni-hero-overlay {

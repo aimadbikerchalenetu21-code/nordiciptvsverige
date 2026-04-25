@@ -263,8 +263,8 @@ function TopBanner() {
   return (
     <div className="ni-top-banner">
       <div className="ni-top-banner-text">
-        🟡 <strong>Sommarkampanj för en strålande säsong!</strong> Upp till 30% RABATT på alla abonnemang! 🌞<br />
-        <span style={{ fontSize: 12 }}>Begränsad tid – njut av svalkande underhållning i sommarhetten! ❄️</span>
+        🟡 <strong>Sommarkampanj!</strong> Upp till 30% RABATT på alla abonnemang! 🌞<br className="ni-top-banner-sub" />
+        <span className="ni-top-banner-sub"> Begränsad tid – njut av svalkande underhållning i sommarhetten! ❄️</span>
       </div>
       <button className="ni-top-banner-close" onClick={() => setVisible(false)}>✕</button>
     </div>
@@ -983,28 +983,91 @@ const WA_SLIDES = [
   },
 ];
 
-const VISIBLE = 4;
+const WA_ICON = (size = 14) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+);
+
+function WaCard({ slide }: { slide: typeof WA_SLIDES[0] }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <div style={{
+        position: "relative", borderRadius: 18,
+        border: "1px solid rgba(255,255,255,0.09)",
+        overflow: "hidden", background: "#111b21",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+      }}>
+        <div style={{
+          position: "absolute", top: 10, left: 10, zIndex: 5,
+          background: "rgba(37,211,102,0.92)", backdropFilter: "blur(8px)",
+          borderRadius: 20, padding: "4px 11px",
+          fontSize: 11, fontWeight: 700, color: "#fff", letterSpacing: ".03em",
+        }}>{slide.badge}</div>
+        <img src={slide.img} alt={slide.badge}
+          style={{ width: "100%", display: "block", aspectRatio: "9/16", objectFit: "cover" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 70, background: "linear-gradient(to top, rgba(17,27,33,0.95), transparent)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: 10, left: 12, display: "flex", alignItems: "center", gap: 6 }}>
+          {WA_ICON(14)}
+          <span style={{ fontSize: 10, color: "#25D366", fontWeight: 600 }}>WhatsApp</span>
+        </div>
+      </div>
+      <p style={{ fontSize: 13, color: "#7a90a8", lineHeight: 1.55, textAlign: "center", fontStyle: "italic", margin: 0 }}>
+        {slide.quote}
+      </p>
+    </div>
+  );
+}
 
 function WhatsAppReviews() {
   const [idx, setIdx] = useState(0);
+  const [dir, setDir] = useState(1);
+  const [hovering, setHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const total = WA_SLIDES.length;
-  const dots = total - VISIBLE + 1;
 
-  const prev = () => setIdx(i => Math.max(0, i - 1));
-  const next = () => setIdx(i => Math.min(dots - 1, i + 1));
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
-  const visible = WA_SLIDES.slice(idx, idx + VISIBLE);
+  const go = useCallback((newIdx: number, direction: number) => {
+    setDir(direction);
+    setIdx(((newIdx % total) + total) % total);
+  }, [total]);
+
+  useEffect(() => {
+    if (hovering) return;
+    const id = setInterval(() => go(idx + 1, 1), 3400);
+    return () => clearInterval(id);
+  }, [hovering, idx, go]);
+
+  const perPage = isMobile ? 1 : 3;
+  const slides = Array.from({ length: perPage }, (_, i) => ({
+    data: WA_SLIDES[(idx + i) % total],
+    key: (idx + i) % total,
+  }));
+
+  const arrowStyle = (disabled = false): React.CSSProperties => ({
+    position: "absolute", top: "40%", transform: "translateY(-50%)",
+    zIndex: 10, width: 44, height: 44, borderRadius: "50%",
+    background: "rgba(14,17,28,0.95)", border: "1px solid rgba(255,255,255,0.12)",
+    color: "#f0f6ff", fontSize: 22, cursor: disabled ? "default" : "pointer",
+    opacity: disabled ? 0.25 : 1, display: "flex", alignItems: "center", justifyContent: "center",
+    transition: ".2s", flexShrink: 0,
+  });
 
   return (
     <section style={{ background: "#03060d", padding: "80px 0 60px", position: "relative", overflow: "hidden" }}>
-      {/* Dot-grid bg */}
       <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(0,212,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
       <div className="ni-container" style={{ position: "relative" }}>
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 12 }}>
           <span className="ni-tag ni-tag-green" style={{ gap: 6 }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="#25D366" style={{ flexShrink: 0 }} aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            {WA_ICON(13)}
             RIKTIGA IPTV-AKTIVERINGAR PÅ WHATSAPP
           </span>
         </div>
@@ -1012,98 +1075,49 @@ function WhatsAppReviews() {
           Verifierade IPTV-aktiveringar från<br />riktiga svenska prenumeranter
         </h2>
         <p style={{ textAlign: "center", color: "#7a90a8", fontSize: 14, lineHeight: 1.75, maxWidth: 620, margin: "0 auto 40px" }}>
-          Oredigerade WhatsApp-skärmdumpar från våra kunder i Sverige. Namn är förkortade av integritetsskäl.
+          Oredigerade WhatsApp-skärmdumpar från våra kunder i Sverige. Namn är förkortade av integritetsskäl.{" "}
           Genomsnittlig svarstid: <strong style={{ color: "#f0f6ff" }}>under 4 minuter</strong>. Genomsnittlig aktivering efter betalning:{" "}
           <strong style={{ color: "#f0f6ff" }}>under 2 minuter</strong>.
         </p>
 
-        {/* Carousel */}
-        <div style={{ position: "relative" }}>
+        {/* Animated carousel */}
+        <div
+          style={{ position: "relative", display: "flex", alignItems: "center", gap: 12 }}
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+        >
           {/* Left arrow */}
-          <button
-            onClick={prev}
-            disabled={idx === 0}
-            aria-label="Föregående"
-            style={{
-              position: "absolute", left: -20, top: "45%", transform: "translateY(-50%)",
-              zIndex: 10, width: 40, height: 40, borderRadius: "50%",
-              background: "rgba(14,17,28,0.95)", border: "1px solid rgba(255,255,255,0.12)",
-              color: "#f0f6ff", fontSize: 18, cursor: idx === 0 ? "not-allowed" : "pointer",
-              opacity: idx === 0 ? 0.3 : 1, display: "flex", alignItems: "center", justifyContent: "center",
-              transition: ".2s",
-            }}
-          >‹</button>
+          <button onClick={() => go(idx - 1, -1)} aria-label="Föregående" style={arrowStyle()}>‹</button>
 
-          {/* Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 14 }}>
-            {visible.map((slide, i) => (
-              <div key={idx + i} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {/* Phone frame */}
-                <div style={{
-                  position: "relative", borderRadius: 18,
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  overflow: "hidden",
-                  background: "#111b21",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
-                }}>
-                  {/* Badge */}
-                  <div style={{
-                    position: "absolute", top: 10, left: 10, zIndex: 5,
-                    background: "rgba(37,211,102,0.9)", backdropFilter: "blur(8px)",
-                    borderRadius: 20, padding: "3px 10px",
-                    fontSize: 10, fontWeight: 700, color: "#fff", letterSpacing: ".04em",
-                  }}>
-                    {slide.badge}
-                  </div>
-                  <img
-                    src={slide.img}
-                    alt={slide.badge}
-                    style={{ width: "100%", display: "block", aspectRatio: "9/16", objectFit: "cover" }}
-                  />
-                  {/* Bottom gradient */}
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 70, background: "linear-gradient(to top, rgba(17,27,33,0.95), transparent)", pointerEvents: "none" }} />
-                  {/* WhatsApp icon bottom */}
-                  <div style={{ position: "absolute", bottom: 10, left: 12, display: "flex", alignItems: "center", gap: 6 }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    <span style={{ fontSize: 10, color: "#25D366", fontWeight: 600 }}>WhatsApp</span>
-                  </div>
-                </div>
-                {/* Quote */}
-                <p style={{ fontSize: 12, color: "#7a90a8", lineHeight: 1.55, textAlign: "center", fontStyle: "italic" }}>
-                  {slide.quote}
-                </p>
-              </div>
-            ))}
+          {/* Cards — remount on idx change triggers CSS animation */}
+          <div
+            key={`${idx}-${dir}`}
+            style={{
+              flex: 1,
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)",
+              gap: 16,
+              animation: `${dir >= 0 ? "waSlideIn" : "waSlideInLeft"} 0.42s ease both`,
+            }}
+          >
+            {slides.map(({ data, key }) => <WaCard key={key} slide={data} />)}
           </div>
 
           {/* Right arrow */}
-          <button
-            onClick={next}
-            disabled={idx >= dots - 1}
-            aria-label="Nästa"
-            style={{
-              position: "absolute", right: -20, top: "45%", transform: "translateY(-50%)",
-              zIndex: 10, width: 40, height: 40, borderRadius: "50%",
-              background: "rgba(14,17,28,0.95)", border: "1px solid rgba(255,255,255,0.12)",
-              color: "#f0f6ff", fontSize: 18, cursor: idx >= dots - 1 ? "not-allowed" : "pointer",
-              opacity: idx >= dots - 1 ? 0.3 : 1, display: "flex", alignItems: "center", justifyContent: "center",
-              transition: ".2s",
-            }}
-          >›</button>
+          <button onClick={() => go(idx + 1, 1)} aria-label="Nästa" style={arrowStyle()}>›</button>
         </div>
 
-        {/* Dot indicators */}
+        {/* Progress dots */}
         <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 24 }}>
-          {Array.from({ length: dots }).map((_, i) => (
+          {WA_SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => setIdx(i)}
+              onClick={() => go(i, i > idx ? 1 : -1)}
               aria-label={`Gå till slide ${i + 1}`}
               style={{
                 width: i === idx ? 24 : 8, height: 8, borderRadius: 4,
                 background: i === idx ? "#25D366" : "rgba(255,255,255,0.18)",
-                border: "none", cursor: "pointer", padding: 0,
-                transition: "all .25s",
+                border: "none", cursor: "pointer", padding: 0, transition: "all .25s",
               }}
             />
           ))}
@@ -1113,33 +1127,24 @@ function WhatsAppReviews() {
         <div style={{
           display: "grid", gridTemplateColumns: "repeat(3,1fr)",
           gap: 0, marginTop: 44,
-          border: "1px solid rgba(255,255,255,0.07)",
-          position: "relative",
+          border: "1px solid rgba(255,255,255,0.07)", position: "relative",
         }}>
-          {/* Corner brackets */}
           <span style={{ position: "absolute", top: -1, left: -1, width: 10, height: 10, borderTop: "2px solid #25D366", borderLeft: "2px solid #25D366" }} />
           <span style={{ position: "absolute", top: -1, right: -1, width: 10, height: 10, borderTop: "2px solid #25D366", borderRight: "2px solid #25D366" }} />
           <span style={{ position: "absolute", bottom: -1, left: -1, width: 10, height: 10, borderBottom: "2px solid #25D366", borderLeft: "2px solid #25D366" }} />
           <span style={{ position: "absolute", bottom: -1, right: -1, width: 10, height: 10, borderBottom: "2px solid #25D366", borderRight: "2px solid #25D366" }} />
           {[
             { val: "40 000+", label: "Nöjda prenumeranter i Sverige", color: "#ff6b35" },
-            { val: "< 4 min", label: "Genomsnittlig svarstid på WhatsApp", color: "#00e676", border: true },
+            { val: "< 4 min", label: "Genomsnittlig svarstid på WhatsApp", color: "#00e676" },
             { val: "< 2 min", label: "Aktiveringstid efter betalning", color: "#00e676" },
           ].map((s, i) => (
-            <div
-              key={i}
-              style={{
-                padding: "28px 20px", textAlign: "center",
-                borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.07)" : "none",
-              }}
-            >
-              <div style={{ fontSize: "clamp(28px,4vw,42px)", fontWeight: 900, color: s.color, lineHeight: 1, marginBottom: 8 }}>{s.val}</div>
+            <div key={i} style={{ padding: "28px 20px", textAlign: "center", borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
+              <div style={{ fontSize: "clamp(24px,4vw,42px)", fontWeight: 900, color: s.color, lineHeight: 1, marginBottom: 8 }}>{s.val}</div>
               <div style={{ fontSize: 13, color: "#7a90a8" }}>{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Footer note */}
         <p style={{ textAlign: "center", marginTop: 20, fontSize: 12, color: "#4a5568" }}>
           Varje skärmdump är en riktig WhatsApp-konversation med svenska IPTV-kunder, återgiven med tillstånd.{" "}
           <a href="#pricing" style={{ color: "#25D366", textDecoration: "underline" }}>Starta gratis provperiod →</a>
