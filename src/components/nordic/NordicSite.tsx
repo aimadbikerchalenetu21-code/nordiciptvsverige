@@ -428,29 +428,36 @@ function ContentShowcase() {
     tag: item.rating,
   }));
 
-  const cardW = isMobile ? 130 : 180;
-  const cardH = isMobile ? 195 : 260;
+  const cardW = isMobile ? 260 : 600;
+  const cardH = isMobile ? 185 : 400;
 
   return (
-    <section className="ni-showcase">
+    <section className="ni-showcase" style={{ overflow: "hidden" }}>
       <div className="ni-container">
         <div style={{ textAlign: "center", marginBottom: 8 }}><span className="ni-tag ni-tag-cyan">▶ Innehållsbibliotek</span></div>
         <h2 className="ni-section-title">Oändligt underhållning</h2>
         <p className="ni-section-sub">Filmer, serier, sport och nyheter — allt på ett ställe</p>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <CardStack
-            items={stackItems}
-            cardWidth={cardW}
-            cardHeight={cardH}
-            spreadDeg={isMobile ? 28 : 36}
-            overlap={0.38}
-            maxVisible={isMobile ? 5 : 7}
-            depthPx={80}
-            autoAdvance={true}
-            intervalMs={2800}
-            pauseOnHover={true}
-          />
-        </div>
+      </div>
+      {/* card stack intentionally breaks out of container so cards bleed to edges */}
+      <div style={{ width: "100%", overflow: "visible" }}>
+        <CardStack
+          items={stackItems}
+          cardWidth={cardW}
+          cardHeight={cardH}
+          spreadDeg={isMobile ? 30 : 44}
+          overlap={isMobile ? 0.52 : 0.56}
+          maxVisible={isMobile ? 5 : 7}
+          depthPx={isMobile ? 60 : 120}
+          tiltXDeg={10}
+          activeLiftPx={28}
+          activeScale={1.04}
+          inactiveScale={0.88}
+          autoAdvance={true}
+          intervalMs={2800}
+          pauseOnHover={true}
+          springStiffness={260}
+          springDamping={26}
+        />
       </div>
     </section>
   );

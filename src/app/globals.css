@@ -365,7 +365,7 @@ img { max-width: 100%; }
 /* ─────────────────────────────────────────────────────── */
 /* Content Showcase / CardStack                           */
 /* ─────────────────────────────────────────────────────── */
-.ni-showcase { padding: 80px 0; }
+.ni-showcase { padding: 80px 0 40px; }
 .ni-showcase-tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
 .ni-showcase-tab {
   padding: 9px 22px; border-radius: 30px; font-size: 14px; font-weight: 700;
@@ -699,7 +699,7 @@ img { max-width: 100%; }
   .ni-section-sub { font-size: 14px; margin-bottom: 28px; }
 
   /* ── Showcase tabs — horizontal scroll ── */
-  .ni-showcase { padding: 48px 0; }
+  .ni-showcase { padding: 48px 0 24px; }
   .ni-showcase-tabs {
     flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
     padding-bottom: 8px; -webkit-overflow-scrolling: touch;
