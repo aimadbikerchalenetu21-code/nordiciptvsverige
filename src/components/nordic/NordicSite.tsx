@@ -1096,56 +1096,80 @@ function WhatsAppReviews() {
         </p>
       </div>
 
-      {/* ── MOBILE: full-bleed single card with overlaid arrows ── */}
+      {/* ── MOBILE: contained card with side arrows ── */}
       {isMobile ? (
         <div
+          className="ni-container"
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
         >
-          {/* Full-bleed image + overlaid arrows */}
-          <div style={{ position: "relative" }}>
-            <div
-              key={`${idx}-${dir}`}
-              style={{ animation: `${dir >= 0 ? "waSlideIn" : "waSlideInLeft"} 0.38s ease both` }}
-            >
-              <img
-                src={current.img}
-                alt={current.badge}
-                style={{ width: "100%", display: "block", aspectRatio: "9/16", objectFit: "cover" }}
-              />
-            </div>
-
-            {/* Badge */}
-            <div style={{
-              position: "absolute", top: 14, left: 14, zIndex: 10,
-              background: "rgba(37,211,102,0.93)", backdropFilter: "blur(8px)",
-              borderRadius: 22, padding: "5px 14px",
-              fontSize: 12, fontWeight: 700, color: "#fff",
-            }}>{current.badge}</div>
+          {/* Row: left arrow · card · right arrow */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
 
             {/* Left arrow */}
-            <button onClick={() => go(idx - 1, -1)} aria-label="Föregående" style={overlayArrow("left")}>‹</button>
-            {/* Right arrow */}
-            <button onClick={() => go(idx + 1, 1)} aria-label="Nästa" style={overlayArrow("right")}>›</button>
+            <button
+              onClick={() => go(idx - 1, -1)}
+              aria-label="Föregående"
+              style={{
+                flexShrink: 0, width: 44, height: 44, borderRadius: "50%",
+                background: "rgba(20,25,35,0.9)", border: "1.5px solid rgba(255,255,255,0.18)",
+                color: "#fff", fontSize: 24, cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+            >‹</button>
 
-            {/* Bottom gradient + WhatsApp label */}
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 80, background: "linear-gradient(to top, rgba(17,27,33,0.96), transparent)", pointerEvents: "none" }} />
-            <div style={{ position: "absolute", bottom: 12, left: 16, display: "flex", alignItems: "center", gap: 6 }}>
-              {WA_ICON(16)}
-              <span style={{ fontSize: 11, color: "#25D366", fontWeight: 700 }}>WhatsApp</span>
+            {/* Card */}
+            <div style={{ flex: 1, position: "relative", borderRadius: 16, overflow: "hidden", background: "#111b21", boxShadow: "0 12px 40px rgba(0,0,0,0.6)" }}>
+              <div
+                key={`${idx}-${dir}`}
+                style={{ animation: `${dir >= 0 ? "waSlideIn" : "waSlideInLeft"} 0.38s ease both` }}
+              >
+                <img
+                  src={current.img}
+                  alt={current.badge}
+                  style={{ width: "100%", display: "block", aspectRatio: "9/16", objectFit: "cover" }}
+                />
+              </div>
+
+              {/* Badge */}
+              <div style={{
+                position: "absolute", top: 10, left: 10, zIndex: 10,
+                background: "rgba(37,211,102,0.93)", backdropFilter: "blur(8px)",
+                borderRadius: 20, padding: "4px 12px",
+                fontSize: 11, fontWeight: 700, color: "#fff",
+              }}>{current.badge}</div>
+
+              {/* Bottom gradient + WhatsApp label */}
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 64, background: "linear-gradient(to top, rgba(17,27,33,0.96), transparent)", pointerEvents: "none" }} />
+              <div style={{ position: "absolute", bottom: 10, left: 12, display: "flex", alignItems: "center", gap: 5 }}>
+                {WA_ICON(13)}
+                <span style={{ fontSize: 10, color: "#25D366", fontWeight: 700 }}>WhatsApp</span>
+              </div>
             </div>
+
+            {/* Right arrow */}
+            <button
+              onClick={() => go(idx + 1, 1)}
+              aria-label="Nästa"
+              style={{
+                flexShrink: 0, width: 44, height: 44, borderRadius: "50%",
+                background: "rgba(20,25,35,0.9)", border: "1.5px solid rgba(255,255,255,0.18)",
+                color: "#fff", fontSize: 24, cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+            >›</button>
           </div>
 
           {/* Quote */}
-          <div style={{ padding: "16px 20px 4px", display: "flex", alignItems: "flex-start", gap: 10 }}>
-            {WA_ICON(18)}
-            <p style={{ margin: 0, fontSize: 14, color: "#c8d8e4", lineHeight: 1.55, fontStyle: "italic" }}>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "14px 4px 4px" }}>
+            {WA_ICON(16)}
+            <p style={{ margin: 0, fontSize: 13, color: "#c8d8e4", lineHeight: 1.55, fontStyle: "italic" }}>
               {current.quote}
             </p>
           </div>
 
           {/* Dots */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 18, marginBottom: 8 }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 16, marginBottom: 16 }}>
             {WA_SLIDES.map((_, i) => (
               <button
                 key={i}
@@ -1159,8 +1183,8 @@ function WhatsAppReviews() {
             ))}
           </div>
 
-          {/* Floating WhatsApp CTA */}
-          <div style={{ display: "flex", justifyContent: "flex-end", padding: "12px 16px 0" }}>
+          {/* WhatsApp CTA */}
+          <div style={{ display: "flex", justifyContent: "flex-end", paddingBottom: 8 }}>
             <a
               href="https://wa.me/message/yourlinkhere"
               target="_blank"
@@ -1168,10 +1192,9 @@ function WhatsAppReviews() {
               style={{
                 display: "flex", alignItems: "center", gap: 10,
                 background: "#25D366", color: "#fff",
-                borderRadius: 32, padding: "13px 20px",
-                fontWeight: 700, fontSize: 14,
+                borderRadius: 32, padding: "12px 18px",
+                fontWeight: 700, textDecoration: "none",
                 boxShadow: "0 6px 24px rgba(37,211,102,0.4)",
-                textDecoration: "none",
               }}
             >
               {WA_ICON(20)}
