@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import * as PricingCard from "@/components/ui/pricing-card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import Phosphor30 from "@/components/ui/phosphor-30";
 
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
@@ -435,7 +436,9 @@ function Nav() {
 function Hero() {
   return (
     <section id="hero" className="ni-hero">
-      <div className="ni-hero-bg" /><div className="ni-hero-grid" />
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}><Phosphor30 /></div>
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "rgba(7,8,14,0.55)" }} />
+      <div className="ni-hero-bg" style={{ zIndex: 2 }} /><div className="ni-hero-grid" style={{ zIndex: 3 }} />
       <div className="ni-container">
         <div className="ni-hero-content">
           <div>
