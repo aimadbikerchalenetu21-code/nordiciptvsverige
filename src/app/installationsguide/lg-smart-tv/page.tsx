@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
+import { JsonLd } from "@/components/JsonLd";
+import { guideBreadcrumb } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på LG Smart TV (webOS) – Installationsguide 2026 | Nordic IPTV",
@@ -18,6 +20,7 @@ const FAQS = [
 export default function LGSmartTVPage() {
   return (
     <GuideLayout>
+      <JsonLd data={guideBreadcrumb("lg-smart-tv", "LG Smart TV")} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

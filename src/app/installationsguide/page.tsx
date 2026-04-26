@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import GuideLayout from "@/components/nordic/GuideLayout";
 import DeviceGrid from "@/components/nordic/DeviceGrid";
+import { JsonLd } from "@/components/JsonLd";
+import { installationsguideHubBreadcrumb } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV Installationsguide – Alla Enheter | Nordic IPTV Sverige",
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
 export default function InstallationsguideHub() {
   return (
     <GuideLayout>
+      <JsonLd data={installationsguideHubBreadcrumb} />
       <section style={{ background: "#07080e", padding: "60px 0 80px" }}>
         <div className="ni-container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>

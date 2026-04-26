@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import NordicSite from "@/components/nordic/NordicSite";
+import { JsonLd } from "@/components/JsonLd";
+import { productSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Nordic IPTV Sverige – Sveriges Bästa IPTV-Tjänst 2026",
@@ -17,5 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <NordicSite />;
+  return (
+    <>
+      <JsonLd data={productSchema} />
+      <NordicSite />
+    </>
+  );
 }

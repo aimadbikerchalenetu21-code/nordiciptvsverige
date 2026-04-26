@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -49,12 +51,22 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#04050a",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="sv" className={`${outfit.className} dark`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <JsonLd data={[organizationSchema, websiteSchema]} />
+        {children}
+      </body>
     </html>
   );
 }

@@ -3,6 +3,8 @@ import Link from "next/link";
 import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
+import { JsonLd } from "@/components/JsonLd";
+import { guideBreadcrumb } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Samsung Smart TV – Komplett Installationsguide 2026 | Nordic IPTV",
@@ -19,6 +21,7 @@ const FAQS = [
 export default function SamsungSmartTVPage() {
   return (
     <GuideLayout>
+      <JsonLd data={guideBreadcrumb("samsung-smart-tv", "Samsung Smart TV")} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

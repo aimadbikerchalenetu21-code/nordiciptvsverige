@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices,
 } from "@/components/nordic/GuideLayout";
+import { JsonLd } from "@/components/JsonLd";
+import { guideBreadcrumb } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Formuler med MyTVOnline 2 – Installationsguide 2026 | Nordic IPTV",
@@ -18,6 +20,7 @@ const FAQS = [
 export default function FormulerPage() {
   return (
     <GuideLayout>
+      <JsonLd data={guideBreadcrumb("formuler-mytvonline-2", "Formuler-MyTVOnline 2")} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 
