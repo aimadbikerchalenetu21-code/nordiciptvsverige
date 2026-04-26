@@ -17,47 +17,34 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          position: "relative",
-          overflow: "hidden",
           padding: "72px 80px",
-          fontFamily: "system-ui, sans-serif",
+          position: "relative",
         }}
       >
-        {/* Background radial glow — orange */}
+        {/* Orange glow top-left */}
         <div
           style={{
             position: "absolute",
-            top: -180,
-            left: -120,
-            width: 700,
-            height: 700,
+            top: -100,
+            left: -80,
+            width: 500,
+            height: 500,
             borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%)",
+            background: "rgba(255,107,53,0.15)",
+            display: "flex",
           }}
         />
-        {/* Background radial glow — cyan bottom-right */}
+        {/* Cyan glow bottom-right */}
         <div
           style={{
             position: "absolute",
-            bottom: -200,
-            right: -100,
-            width: 600,
-            height: 600,
+            bottom: -150,
+            right: -80,
+            width: 480,
+            height: 480,
             borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Subtle grid dots */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
+            background: "rgba(0,212,255,0.10)",
+            display: "flex",
           }}
         />
 
@@ -68,55 +55,36 @@ export default function OGImage() {
             top: 0,
             left: 0,
             right: 0,
-            height: 3,
-            background:
-              "linear-gradient(90deg, #ff6b35 0%, #088fc3 50%, transparent 100%)",
+            height: 4,
+            background: "linear-gradient(90deg, #ff6b35 0%, #088fc3 60%, transparent 100%)",
+            display: "flex",
           }}
         />
 
-        {/* Logo mark — lightning bolt SVG */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 18,
-            marginBottom: 40,
-          }}
-        >
+        {/* Logo row */}
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 44 }}>
+          {/* Icon box */}
           <div
             style={{
               width: 56,
               height: 56,
               borderRadius: 14,
-              background:
-                "linear-gradient(135deg, rgba(255,107,53,0.3), rgba(8,143,195,0.15))",
+              background: "rgba(255,107,53,0.18)",
               border: "1.5px solid rgba(255,107,53,0.5)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              fontSize: 28,
             }}
           >
-            {/* Lightning bolt */}
-            <svg width="28" height="32" viewBox="0 0 28 32" fill="none">
-              <path
-                d="M16 2L4 18H13L10 30L24 14H15L16 2Z"
-                fill="url(#bolt)"
-              />
-              <defs>
-                <linearGradient id="bolt" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#ff6b35" />
-                  <stop offset="100%" stopColor="#ff8a3d" />
-                </linearGradient>
-              </defs>
-            </svg>
+            ⚡
           </div>
-
           <span
             style={{
-              fontSize: 26,
+              fontSize: 28,
               fontWeight: 800,
               color: "#f0f6ff",
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.01em",
             }}
           >
             Nordic IPTV Sverige
@@ -126,18 +94,35 @@ export default function OGImage() {
         {/* Main headline */}
         <div
           style={{
-            fontSize: 62,
-            fontWeight: 900,
-            color: "#f0f6ff",
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
+            display: "flex",
+            flexDirection: "column",
+            gap: 0,
             marginBottom: 28,
-            maxWidth: 820,
           }}
         >
-          Sveriges{" "}
-          <span style={{ color: "#ff6b35" }}>bästa</span>{" "}
-          IPTV‑tjänst
+          <div
+            style={{
+              fontSize: 68,
+              fontWeight: 900,
+              color: "#f0f6ff",
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            Sveriges{" "}
+            <span style={{ color: "#ff6b35" }}>bästa</span>
+          </div>
+          <div
+            style={{
+              fontSize: 68,
+              fontWeight: 900,
+              color: "#f0f6ff",
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            IPTV-tjänst
+          </div>
         </div>
 
         {/* Subline */}
@@ -145,7 +130,7 @@ export default function OGImage() {
           style={{
             fontSize: 26,
             color: "#7a90a8",
-            marginBottom: 52,
+            marginBottom: 48,
             fontWeight: 400,
           }}
         >
@@ -153,40 +138,42 @@ export default function OGImage() {
         </div>
 
         {/* Feature pills */}
-        <div style={{ display: "flex", gap: 16 }}>
+        <div style={{ display: "flex", gap: 14 }}>
           {[
-            { label: "35,000+ Kanaler", color: "#ff6b35", bg: "rgba(255,107,53,0.12)", border: "rgba(255,107,53,0.3)" },
-            { label: "4K UHD", color: "#00d4ff", bg: "rgba(0,212,255,0.1)", border: "rgba(0,212,255,0.28)" },
-            { label: "Live 24/7", color: "#00e676", bg: "rgba(0,230,118,0.09)", border: "rgba(0,230,118,0.25)" },
-            { label: "Alla Enheter", color: "#a78bfa", bg: "rgba(167,139,250,0.09)", border: "rgba(167,139,250,0.25)" },
-          ].map((pill) => (
+            { label: "35,000+ Kanaler", color: "#ff6b35", border: "rgba(255,107,53,0.4)", bg: "rgba(255,107,53,0.12)" },
+            { label: "4K UHD",          color: "#00d4ff", border: "rgba(0,212,255,0.35)", bg: "rgba(0,212,255,0.10)" },
+            { label: "Live 24/7",       color: "#00e676", border: "rgba(0,230,118,0.3)",  bg: "rgba(0,230,118,0.09)" },
+            { label: "Alla Enheter",    color: "#c4b5fd", border: "rgba(196,181,253,0.3)", bg: "rgba(196,181,253,0.09)" },
+          ].map((p) => (
             <div
-              key={pill.label}
+              key={p.label}
               style={{
-                padding: "10px 20px",
+                padding: "10px 22px",
                 borderRadius: 10,
-                background: pill.bg,
-                border: `1px solid ${pill.border}`,
-                color: pill.color,
-                fontSize: 18,
+                background: p.bg,
+                border: `1px solid ${p.border}`,
+                color: p.color,
+                fontSize: 20,
                 fontWeight: 700,
+                display: "flex",
               }}
             >
-              {pill.label}
+              {p.label}
             </div>
           ))}
         </div>
 
-        {/* Bottom-right URL */}
+        {/* Domain watermark */}
         <div
           style={{
             position: "absolute",
             bottom: 40,
             right: 80,
             fontSize: 18,
-            color: "rgba(255,255,255,0.25)",
+            color: "rgba(255,255,255,0.2)",
             fontWeight: 500,
-            letterSpacing: "0.02em",
+            letterSpacing: "0.03em",
+            display: "flex",
           }}
         >
           nordiciptvsverige.se
