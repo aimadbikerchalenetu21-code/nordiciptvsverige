@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import * as PricingCard from "@/components/ui/pricing-card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Tv, Smartphone, Laptop, Flame, CalendarDays, Rewind, Radio, Globe, Film, Flag, MessageCircle, ShieldCheck } from "lucide-react";
 import Phosphor30 from "@/components/ui/phosphor-30";
 import { CardStack, type CardStackItem } from "@/components/ui/card-stack";
 
@@ -1382,22 +1382,32 @@ function WhatsAppReviews() {
 }
 
 function Ecosystem() {
-  const W = 900, H = 480, cx = W / 2, cy = H / 2;
+  // Canvas dimensions — nodes are placed on a symmetric ellipse (rx=240, ry=190)
+  // centred at (550, 260). Clock positions: left arc = devices, right arc = content,
+  // top pair = features, bottom pair = features.
+  const W = 1100, H = 520, cx = W / 2, cy = H / 2;
+
   const nodes = [
-    { id: "tv", x: 80, y: 130, label: "Smart TV", icon: "📺", type: "device" },
-    { id: "mob", x: 60, y: 230, label: "Mobil & iPad", icon: "📱", type: "device" },
-    { id: "pc", x: 85, y: 330, label: "PC & Mac", icon: "💻", type: "device" },
-    { id: "fire", x: 70, y: 420, label: "Fire TV", icon: "🔥", type: "device" },
-    { id: "ch", x: 820, y: 120, label: "35,000+ Kanaler", icon: "📡", type: "content" },
-    { id: "sport", x: 840, y: 220, label: "Sport Live", icon: "⚽", type: "content" },
-    { id: "film", x: 835, y: 320, label: "Film 4K UHD", icon: "🎬", type: "content" },
-    { id: "sv", x: 820, y: 410, label: "Svenska Kanaler", icon: "🇸🇪", type: "content" },
-    { id: "epg", x: 340, y: 55, label: "EPG Guide", icon: "📅", type: "feature" },
-    { id: "cu", x: 560, y: 55, label: "Catch-up TV", icon: "⏪", type: "feature" },
-    { id: "sup", x: 340, y: 435, label: "24/7 Support", icon: "💬", type: "feature" },
-    { id: "sec", x: 560, y: 435, label: "Säker Streaming", icon: "🔒", type: "feature" },
+    // ── Left arc: devices (10 o'clock → 7 o'clock) ──────────────────────
+    { id: "tv",    x: 108, y:  95, label: "Smart TV",         type: "device",  Icon: Tv },
+    { id: "mob",   x:  82, y: 260, label: "Mobil & iPad",     type: "device",  Icon: Smartphone },
+    { id: "pc",    x: 108, y: 425, label: "PC & Mac",         type: "device",  Icon: Laptop },
+    { id: "fire",  x: 258, y: 492, label: "Fire TV",          type: "device",  Icon: Flame },
+    // ── Top pair: features ───────────────────────────────────────────────
+    { id: "epg",   x: 378, y:  28, label: "EPG Guide",        type: "feature", Icon: CalendarDays },
+    { id: "cu",    x: 722, y:  28, label: "Catch-up TV",      type: "feature", Icon: Rewind },
+    // ── Right arc: content (2 o'clock → 5 o'clock) ──────────────────────
+    { id: "ch",    x: 992, y:  95, label: "35,000+ Kanaler",  type: "content", Icon: Radio },
+    { id: "sport", x:1018, y: 260, label: "Sport Live",       type: "content", Icon: Globe },
+    { id: "film",  x: 992, y: 425, label: "Film 4K UHD",      type: "content", Icon: Film },
+    { id: "sv",    x: 842, y: 492, label: "Svenska Kanaler",  type: "content", Icon: Flag },
+    // ── Bottom pair: features ────────────────────────────────────────────
+    { id: "sup",   x: 418, y: 492, label: "24/7 Support",     type: "feature", Icon: MessageCircle },
+    { id: "sec",   x: 672, y: 492, label: "Säker Streaming",  type: "feature", Icon: ShieldCheck },
   ];
+
   const paths = nodes.map((n, i) => ({ from: { x: n.x, y: n.y }, to: { x: cx, y: cy }, id: n.id, delay: i * 0.15 }));
+
   useEffect(() => {
     const lines = paths.map((p, i) => {
       const len = Math.hypot(p.to.x - p.from.x, p.to.y - p.from.y);
@@ -1410,8 +1420,12 @@ function Ecosystem() {
     return () => { const e = document.getElementById("eco-kf"); if (e) e.remove(); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const tClass: Record<string, string> = { device: "ni-eco-pill-device", content: "ni-eco-pill-content", feature: "ni-eco-pill-feature" };
-  const dClass: Record<string, string> = { device: "ni-dot-cyan", content: "ni-dot-orange", feature: "ni-dot-green" };
+  const dClass: Record<string, string>  = { device: "ni-dot-cyan", content: "ni-dot-orange", feature: "ni-dot-green" };
+  const lineColor = (id: string) => id.match(/tv|mob|pc|fire/) ? "#00d4ff" : id.match(/epg|cu|sup|sec/) ? "#00e676" : "#ff6b35";
+  const lineBg    = (id: string) => id.match(/tv|mob|pc|fire/) ? "rgba(0,212,255,0.1)" : id.match(/epg|cu|sup|sec/) ? "rgba(0,230,118,0.08)" : "rgba(255,107,53,0.1)";
+
   return (
     <section className="ni-ecosystem-section">
       <div className="ni-container">
@@ -1420,30 +1434,34 @@ function Ecosystem() {
           <h2><strong>Allt kopplat.</strong> <span style={{ color: "#7a90a8", fontWeight: 400, fontSize: "0.85em" }}>Streama till alla enheter via en enda tjänst.</span></h2>
           <p>Nordic IPTV kopplar ihop dina enheter med tusentals kanaler, live-sport, filmer och mer — med noll buffring och maximalt skydd.</p>
         </div>
+
         <div className="ni-eco-canvas">
+          {/* SVG layer — connection lines + animated particles */}
           <svg className="ni-eco-svg" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet">
+            {/* Static dashed guide lines */}
             {paths.map((p, i) => (
               <line key={`s${i}`} x1={p.from.x} y1={p.from.y} x2={p.to.x} y2={p.to.y}
-                stroke={p.id.match(/tv|mob|pc|fire/) ? "rgba(0,212,255,0.12)" : p.id.match(/epg|cu|sup|sec/) ? "rgba(0,230,118,0.1)" : "rgba(255,107,53,0.12)"}
-                strokeWidth="1" strokeDasharray="4 6" />
+                stroke={lineBg(p.id)} strokeWidth="1" strokeDasharray="5 7" />
             ))}
+            {/* Animated traveling segment */}
             {paths.map((p, i) => {
               const len = Math.hypot(p.to.x - p.from.x, p.to.y - p.from.y);
-              const color = p.id.match(/tv|mob|pc|fire/) ? "#00d4ff" : p.id.match(/epg|cu|sup|sec/) ? "#00e676" : "#ff6b35";
+              const col = lineColor(p.id);
               return (
                 <line key={`a${i}`} x1={p.from.x} y1={p.from.y} x2={p.to.x} y2={p.to.y}
-                  stroke={color} strokeWidth="1.5" strokeOpacity="0.7"
-                  strokeDasharray={`${len * 0.18} ${len * 0.82}`}
+                  stroke={col} strokeWidth="1.5" strokeOpacity="0.75"
+                  strokeDasharray={`${len * 0.16} ${len * 0.84}`}
                   style={{ strokeDashoffset: len, animation: `fl${i} ${2.8 + i * 0.1}s linear infinite` }} />
               );
             })}
+            {/* Traveling dot particles */}
             {paths.map((p, i) => {
-              const color = p.id.match(/tv|mob|pc|fire/) ? "#00d4ff" : p.id.match(/epg|cu|sup|sec/) ? "#00e676" : "#ff6b35";
+              const col = lineColor(p.id);
               return (
                 <g key={`f${i}`}>
                   <path id={`pp${i}`} d={`M${p.from.x} ${p.from.y} L${p.to.x} ${p.to.y}`} fill="none" stroke="none" />
-                  <circle r="3.5" fill={color}>
-                    <animateMotion dur={`${2.5 + i * 0.12}s`} repeatCount="indefinite" begin={`${p.delay}s`}>
+                  <circle r="3" fill={col} fillOpacity="0.9">
+                    <animateMotion dur={`${2.6 + i * 0.11}s`} repeatCount="indefinite" begin={`${p.delay}s`}>
                       <mpath href={`#pp${i}`} />
                     </animateMotion>
                   </circle>
@@ -1451,12 +1469,14 @@ function Ecosystem() {
               );
             })}
           </svg>
+
+          {/* Center hub */}
           <div className="ni-eco-node" style={{ left: "50%", top: "50%" }}>
             <div className="ni-eco-hub">
               <div className="ni-eco-hub-ring" />
               <div className="ni-eco-hub-ring2" />
-              <div style={{ width: 40, height: 40, marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="40" height="40" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <div style={{ width: 42, height: 42, marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <svg width="42" height="42" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="ecoBrandSharp" x1="0" y1="0" x2="1" y2="1">
                       <stop offset="0%" stopColor="#ff6b35"/>
@@ -1488,11 +1508,13 @@ function Ecosystem() {
               <div className="ni-eco-hub-sub">Live 24/7</div>
             </div>
           </div>
+
+          {/* Node pills */}
           {nodes.map((n, i) => (
             <div key={i} className="ni-eco-node" style={{ left: `${(n.x / W) * 100}%`, top: `${(n.y / H) * 100}%` }}>
               <div className={cn("ni-eco-pill", tClass[n.type])}>
                 <span className={cn("ni-eco-pill-dot", dClass[n.type])} />
-                <span>{n.icon}</span>
+                <n.Icon size={13} strokeWidth={2} style={{ flexShrink: 0 }} />
                 <span>{n.label}</span>
               </div>
             </div>
