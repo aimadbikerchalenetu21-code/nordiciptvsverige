@@ -29,20 +29,13 @@ export const metadata: Metadata = {
     siteName: "Nordic IPTV Sverige",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESC,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Nordic IPTV Sverige – 35,000+ kanaler i 4K",
-      },
-    ],
+    // opengraph-image.tsx auto-generates and injects the image URL
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESC,
-    images: ["/og-image.png"],
+    // opengraph-image.tsx auto-generates and injects the image URL
   },
   robots: {
     index: true,
