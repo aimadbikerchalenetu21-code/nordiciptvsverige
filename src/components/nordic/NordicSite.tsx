@@ -1455,7 +1455,35 @@ function Ecosystem() {
             <div className="ni-eco-hub">
               <div className="ni-eco-hub-ring" />
               <div className="ni-eco-hub-ring2" />
-              <div style={{ fontSize: 22, marginBottom: 4 }}>📡</div>
+              <div style={{ width: 40, height: 40, marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <svg width="40" height="40" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="ecoBrandSharp" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="#ff6b35"/>
+                      <stop offset="100%" stopColor="#088fc3"/>
+                    </linearGradient>
+                    <linearGradient id="ecoBolt" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#ff6b35"/>
+                      <stop offset="100%" stopColor="#ff8a3d"/>
+                    </linearGradient>
+                    <filter id="ecoGlow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="8" result="blur"/>
+                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                  <g transform="translate(86,40)">
+                    <g strokeLinecap="round" fill="none">
+                      <path d="M250 60 C 312 100, 348 158, 348 230 C 348 302, 312 360, 250 400" stroke="url(#ecoBrandSharp)" strokeWidth="14" opacity="0.45"/>
+                      <path d="M232 92 C 282 124, 312 172, 312 230 C 312 288, 282 336, 232 368" stroke="url(#ecoBrandSharp)" strokeWidth="15" opacity="0.7"/>
+                      <path d="M214 124 C 252 148, 274 186, 274 230 C 274 274, 252 312, 214 336" stroke="url(#ecoBrandSharp)" strokeWidth="16"/>
+                    </g>
+                    <g filter="url(#ecoGlow)">
+                      <path d="M120 20 L40 230 L130 230 L80 410 L240 180 L150 180 L210 20 Z" fill="url(#ecoBolt)"/>
+                    </g>
+                    <path d="M138 60 L78 220 L120 220 L96 320 L186 184 L150 184 L184 60 Z" fill="#ffffff" fillOpacity="0.22"/>
+                  </g>
+                </svg>
+              </div>
               <div className="ni-eco-hub-label">Nordic<br />IPTV</div>
               <div className="ni-eco-hub-sub">Live 24/7</div>
             </div>
