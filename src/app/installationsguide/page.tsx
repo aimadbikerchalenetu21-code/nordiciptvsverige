@@ -6,6 +6,14 @@ import DeviceGrid from "@/components/nordic/DeviceGrid";
 export const metadata: Metadata = {
   title: "IPTV Installationsguide – Alla Enheter | Nordic IPTV Sverige",
   description: "Kompletta steg-för-steg installationsguider för IPTV på 13+ enheter: Samsung Smart TV, LG Smart TV, MAG Box, Amazon Fire TV Stick, Apple TV, Android, iPhone och mer.",
+  alternates: {
+    canonical: "https://nordiciptvsverige.se/installationsguide",
+  },
+  openGraph: {
+    url: "https://nordiciptvsverige.se/installationsguide",
+    title: "IPTV Installationsguide – Alla Enheter | Nordic IPTV Sverige",
+    description: "Kompletta steg-för-steg installationsguider för IPTV på 13+ enheter: Samsung Smart TV, LG Smart TV, MAG Box, Amazon Fire TV Stick, Apple TV, Android, iPhone och mer.",
+  },
 };
 
 export default function InstallationsguideHub() {
