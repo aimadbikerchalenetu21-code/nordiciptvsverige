@@ -271,13 +271,43 @@ function TopBanner() {
   );
 }
 
+const GUIDE_NAV_ITEMS = [
+  { label: "TVIP Box", href: "/installationsguide/tvip-box", icon: "📺" },
+  { label: "Formuler-MyTVOnline 2", href: "/installationsguide/formuler-mytvonline-2", icon: "📡" },
+  { label: "Samsung Smart TV", href: "/installationsguide/samsung-smart-tv", icon: "🖥️" },
+  { label: "LG Smart TV", href: "/installationsguide/lg-smart-tv", icon: "📺" },
+  { label: "MAG Box", href: "/installationsguide/mag-box", icon: "📦" },
+  { label: "Enigma Box", href: "/installationsguide/enigma2", icon: "⚙️" },
+  { label: "Android TV / Box", href: "/installationsguide/android-tv", icon: "🤖" },
+  { label: "Apple TV (tvOS)", href: "/installationsguide/apple-tv-tvos", icon: "🍎" },
+  { label: "Chromecast", href: "/installationsguide/chromecast", icon: "🔄" },
+  { label: "Windows PC", href: "/installationsguide/windows-pc", icon: "💻" },
+  { label: "Mac (macOS)", href: "/installationsguide/mac-macos", icon: "🍏" },
+  { label: "Smartphones (iOS & Android)", href: "/installationsguide/smartphones", icon: "📱" },
+  { label: "Amazon Fire TV Stick", href: "/installationsguide/amazon-fire-tv-stick", icon: "🔥" },
+];
+
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropOpen, setDropOpen] = useState(false);
+  const [mobileGuideOpen, setMobileGuideOpen] = useState(false);
+  const dropRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
+  }, []);
+
+  useEffect(() => {
+    const h = (e: MouseEvent) => {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
+        setDropOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
   }, []);
 
   const links: [string, string][] = [["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]];
@@ -298,6 +328,37 @@ function Nav() {
               {links.map(([href, label]) => (
                 <a key={href} href={href} className="ni-nav-link">{label}</a>
               ))}
+
+              {/* Instruktioner dropdown */}
+              <div className="ni-dropdown" ref={dropRef}>
+                <button
+                  className={cn("ni-dropdown-btn", dropOpen && "open")}
+                  onClick={() => setDropOpen(o => !o)}
+                  aria-expanded={dropOpen}
+                >
+                  Instruktioner
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                <div className={cn("ni-dropdown-panel", dropOpen && "open")}>
+                  {GUIDE_NAV_ITEMS.map(item => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="ni-dropdown-item"
+                      onClick={() => setDropOpen(false)}
+                    >
+                      <span className="ni-dropdown-item-icon">{item.icon}</span>
+                      {item.label}
+                    </a>
+                  ))}
+                  <div className="ni-dropdown-divider" />
+                  <a href="/installationsguide" className="ni-dropdown-all" onClick={() => setDropOpen(false)}>
+                    📋 Alla installationsguider →
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* CTA */}
@@ -318,6 +379,32 @@ function Nav() {
         {links.map(([href, label]) => (
           <a key={href} href={href} className="ni-mobile-link" onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
+
+        {/* Mobile Instruktioner accordion */}
+        <div
+          className="ni-mobile-link"
+          style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}
+          onClick={() => setMobileGuideOpen(o => !o)}
+        >
+          <span>Instruktioner</span>
+          <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ transition: "transform .2s", transform: mobileGuideOpen ? "rotate(180deg)" : "none" }}>
+            <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+        {mobileGuideOpen && (
+          <>
+            <div className="ni-mobile-sub-header">Välj din enhet</div>
+            {GUIDE_NAV_ITEMS.map(item => (
+              <a key={item.href} href={item.href} className="ni-mobile-sub" onClick={() => setMenuOpen(false)}>
+                {item.icon} {item.label}
+              </a>
+            ))}
+            <a href="/installationsguide" className="ni-mobile-link" style={{ color: "#ff6b35", fontSize: 15 }} onClick={() => setMenuOpen(false)}>
+              📋 Alla guider
+            </a>
+          </>
+        )}
+
         <a href="#trial" className="ni-nav-cta" style={{ marginTop: 12, textAlign: "center" }} onClick={() => setMenuOpen(false)}>Komma igång</a>
       </div>
     </>
@@ -1488,9 +1575,14 @@ function Footer() {
           <div>
             <h4>Information</h4>
             <ul className="ni-footer-links">
-              {["Om Oss", "Priser", "Enheter", "Installationsguide", "Systemkrav", "Affiliate-program", "Press", "Karriär"].map(l => (
-                <li key={l}><a href="#">{l}</a></li>
-              ))}
+              <li><a href="#pricing">Priser</a></li>
+              <li><a href="/installationsguide">Installationsguide</a></li>
+              <li><a href="/installationsguide/samsung-smart-tv">Samsung Smart TV</a></li>
+              <li><a href="/installationsguide/lg-smart-tv">LG Smart TV</a></li>
+              <li><a href="/installationsguide/mag-box">MAG Box</a></li>
+              <li><a href="/installationsguide/amazon-fire-tv-stick">Amazon Fire TV Stick</a></li>
+              <li><a href="/installationsguide/apple-tv-tvos">Apple TV (tvOS)</a></li>
+              <li><a href="/installationsguide/android-tv">Android TV / Box</a></li>
             </ul>
           </div>
           <div>

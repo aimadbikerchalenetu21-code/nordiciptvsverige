@@ -1,0 +1,15 @@
+export const GUIDE_DEVICES = [
+  { label: "TVIP Box", href: "/installationsguide/tvip-box", icon: "📺" },
+  { label: "Formuler-MyTVOnline 2", href: "/installationsguide/formuler-mytvonline-2", icon: "📡" },
+  { label: "Samsung Smart TV", href: "/installationsguide/samsung-smart-tv", icon: "🖥️" },
+  { label: "LG Smart TV", href: "/installationsguide/lg-smart-tv", icon: "📺" },
+  { label: "MAG Box", href: "/installationsguide/mag-box", icon: "📦" },
+  { label: "Enigma Box", href: "/installationsguide/enigma2", icon: "⚙️" },
+  { label: "Android TV / Box", href: "/installationsguide/android-tv", icon: "🤖" },
+  { label: "Apple TV (tvOS)", href: "/installationsguide/apple-tv-tvos", icon: "🍎" },
+  { label: "Chromecast", href: "/installationsguide/chromecast", icon: "🔄" },
+  { label: "Windows PC", href: "/installationsguide/windows-pc", icon: "💻" },
+  { label: "Mac (macOS)", href: "/installationsguide/mac-macos", icon: "🍏" },
+  { label: "Smartphones (iOS & Android)", href: "/installationsguide/smartphones", icon: "📱" },
+  { label: "Amazon Fire TV Stick", href: "/installationsguide/amazon-fire-tv-stick", icon: "🔥" },
+];
