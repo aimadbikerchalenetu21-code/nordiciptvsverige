@@ -61,7 +61,7 @@ function Nav() {
               ))}
             </div>
             <div className="ni-nav-actions">
-              <Link href="/#trial" className="ni-nav-cta">Komma igång</Link>
+              <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" className="ni-nav-cta">Komma igång</a>
             </div>
             <div className="ni-hamburger" onClick={() => setMenuOpen(!menuOpen)}>
               <span /><span /><span />
@@ -73,7 +73,7 @@ function Nav() {
         {links.map(([href, label]) => (
           <Link key={href} href={href} className="ni-mobile-link" onClick={() => setMenuOpen(false)}>{label}</Link>
         ))}
-        <Link href="/#trial" className="ni-nav-cta" style={{ marginTop: 12, textAlign: "center" }} onClick={() => setMenuOpen(false)}>Komma igång</Link>
+        <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" className="ni-nav-cta" style={{ marginTop: 12, textAlign: "center" }} onClick={() => setMenuOpen(false)}>Komma igång</a>
       </div>
     </>
   );

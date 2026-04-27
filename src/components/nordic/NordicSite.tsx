@@ -364,7 +364,7 @@ function Nav() {
 
             {/* CTA */}
             <div className="ni-nav-actions">
-              <a href="#trial" className="ni-nav-cta">Komma igång</a>
+              <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" className="ni-nav-cta">Komma igång</a>
             </div>
 
             {/* Hamburger */}
@@ -406,7 +406,7 @@ function Nav() {
           </>
         )}
 
-        <a href="#trial" className="ni-nav-cta" style={{ marginTop: 12, textAlign: "center" }} onClick={() => setMenuOpen(false)}>Komma igång</a>
+        <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" className="ni-nav-cta" style={{ marginTop: 12, textAlign: "center" }} onClick={() => setMenuOpen(false)}>Komma igång</a>
       </div>
     </>
   );
@@ -448,7 +448,7 @@ function Hero() {
 
           {/* CTAs */}
           <div className="ni-hero-actions ni-fade-up ni-delay-2">
-            <a href="#trial" className="ni-btn ni-btn-cyan" style={{ fontSize: 16, padding: "15px 32px" }}>
+            <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" className="ni-btn ni-btn-cyan" style={{ fontSize: 16, padding: "15px 32px" }}>
               Starta gratis IPTV-test
             </a>
             <a href="#pricing" className="ni-btn ni-btn-outline-white" style={{ fontSize: 16, padding: "15px 28px" }}>
@@ -767,7 +767,7 @@ function Pricing() {
                   </a>
 
                   <a
-                    href="https://wa.me/46XXXXXXXXX"
+                    href="https://wa.me/212651356639"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -1589,7 +1589,7 @@ function CTABanner() {
           <h2 className="ni-cta-title">Prova gratis i <span style={{ color: "#ff6b35" }}>24 timmar</span></h2>
           <p className="ni-cta-sub">Inget kreditkort behövs. Full tillgång till alla kanaler och funktioner. Aktiveras omedelbart.</p>
           <div className="ni-cta-actions">
-            <a href="#" className="ni-btn ni-btn-cyan" style={{ fontSize: 18, padding: "17px 40px" }}>▶ Starta Gratis Test</a>
+            <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" className="ni-btn ni-btn-cyan" style={{ fontSize: 18, padding: "17px 40px" }}>▶ Starta Gratis Test</a>
             <a href="#pricing" className="ni-btn ni-btn-outline" style={{ fontSize: 18, padding: "17px 32px" }}>Se Alla Priser</a>
           </div>
           <div className="ni-cta-note">✓ Inga bindningstider &nbsp;·&nbsp; ✓ Avsluta när som helst &nbsp;·&nbsp; ✓ Säker betalning</div>
