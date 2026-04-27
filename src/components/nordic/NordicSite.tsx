@@ -311,7 +311,7 @@ function Nav() {
     return () => document.removeEventListener("mousedown", h);
   }, []);
 
-  const links: [string, string][] = [["#hero","Hem"],["#pricing","Priser"],["#devices","Enheter"],["#faq","FAQ"]];
+  const links: [string, string][] = [["#hero","Hem"],["#pricing","Priser"],["#faq","FAQ"]];
 
   return (
     <>
