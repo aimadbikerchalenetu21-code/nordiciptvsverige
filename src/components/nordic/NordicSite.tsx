@@ -822,7 +822,7 @@ function Pricing() {
                     <li key={j}><span style={{ color: "#00e676", fontSize: 13 }}>✓</span>{f}</li>
                   ))}
                 </ul>
-                <button className="ni-multi-btn">Välj plan →</button>
+                <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" className="ni-multi-btn">Välj plan →</a>
               </div>
             ))}
           </div>
