@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import * as PricingCard from "@/components/ui/pricing-card";
 import { Button } from "@/components/ui/button";
@@ -320,7 +321,7 @@ function Nav() {
 
             {/* Logo */}
             <a href="#" className="ni-nav-logo">
-              <img src="/logo.webp" alt="Nordic IPTV Sverige" style={{ height: 44, width: "auto", display: "block" }} />
+              <Image src="/logo.webp" alt="Nordic IPTV Sverige" width={160} height={44} priority style={{ height: 44, width: "auto", display: "block" }} />
             </a>
 
             {/* Desktop links */}
@@ -1091,8 +1092,8 @@ function WaCard({ slide }: { slide: typeof WA_SLIDES[0] }) {
           borderRadius: 20, padding: "4px 11px",
           fontSize: 11, fontWeight: 700, color: "#fff", letterSpacing: ".03em",
         }}>{slide.badge}</div>
-        <img src={slide.img} alt={slide.badge}
-          style={{ width: "100%", display: "block", aspectRatio: "9/16", objectFit: "cover" }} />
+        <Image src={slide.img} alt={slide.badge} width={360} height={640} sizes="(max-width: 768px) 100vw, 360px"
+          style={{ width: "100%", height: "auto", display: "block", aspectRatio: "9/16", objectFit: "cover" }} />
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 70, background: "linear-gradient(to top, rgba(17,27,33,0.95), transparent)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: 10, left: 12, display: "flex", alignItems: "center", gap: 6 }}>
           {WA_ICON(14)}
@@ -1211,10 +1212,13 @@ function WhatsAppReviews() {
                 key={`${idx}-${dir}`}
                 style={{ animation: `${dir >= 0 ? "waSlideIn" : "waSlideInLeft"} 0.38s ease both` }}
               >
-                <img
+                <Image
                   src={current.img}
                   alt={current.badge}
-                  style={{ width: "100%", display: "block", aspectRatio: "9/16", objectFit: "cover" }}
+                  width={420}
+                  height={747}
+                  sizes="(max-width: 768px) 100vw, 420px"
+                  style={{ width: "100%", height: "auto", display: "block", aspectRatio: "9/16", objectFit: "cover" }}
                 />
               </div>
 
@@ -1601,7 +1605,7 @@ function Footer() {
       <div className="ni-container">
         <div className="ni-footer-grid">
           <div>
-            <div className="ni-footer-brand"><img src="/logo.webp" alt="Nordic IPTV Sverige" style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} /></div>
+            <div className="ni-footer-brand"><Image src="/logo.webp" alt="Nordic IPTV Sverige" width={180} height={48} style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} /></div>
             <div className="ni-footer-tagline">Sveriges ledande IPTV-tjänst med 35,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
             <div style={{ display: "flex", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
               {["📘 Facebook", "🐦 Twitter", "📸 Instagram", "💬 Telegram"].map(s => (

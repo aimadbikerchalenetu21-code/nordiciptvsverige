@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { GUIDE_DEVICES } from "@/lib/guideDevices";
 
@@ -52,7 +53,7 @@ function Nav() {
         <div className="ni-container">
           <div className="ni-nav-inner">
             <Link href="/" className="ni-nav-logo">
-              <img src="/logo.webp" alt="Nordic IPTV Sverige" style={{ height: 44, width: "auto", display: "block" }} />
+              <Image src="/logo.webp" alt="Nordic IPTV Sverige" width={160} height={44} priority style={{ height: 44, width: "auto", display: "block" }} />
             </Link>
             <div className="ni-nav-links">
               {links.map(([href, label]) => (
@@ -167,7 +168,7 @@ function Footer() {
         <div className="ni-footer-grid">
           <div>
             <div className="ni-footer-brand">
-              <img src="/logo.webp" alt="Nordic IPTV Sverige" style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} />
+              <Image src="/logo.webp" alt="Nordic IPTV Sverige" width={180} height={48} style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} />
             </div>
             <div className="ni-footer-tagline">Sveriges ledande IPTV-tjänst med 35,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
             <div className="ni-footer-payments">
