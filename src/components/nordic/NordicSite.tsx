@@ -737,7 +737,9 @@ function Pricing() {
                 {/* Bottom CTA area */}
                 <div style={{ marginTop: 28 }}>
                   <a
-                    href="#order"
+                    href="https://wa.me/212651356639"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                       display: "block",
                       width: "100%",
