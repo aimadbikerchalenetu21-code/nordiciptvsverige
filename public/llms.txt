@@ -1,0 +1,47 @@
+# Nordic IPTV Sverige
+> Sveriges ledande IPTV-tjänst med 35,000+ live-kanaler i 4K UHD och 120,000+ on-demand-titlar. 24-timmars gratis testperiod. Från 79 kr/månad. Inga bindningstider. Aktiveras inom minuter via WhatsApp.
+
+## Kärnsidor
+- [Hem](https://nordiciptvsverige.se/): Översikt, priser, kanalutbud, gratis testperiod
+- [Priser](https://nordiciptvsverige.se/#pricing): 1 mån (199 kr), 3 mån (349 kr), 12 mån (599 kr), flerskärmsplaner
+- [FAQ](https://nordiciptvsverige.se/#faq): Svar på vanliga frågor om aktivering, enheter, bindningstid, sport, kvalitet
+- [Installationsguide](https://nordiciptvsverige.se/installationsguide): Steg-för-steg för 13+ enheter
+
+## Installationsguider per enhet
+- [Samsung Smart TV](https://nordiciptvsverige.se/installationsguide/samsung-smart-tv): Net Player, IPTV Smarters Player, SmartOne IPTV
+- [LG Smart TV](https://nordiciptvsverige.se/installationsguide/lg-smart-tv): Installationsguide för webOS
+- [Apple TV (tvOS)](https://nordiciptvsverige.se/installationsguide/apple-tv-tvos): Installation via tvOS-appar
+- [Amazon Fire TV Stick](https://nordiciptvsverige.se/installationsguide/amazon-fire-tv-stick): Sideloading och Smarters Player
+- [Android TV](https://nordiciptvsverige.se/installationsguide/android-tv): Android TV / TV-box
+- [MAG Box](https://nordiciptvsverige.se/installationsguide/mag-box): MAG 254, 256, 322, 349
+- [Formuler MyTVOnline 2](https://nordiciptvsverige.se/installationsguide/formuler-mytvonline-2): Formuler-boxar med MyTVOnline 2
+- [Enigma2](https://nordiciptvsverige.se/installationsguide/enigma2): Linux-baserade Enigma2-mottagare
+- [TVIP Box](https://nordiciptvsverige.se/installationsguide/tvip-box): TVIP-portalinstallation
+- [Chromecast](https://nordiciptvsverige.se/installationsguide/chromecast): Cast från mobil eller dator
+- [Windows PC](https://nordiciptvsverige.se/installationsguide/windows-pc): IPTV på Windows
+- [Mac (macOS)](https://nordiciptvsverige.se/installationsguide/mac-macos): IPTV på macOS
+- [Smartphones](https://nordiciptvsverige.se/installationsguide/smartphones): iOS och Android
+
+## Nyckelfakta
+- Bästa IPTV-tjänsten i Sverige med 35,000+ live-kanaler
+- 120,000+ filmer och serier on-demand (VOD)
+- 4K UHD-bildkvalitet, HD och Full HD beroende på kanal
+- Över 500 sportkanaler: Eurosport, Sky Sports, TNT Sports, Premier League, Champions League, Allsvenskan, Bundesliga, La Liga
+- 99.9% drifttid mätt över 12 månader
+- 24-timmars gratis testperiod, inget kreditkort krävs
+- 7 dagars pengarna-tillbaka-garanti efter köp
+- Aktiveras inom några minuter efter betalning
+- Stöder Smart TV (Samsung, LG, Sony, Philips), Apple TV, Android TV, Fire TV Stick, MAG Box, PC, Mac, mobil, surfplatta, Chromecast, Enigma2, Formuler, TVIP, spelkonsoler
+- Anonym betalning: Visa, Mastercard, Swish, PayPal, krypto
+- Support på svenska och engelska via WhatsApp, svarstid under 4 minuter
+
+## Priser
+- 1 månad: 199 kr (faktureras månadsvis)
+- 3 månader: 349 kr (faktureras var 3:e månad)
+- 12 månader: 599 kr (faktureras årsvis) — Bästa värde
+- Flerskärmsårsplaner: 1399 kr (2 enheter), 1999 kr (3 enheter), 2699 kr (4 enheter)
+
+## Kontakt
+- WhatsApp: https://wa.me/212651356639
+- Webbplats: https://nordiciptvsverige.se
+- Sitemap: https://nordiciptvsverige.se/sitemap.xml

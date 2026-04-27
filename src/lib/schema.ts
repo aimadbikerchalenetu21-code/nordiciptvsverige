@@ -25,6 +25,8 @@ export const organizationSchema = {
       areaServed: "SE",
     },
   ],
+  // Add real social profile URLs here once accounts are live (Facebook, Instagram, Trustpilot, YouTube, Telegram)
+  sameAs: [] as string[],
 } as const;
 
 export const websiteSchema = {
@@ -85,14 +87,8 @@ export const productSchema = {
       },
     ],
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "3",
-    reviewCount: "3",
-  },
+  // aggregateRating intentionally omitted: a 5.0 rating from only 3 reviews
+  // is a manual-action risk. Re-enable once verified review count is 50+.
 } as const;
 
 type BreadcrumbItem = { name: string; url: string };
@@ -122,3 +118,33 @@ export const installationsguideHubBreadcrumb = breadcrumbSchema([
   { name: "Hem", url: SITE },
   { name: "Installationsguide", url: `${SITE}/installationsguide` },
 ]);
+
+// Default publication date for all guide pages — bump dateModified on substantive edits.
+const GUIDE_DATE_PUBLISHED = "2026-01-15";
+const GUIDE_DATE_MODIFIED = "2026-04-27";
+
+export function guideArticleSchema(args: {
+  slug: string;
+  deviceLabel: string;
+  headline: string;
+  description: string;
+}) {
+  const url = `${SITE}/installationsguide/${args.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${url}#article`,
+    headline: args.headline,
+    description: args.description,
+    inLanguage: "sv-SE",
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    image: [`${SITE}/opengraph-image`],
+    datePublished: GUIDE_DATE_PUBLISHED,
+    dateModified: GUIDE_DATE_MODIFIED,
+    author: { "@id": `${SITE}/#organization` },
+    publisher: { "@id": `${SITE}/#organization` },
+    about: { "@type": "Thing", name: args.deviceLabel },
+    proficiencyLevel: "Beginner",
+  };
+}

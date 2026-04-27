@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Amazon Fire TV Stick – Installationsguide 2026 | Nordic IPTV",
@@ -19,7 +19,15 @@ const FAQS = [
 export default function AmazonFireTVPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("amazon-fire-tv-stick", "Amazon Fire TV Stick")} />
+      <JsonLd data={[
+        guideBreadcrumb("amazon-fire-tv-stick", "Amazon Fire TV Stick"),
+        guideArticleSchema({
+          slug: "amazon-fire-tv-stick",
+          deviceLabel: "Amazon Fire TV Stick",
+          headline: "IPTV på Amazon Fire TV Stick – Installationsguide 2026",
+          description: "Fullständig guide för att installera IPTV på Amazon Fire TV Stick. IPTV Smarters Pro rekommenderas. Två metoder: direkt från Amazon Store eller via Downloader-appen.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

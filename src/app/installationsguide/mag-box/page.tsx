@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på MAG Box (Alla Modeller) – Installationsguide 2026 | Nordic IPTV",
@@ -20,7 +20,15 @@ const FAQS = [
 export default function MAGBoxPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("mag-box", "MAG Box")} />
+      <JsonLd data={[
+        guideBreadcrumb("mag-box", "MAG Box"),
+        guideArticleSchema({
+          slug: "mag-box",
+          deviceLabel: "MAG Box",
+          headline: "IPTV på MAG Box (Alla Modeller) – Installationsguide 2026",
+          description: "Fullständig guide för att installera IPTV på MAG Box (MAG 254, 322, 420, 524). Konfigurera portal-URL via systemmenyn. Kräver MAC-adressregistrering.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

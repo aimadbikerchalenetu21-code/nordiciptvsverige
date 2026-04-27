@@ -593,6 +593,33 @@ function Countdown() {
   );
 }
 
+function WhatIsIptv() {
+  return (
+    <section id="vad-ar-iptv" style={{ background: "#04050a", padding: "64px 0", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      <div className="ni-container" style={{ maxWidth: 880 }}>
+        <div style={{ textAlign: "center", marginBottom: 24 }}>
+          <span className="ni-tag ni-tag-cyan" style={{ marginBottom: 12 }}>📖 Definition</span>
+          <h2 className="ni-section-title" style={{ marginBottom: 12 }}>Vad är IPTV?</h2>
+        </div>
+        <div style={{ color: "#b8cad8", fontSize: 16, lineHeight: 1.75 }}>
+          <p style={{ marginBottom: 16 }}>
+            <strong style={{ color: "#f0f6ff" }}>IPTV</strong> (Internet Protocol Television) är en teknik som levererar
+            TV-kanaler och on-demand-innehåll via internetuppkoppling istället för traditionell satellit eller kabel.
+            Med en <strong style={{ color: "#f0f6ff" }}>IPTV-prenumeration</strong> streamar du över 35,000 live-kanaler
+            och 120,000+ filmer direkt till Smart TV, mobil, surfplatta, dator, Fire TV Stick eller Apple TV — utan
+            parabol eller kabelbox.
+          </p>
+          <p style={{ marginBottom: 0 }}>
+            Bildkvaliteten sträcker sig från HD upp till 4K UHD beroende på kanal och plan. I Sverige använder över
+            50,000 hushåll Nordic IPTV med 99.9% drifttid och svensk support dygnet runt via WhatsApp.
+            Nordic IPTV erbjuder 24-timmars gratis testperiod utan kreditkort, från 79 kr/månad och inga bindningstider.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   const plans = [
     {
@@ -1610,9 +1637,7 @@ function Footer() {
             <div className="ni-footer-brand"><Image src="/logo.webp" alt="Nordic IPTV Sverige" width={180} height={48} style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} /></div>
             <div className="ni-footer-tagline">Sveriges ledande IPTV-tjänst med 35,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
             <div style={{ display: "flex", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
-              {["📘 Facebook", "🐦 Twitter", "📸 Instagram", "💬 Telegram"].map(s => (
-                <a key={s} href="#" style={{ fontSize: 13, color: "#7a90a8", transition: ".2s" }}>{s}</a>
-              ))}
+              <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: "#7a90a8", transition: ".2s" }}>💬 WhatsApp</a>
             </div>
             <div className="ni-footer-payments">
               {["Visa", "Mastercard", "Swish", "PayPal", "Crypto"].map(p => (
@@ -1726,6 +1751,7 @@ export default function NordicSite() {
       <TopBanner />
       <Nav />
       <Hero />
+      <WhatIsIptv />
       <ContentShowcase />
       <Pricing />
       <Comparison />

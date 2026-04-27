@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på LG Smart TV (webOS) – Installationsguide 2026 | Nordic IPTV",
@@ -20,7 +20,15 @@ const FAQS = [
 export default function LGSmartTVPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("lg-smart-tv", "LG Smart TV")} />
+      <JsonLd data={[
+        guideBreadcrumb("lg-smart-tv", "LG Smart TV"),
+        guideArticleSchema({
+          slug: "lg-smart-tv",
+          deviceLabel: "LG Smart TV (webOS)",
+          headline: "IPTV på LG Smart TV (webOS) – Installationsguide 2026",
+          description: "Komplett guide för att installera IPTV på LG Smart TV med webOS. Tre metoder: Net Player via hotplayer.app (rekommenderas), Smart IPTV och Filo IPTV.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

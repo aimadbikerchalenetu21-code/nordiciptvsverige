@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Smartphones (iOS & Android) – Guide 2026 | Nordic IPTV Sverige",
@@ -20,7 +20,15 @@ const FAQS = [
 export default function SmartphonesPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("smartphones", "Smartphones (iOS & Android)")} />
+      <JsonLd data={[
+        guideBreadcrumb("smartphones", "Smartphones (iOS & Android)"),
+        guideArticleSchema({
+          slug: "smartphones",
+          deviceLabel: "Smartphones (iOS & Android)",
+          headline: "IPTV på Smartphones (iOS & Android) – Installationsguide 2026",
+          description: "Komplett guide för att titta på IPTV på din iPhone, Android-telefon eller surfplatta. IPTV Smarters Pro rekommenderas för både iOS och Android.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

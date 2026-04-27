@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Android TV / Box – Installationsguide 2026 | Nordic IPTV Sverige",
@@ -19,7 +19,15 @@ const FAQS = [
 export default function AndroidTVPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("android-tv", "Android TV / Box")} />
+      <JsonLd data={[
+        guideBreadcrumb("android-tv", "Android TV / Box"),
+        guideArticleSchema({
+          slug: "android-tv",
+          deviceLabel: "Android TV / Box",
+          headline: "IPTV på Android TV / Box – Installationsguide 2026",
+          description: "Komplett guide för att installera IPTV på Android TV och Android Box. IPTV Smarters Pro från Google Play rekommenderas. Fungerar på alla Android TV-enheter.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

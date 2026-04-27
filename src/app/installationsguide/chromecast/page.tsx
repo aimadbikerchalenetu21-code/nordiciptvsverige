@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Chromecast med Google TV – Installationsguide 2026 | Nordic IPTV",
@@ -20,7 +20,15 @@ const FAQS = [
 export default function ChromecastPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("chromecast", "Chromecast")} />
+      <JsonLd data={[
+        guideBreadcrumb("chromecast", "Chromecast"),
+        guideArticleSchema({
+          slug: "chromecast",
+          deviceLabel: "Chromecast med Google TV",
+          headline: "IPTV på Chromecast med Google TV – Installationsguide 2026",
+          description: "Steg-för-steg guide för att installera IPTV på Chromecast med Google TV. Net Player (rekommenderas) eller IPTV Smarters Pro via Google Play Store.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

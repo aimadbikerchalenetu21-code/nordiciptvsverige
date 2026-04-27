@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på TVIP Box – Installationsguide 2026 | Nordic IPTV Sverige",
@@ -20,7 +20,15 @@ const FAQS = [
 export default function TVIPBoxPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("tvip-box", "TVIP Box")} />
+      <JsonLd data={[
+        guideBreadcrumb("tvip-box", "TVIP Box"),
+        guideArticleSchema({
+          slug: "tvip-box",
+          deviceLabel: "TVIP Box",
+          headline: "IPTV på TVIP Box – Installationsguide 2026",
+          description: "Komplett guide för att installera IPTV på TVIP Box. Portal-baserad installation med MAC-adressregistrering. Snabb och stabil konfiguration.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

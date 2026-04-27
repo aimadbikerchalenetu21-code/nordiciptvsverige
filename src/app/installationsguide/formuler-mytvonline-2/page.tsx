@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Formuler med MyTVOnline 2 – Installationsguide 2026 | Nordic IPTV",
@@ -20,7 +20,15 @@ const FAQS = [
 export default function FormulerPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("formuler-mytvonline-2", "Formuler-MyTVOnline 2")} />
+      <JsonLd data={[
+        guideBreadcrumb("formuler-mytvonline-2", "Formuler-MyTVOnline 2"),
+        guideArticleSchema({
+          slug: "formuler-mytvonline-2",
+          deviceLabel: "Formuler med MyTVOnline 2",
+          headline: "IPTV på Formuler med MyTVOnline 2 – Installationsguide 2026",
+          description: "Komplett guide för att installera IPTV på Formuler-box med MyTVOnline 2-appen. Portal-baserad installation via MAC-adress. Alla Formuler-modeller stöds.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

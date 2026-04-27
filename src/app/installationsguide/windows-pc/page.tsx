@@ -3,7 +3,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Windows PC – Installationsguide 2026 | Nordic IPTV Sverige",
@@ -19,7 +19,15 @@ const FAQS = [
 export default function WindowsPCPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("windows-pc", "Windows PC")} />
+      <JsonLd data={[
+        guideBreadcrumb("windows-pc", "Windows PC"),
+        guideArticleSchema({
+          slug: "windows-pc",
+          deviceLabel: "Windows PC",
+          headline: "IPTV på Windows PC – Installationsguide 2026",
+          description: "Komplett guide för att titta på IPTV på din Windows-dator. IPTV Smarters för Windows (rekommenderas) eller VLC Media Player. Stöder Windows 10 och 11.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 

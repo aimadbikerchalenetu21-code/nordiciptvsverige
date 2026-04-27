@@ -4,7 +4,7 @@ import GuideLayout, {
   Step, MethodBadge, WarningBox, DeviceIntro, FAQ, RelatedDevices, SectionDivider,
 } from "@/components/nordic/GuideLayout";
 import { JsonLd } from "@/components/JsonLd";
-import { guideBreadcrumb } from "@/lib/schema";
+import { guideBreadcrumb, guideArticleSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "IPTV på Samsung Smart TV – Komplett Installationsguide 2026 | Nordic IPTV",
@@ -21,7 +21,15 @@ const FAQS = [
 export default function SamsungSmartTVPage() {
   return (
     <GuideLayout>
-      <JsonLd data={guideBreadcrumb("samsung-smart-tv", "Samsung Smart TV")} />
+      <JsonLd data={[
+        guideBreadcrumb("samsung-smart-tv", "Samsung Smart TV"),
+        guideArticleSchema({
+          slug: "samsung-smart-tv",
+          deviceLabel: "Samsung Smart TV",
+          headline: "IPTV på Samsung Smart TV – Komplett Installationsguide 2026",
+          description: "Steg-för-steg guide för att installera IPTV på Samsung Smart TV. Tre metoder: Net Player (rekommenderas), IPTV Smarters Player och SmartOne IPTV. Fungerar på alla Samsung-modeller.",
+        }),
+      ]} />
       <section style={{ background: "#07080e", padding: "48px 0 80px" }}>
         <div className="ni-container" style={{ maxWidth: 860 }}>
 
