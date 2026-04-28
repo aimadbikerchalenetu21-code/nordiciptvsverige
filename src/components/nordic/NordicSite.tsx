@@ -620,6 +620,85 @@ function WhatIsIptv() {
   );
 }
 
+function HowToSubscribe() {
+  const steps = [
+    {
+      num: "01",
+      title: "Välj din IPTV-plan",
+      body: "Månadsvis (199 kr), 3 månader (349 kr) eller 12 månader (599 kr). Årsplanen kostar under 2 kr per dag — lägsta priset på webbplatsen. Varje plan inkluderar samtliga 40,000+ kanaler och 100,000+ filmer utan nivålåsningar.",
+    },
+    {
+      num: "02",
+      title: "Prenumerera och ta emot dina uppgifter",
+      body: "Betala via Swish, kort, PayPal eller krypto — ditt val. Ditt IPTV-användarnamn, lösenord och M3U/Xtream-URL levereras via WhatsApp inom 3 minuter efter betalning. Ingen väntan, ingen ticketportal, inga dolda avgifter.",
+    },
+    {
+      num: "03",
+      title: "Logga in och börja streama",
+      body: "Öppna din IPTV-app — valfri app som stöder M3U eller Xtream Codes — på din Smart TV, mobil, Fire TV Stick eller Android-box. Klistra in uppgifterna en gång och ditt premium-abonnemang är aktivt på alla dina enheter direkt.",
+    },
+  ];
+
+  return (
+    <section style={{ background: "#07080e", padding: "80px 0", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <div className="ni-container" style={{ maxWidth: 860 }}>
+        {/* eyebrow */}
+        <div style={{ fontSize: 11, fontWeight: 700, color: "#ff6b35", letterSpacing: ".14em", textTransform: "uppercase", marginBottom: 16 }}>
+          Hur man prenumererar på IPTV
+        </div>
+        <h2 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, color: "#f0f6ff", lineHeight: 1.2, marginBottom: 56, maxWidth: 600 }}>
+          Prenumerera på Nordic IPTV Sverige och börja streama på under 3 minuter.
+        </h2>
+
+        {/* steps */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {steps.map((s, i) => (
+            <div
+              key={i}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "80px 1fr",
+                gap: "0 32px",
+                padding: "32px 0",
+                borderTop: "1px solid rgba(255,255,255,0.07)",
+                alignItems: "start",
+              }}
+            >
+              {/* step number */}
+              <div style={{ fontSize: "clamp(40px,6vw,64px)", fontWeight: 900, color: "rgba(255,255,255,0.08)", lineHeight: 1, letterSpacing: "-2px", userSelect: "none" }}>
+                {s.num}
+              </div>
+              {/* content */}
+              <div style={{ paddingTop: 6 }}>
+                <div style={{ fontSize: 18, fontWeight: 700, color: "#f0f6ff", marginBottom: 12 }}>{s.title}</div>
+                <div style={{ fontSize: 15, color: "#7a90a8", lineHeight: 1.75 }}>{s.body}</div>
+              </div>
+            </div>
+          ))}
+          {/* last divider */}
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }} />
+        </div>
+
+        {/* CTA */}
+        <div style={{ marginTop: 48, display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <a
+            href="https://wa.me/212651356639"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ni-btn ni-btn-cyan"
+            style={{ fontSize: 15, padding: "14px 32px" }}
+          >
+            ▶ Starta gratis IPTV-test
+          </a>
+          <a href="#pricing" className="ni-btn ni-btn-outline-white" style={{ fontSize: 15, padding: "14px 28px" }}>
+            Se alla priser →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   const plans = [
     {
@@ -1753,6 +1832,7 @@ export default function NordicSite() {
       <Hero />
       <WhatIsIptv />
       <ContentShowcase />
+      <HowToSubscribe />
       <Pricing />
       <Comparison />
       <WhatsAppReviews />
