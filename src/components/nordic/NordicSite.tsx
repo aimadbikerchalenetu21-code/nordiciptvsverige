@@ -1752,15 +1752,31 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Support</h4>
-            <ul className="ni-footer-links">
-              {["Hjälpcenter", "Live Chat", "E-post Support", "Telegram Support", "Vanliga Frågor", "Status-sida", "Statusuppdateringar", "Kontakta Oss"].map(l => (
-                <li key={l}><a href="#">{l}</a></li>
-              ))}
-            </ul>
-            <div style={{ marginTop: 16, padding: "12px 16px", borderRadius: 8, background: "rgba(0,230,118,.08)", border: "1px solid rgba(0,230,118,.15)" }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#00e676", letterSpacing: ".08em", marginBottom: 4 }}>SUPPORT ONLINE NU</div>
-              <div style={{ fontSize: 13, color: "#7a90a8" }}>Svarstid: &lt;2 min</div>
+            <h4 style={{ color: "#00e676" }}>Kontakta oss</h4>
+            {/* Email */}
+            <a href="mailto:contact@nordiciptvsverige.se" style={{ display: "flex", alignItems: "center", gap: 10, color: "#b8cad8", fontSize: 14, textDecoration: "none", marginBottom: 14 }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e676" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              contact@nordiciptvsverige.se
+            </a>
+            {/* WhatsApp */}
+            <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 10, color: "#b8cad8", fontSize: 14, textDecoration: "none", marginBottom: 24 }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e676" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+              WhatsApp Support
+            </a>
+            {/* SSL badge */}
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(0,230,118,0.15)" stroke="#00e676" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="m9 12 2 2 4-4" stroke="#00e676" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#b8cad8" }}>SSL Säker</div>
+                <div style={{ fontSize: 12, color: "#7a90a8" }}>Anslutning</div>
+              </div>
             </div>
           </div>
         </div>
