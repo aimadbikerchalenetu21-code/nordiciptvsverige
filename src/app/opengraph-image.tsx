@@ -140,7 +140,7 @@ export default function OGImage() {
         {/* Feature pills */}
         <div style={{ display: "flex", gap: 14 }}>
           {[
-            { label: "35,000+ Kanaler", color: "#ff6b35", border: "rgba(255,107,53,0.4)", bg: "rgba(255,107,53,0.12)" },
+            { label: "40,000+ Kanaler", color: "#ff6b35", border: "rgba(255,107,53,0.4)", bg: "rgba(255,107,53,0.12)" },
             { label: "4K UHD",          color: "#00d4ff", border: "rgba(0,212,255,0.35)", bg: "rgba(0,212,255,0.10)" },
             { label: "Live 24/7",       color: "#00e676", border: "rgba(0,230,118,0.3)",  bg: "rgba(0,230,118,0.09)" },
             { label: "Alla Enheter",    color: "#c4b5fd", border: "rgba(196,181,253,0.3)", bg: "rgba(196,181,253,0.09)" },

@@ -1,5 +1,5 @@
 # Nordic IPTV Sverige
-> Sveriges ledande IPTV-tjänst med 35,000+ live-kanaler i 4K UHD och 120,000+ on-demand-titlar. 24-timmars gratis testperiod. Från 79 kr/månad. Inga bindningstider. Aktiveras inom minuter via WhatsApp.
+> Nordic IPTV Sverige — Sveriges ledande IPTV-tjänst med 40,000+ live-kanaler och 100,000+ filmer i kristallklar 4K Ultra HD. 24-timmars gratis testperiod. Från 79 kr/månad. Inga bindningstider. Aktiveras inom minuter via WhatsApp.
 
 ## Kärnsidor
 - [Hem](https://nordiciptvsverige.se/): Översikt, priser, kanalutbud, gratis testperiod
@@ -23,8 +23,8 @@
 - [Smartphones](https://nordiciptvsverige.se/installationsguide/smartphones): iOS och Android
 
 ## Nyckelfakta
-- Bästa IPTV-tjänsten i Sverige med 35,000+ live-kanaler
-- 120,000+ filmer och serier on-demand (VOD)
+- Nordic IPTV Sverige — bästa IPTV-tjänsten i Sverige med 40,000+ live-kanaler
+- 100,000+ filmer och serier on-demand (VOD)
 - 4K UHD-bildkvalitet, HD och Full HD beroende på kanal
 - Över 500 sportkanaler: Eurosport, Sky Sports, TNT Sports, Premier League, Champions League, Allsvenskan, Bundesliga, La Liga
 - 99.9% drifttid mätt över 12 månader

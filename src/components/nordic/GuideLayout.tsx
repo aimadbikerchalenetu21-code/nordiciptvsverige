@@ -170,7 +170,7 @@ function Footer() {
             <div className="ni-footer-brand">
               <Image src="/logo.webp" alt="Nordic IPTV Sverige" width={180} height={48} style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} />
             </div>
-            <div className="ni-footer-tagline">Sveriges ledande IPTV-tjänst med 35,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
+            <div className="ni-footer-tagline">Nordic IPTV Sverige — Sveriges ledande IPTV-tjänst med 40,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
             <div className="ni-footer-payments">
               {["Visa", "Mastercard", "Swish", "PayPal", "Crypto"].map(p => (
                 <span key={p} className="ni-pay-badge">{p}</span>

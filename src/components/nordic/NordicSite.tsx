@@ -97,7 +97,7 @@ const TESTIMONIALS = [
 
 const FEATURES_LIST = [
   "Omedelbar aktivering", "Anonym Betalning", "Premiumkanaler", "Stöd alla enheter",
-  "90 400+ filmer och serier", "22 500+ kanaler", "Sportkanaler",
+  "100 000+ filmer och serier", "40 000+ kanaler", "Sportkanaler",
   "4K / Ultra HD-kvalitet", "Ingen buffring eller frysning", "Frostskyddsteknik", "EPG för alla kanaler",
 ];
 
@@ -433,16 +433,16 @@ function Hero() {
 
           {/* headline */}
           <h1 className="ni-hero-title ni-fade-up">
-            Bästa IPTV-prenumeration<br />
-            — 35,000+ 4K Live-kanaler,<br />
+            Nordic IPTV Sverige — 40,000+<br />
+            4K Live-kanaler,<br />
             <span style={{ color: "#ff6b35" }}>24-timmars gratis provperiod</span>
           </h1>
 
           {/* description */}
           <p className="ni-hero-desc ni-fade-up ni-delay-1">
-            NordicIPTV är den <strong>bästa IPTV-tjänsten</strong> för svenska tittare — en{" "}
-            <strong>premium IPTV-prenumeration</strong> med 35,000+ live-kanaler i{" "}
-            <strong>4K</strong> och 120,000+ on-demand-titlar. Från{" "}
+            Nordic IPTV Sverige är den <strong>bästa IPTV-tjänsten</strong> för svenska tittare — en{" "}
+            <strong>premium IPTV-prenumeration</strong> med 40,000+ live-kanaler i{" "}
+            <strong>4K</strong> och 100,000+ on-demand-titlar. Från{" "}
             <strong>79 kr / månad</strong> med gratis IPTV-test — inget kort, ingen auto-förnyelse, avsluta när du vill.
           </p>
 
@@ -605,8 +605,8 @@ function WhatIsIptv() {
           <p style={{ marginBottom: 16 }}>
             <strong style={{ color: "#f0f6ff" }}>IPTV</strong> (Internet Protocol Television) är en teknik som levererar
             TV-kanaler och on-demand-innehåll via internetuppkoppling istället för traditionell satellit eller kabel.
-            Med en <strong style={{ color: "#f0f6ff" }}>IPTV-prenumeration</strong> streamar du över 35,000 live-kanaler
-            och 120,000+ filmer direkt till Smart TV, mobil, surfplatta, dator, Fire TV Stick eller Apple TV — utan
+            Med en <strong style={{ color: "#f0f6ff" }}>IPTV-prenumeration</strong> streamar du över 40,000 live-kanaler
+            och 100,000+ filmer direkt till Smart TV, mobil, surfplatta, dator, Fire TV Stick eller Apple TV — utan
             parabol eller kabelbox.
           </p>
           <p style={{ marginBottom: 0 }}>
@@ -845,7 +845,7 @@ function Pricing() {
                 <div className="ni-multi-price">kr{p.price}</div>
                 <div className="ni-multi-price-sub"><s>{p.old}</s>, spara {p.save}</div>
                 <ul className="ni-multi-features">
-                  {[`${p.devices} enheter`, "Omedelbar aktivering", "Anonym Betalning", "68 400+ filmer och serier", "17 200+ VOD", "22 500+ kanaler", "4K / Ultra HD-kvalitet"].map((f, j) => (
+                  {[`${p.devices} enheter`, "Omedelbar aktivering", "Anonym Betalning", "100 000+ filmer och serier", "40 000+ kanaler", "4K / Ultra HD-kvalitet"].map((f, j) => (
                     <li key={j}><span style={{ color: "#00e676", fontSize: 13 }}>✓</span>{f}</li>
                   ))}
                 </ul>
@@ -1430,7 +1430,7 @@ function Ecosystem() {
     { id: "epg",   x: 378, y:  28, label: "EPG Guide",        type: "feature", Icon: CalendarDays },
     { id: "cu",    x: 722, y:  28, label: "Catch-up TV",      type: "feature", Icon: Rewind },
     // ── Right arc: content (2 o'clock → 5 o'clock) ──────────────────────
-    { id: "ch",    x: 992, y:  95, label: "35,000+ Kanaler",  type: "content", Icon: Radio },
+    { id: "ch",    x: 992, y:  95, label: "40,000+ Kanaler",  type: "content", Icon: Radio },
     { id: "sport", x:1018, y: 260, label: "Sport Live",       type: "content", Icon: Globe },
     { id: "film",  x: 992, y: 425, label: "Film 4K UHD",      type: "content", Icon: Film },
     { id: "sv",    x: 842, y: 492, label: "Svenska Kanaler",  type: "content", Icon: Flag },
@@ -1635,7 +1635,7 @@ function Footer() {
         <div className="ni-footer-grid">
           <div>
             <div className="ni-footer-brand"><Image src="/logo.webp" alt="Nordic IPTV Sverige" width={180} height={48} style={{ height: 48, width: "auto", display: "block", marginBottom: 4 }} /></div>
-            <div className="ni-footer-tagline">Sveriges ledande IPTV-tjänst med 35,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
+            <div className="ni-footer-tagline">Nordic IPTV Sverige — Sveriges ledande IPTV-tjänst med 40,000+ kanaler i 4K UHD-kvalitet. Titta på vad du vill, när du vill, på vilken enhet som helst.</div>
             <div style={{ display: "flex", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
               <a href="https://wa.me/212651356639" target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: "#7a90a8", transition: ".2s" }}>💬 WhatsApp</a>
             </div>

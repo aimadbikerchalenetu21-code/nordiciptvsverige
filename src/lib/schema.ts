@@ -10,7 +10,7 @@ export const organizationSchema = {
   logo: `${SITE}/logo.webp`,
   image: `${SITE}/opengraph-image`,
   description:
-    "Sveriges bästa IPTV-tjänst med över 35,000 kanaler, filmer och serier i 4K UHD. Inga bindningstider, omedelbar aktivering.",
+    "Nordic IPTV Sverige — Sveriges bästa IPTV-tjänst med 40,000+ live-kanaler och 100,000+ filmer i 4K Ultra HD. Inga bindningstider, omedelbar aktivering.",
   areaServed: {
     "@type": "Country",
     name: "Sweden",
@@ -36,7 +36,7 @@ export const websiteSchema = {
   url: SITE,
   name: "Nordic IPTV Sverige",
   description:
-    "Sveriges bästa IPTV-tjänst – över 35,000 kanaler, filmer och serier i 4K UHD.",
+    "Nordic IPTV Sverige — 40,000+ live-kanaler och 100,000+ filmer i 4K Ultra HD.",
   inLanguage: "sv-SE",
   publisher: { "@id": `${SITE}/#organization` },
 } as const;
@@ -46,7 +46,7 @@ export const productSchema = {
   "@type": "Product",
   name: "Nordic IPTV Sverige – Prenumeration",
   description:
-    "IPTV-prenumeration med över 35,000 kanaler, on-demand-filmer och serier i 4K UHD. Streama till alla dina enheter — Smart TV, mobil, dator, Fire TV, Apple TV med flera.",
+    "Nordic IPTV Sverige — prenumeration med 40,000+ live-kanaler och 100,000+ filmer i 4K Ultra HD. Streama till alla dina enheter — Smart TV, mobil, dator, Fire TV, Apple TV med flera.",
   brand: {
     "@type": "Brand",
     name: "Nordic IPTV Sverige",

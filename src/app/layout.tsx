@@ -12,7 +12,7 @@ const outfit = Outfit({
 const SITE_URL = "https://nordiciptvsverige.se";
 const DEFAULT_TITLE = "Nordic IPTV Sverige – Sveriges Bästa IPTV-Tjänst 2026";
 const DEFAULT_DESC =
-  "Över 35,000 kanaler, filmer och serier i kristallklar 4K UHD — på alla dina enheter. Inga bindningstider. Omedelbar aktivering.";
+  "Nordic IPTV Sverige — 40,000+ live-kanaler och 100,000+ filmer i kristallklar 4K Ultra HD. På alla dina enheter. Inga bindningstider. Omedelbar aktivering.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
