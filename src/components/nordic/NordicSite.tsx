@@ -665,7 +665,13 @@ function HowToSubscribe() {
               }}
             >
               {/* step number */}
-              <div style={{ fontSize: "clamp(40px,6vw,64px)", fontWeight: 900, color: "rgba(255,255,255,0.08)", lineHeight: 1, letterSpacing: "-2px", userSelect: "none" }}>
+              <div style={{
+                fontSize: "clamp(40px,6vw,64px)", fontWeight: 900, lineHeight: 1,
+                letterSpacing: "-2px", userSelect: "none",
+                background: "linear-gradient(160deg, #6b7280 0%, #374151 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
                 {s.num}
               </div>
               {/* content */}
